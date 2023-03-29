@@ -1,0 +1,1605 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B13115E4E3EE377F8666785 /* Pods_MiniAppHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31FC1970CFA6992F41903B0 /* Pods_MiniAppHelper.framework */; };
+		BF4587F82298D3AB00BD7491 /* service.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587C82298D3A800BD7491 /* service.h */; };
+		BF4587F92298D3AB00BD7491 /* diagnostics_relay.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587C92298D3A800BD7491 /* diagnostics_relay.c */; };
+		BF4587FA2298D3AB00BD7491 /* diagnostics_relay.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587CA2298D3A800BD7491 /* diagnostics_relay.h */; };
+		BF4587FB2298D3AB00BD7491 /* notification_proxy.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587CB2298D3A800BD7491 /* notification_proxy.c */; };
+		BF4587FC2298D3AB00BD7491 /* sbservices.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587CC2298D3A800BD7491 /* sbservices.c */; };
+		BF4587FD2298D3AB00BD7491 /* sbservices.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587CD2298D3A800BD7491 /* sbservices.h */; };
+		BF4587FE2298D3AB00BD7491 /* mobilebackup2.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587CE2298D3A800BD7491 /* mobilebackup2.h */; };
+		BF4587FF2298D3AB00BD7491 /* heartbeat.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587CF2298D3A800BD7491 /* heartbeat.c */; };
+		BF4588002298D3AB00BD7491 /* restore.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587D02298D3A800BD7491 /* restore.h */; };
+		BF4588012298D3AB00BD7491 /* installation_proxy.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587D12298D3A800BD7491 /* installation_proxy.h */; };
+		BF4588022298D3AB00BD7491 /* file_relay.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587D22298D3A800BD7491 /* file_relay.c */; };
+		BF4588032298D3AB00BD7491 /* syslog_relay.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587D32298D3A800BD7491 /* syslog_relay.c */; };
+		BF4588042298D3AB00BD7491 /* lockdown.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587D42298D3A800BD7491 /* lockdown.h */; };
+		BF4588052298D3AB00BD7491 /* idevice.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587D52298D3A800BD7491 /* idevice.h */; };
+		BF4588062298D3AB00BD7491 /* webinspector.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587D62298D3A800BD7491 /* webinspector.c */; };
+		BF4588072298D3AB00BD7491 /* afc.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587D72298D3A800BD7491 /* afc.c */; };
+		BF4588082298D3AB00BD7491 /* mobile_image_mounter.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587D82298D3A800BD7491 /* mobile_image_mounter.c */; };
+		BF4588092298D3AB00BD7491 /* installation_proxy.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587D92298D3A900BD7491 /* installation_proxy.c */; };
+		BF45880A2298D3AB00BD7491 /* screenshotr.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587DA2298D3A900BD7491 /* screenshotr.h */; };
+		BF45880B2298D3AB00BD7491 /* mobilesync.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587DB2298D3A900BD7491 /* mobilesync.h */; };
+		BF45880C2298D3AB00BD7491 /* mobilebackup2.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587DC2298D3A900BD7491 /* mobilebackup2.c */; };
+		BF45880D2298D3AB00BD7491 /* mobilebackup.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587DD2298D3A900BD7491 /* mobilebackup.c */; };
+		BF45880E2298D3AB00BD7491 /* debugserver.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587DE2298D3A900BD7491 /* debugserver.h */; };
+		BF45880F2298D3AB00BD7491 /* debugserver.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587DF2298D3A900BD7491 /* debugserver.c */; };
+		BF4588102298D3AB00BD7491 /* heartbeat.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587E02298D3A900BD7491 /* heartbeat.h */; };
+		BF4588112298D3AB00BD7491 /* misagent.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587E12298D3A900BD7491 /* misagent.h */; };
+		BF4588122298D3AB00BD7491 /* house_arrest.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587E22298D3A900BD7491 /* house_arrest.h */; };
+		BF4588132298D3AB00BD7491 /* notification_proxy.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587E32298D3A900BD7491 /* notification_proxy.h */; };
+		BF4588142298D3AB00BD7491 /* device_link_service.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587E42298D3A900BD7491 /* device_link_service.c */; };
+		BF4588152298D3AB00BD7491 /* mobilebackup.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587E52298D3A900BD7491 /* mobilebackup.h */; };
+		BF4588162298D3AB00BD7491 /* restore.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587E62298D3A900BD7491 /* restore.c */; };
+		BF4588172298D3AB00BD7491 /* screenshotr.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587E72298D3A900BD7491 /* screenshotr.c */; };
+		BF4588182298D3AB00BD7491 /* syslog_relay.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587E82298D3A900BD7491 /* syslog_relay.h */; };
+		BF4588192298D3AB00BD7491 /* webinspector.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587E92298D3AA00BD7491 /* webinspector.h */; };
+		BF45881A2298D3AB00BD7491 /* mobileactivation.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587EA2298D3AA00BD7491 /* mobileactivation.h */; };
+		BF45881B2298D3AB00BD7491 /* house_arrest.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587EB2298D3AA00BD7491 /* house_arrest.c */; };
+		BF45881C2298D3AB00BD7491 /* afc.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587EC2298D3AA00BD7491 /* afc.h */; };
+		BF45881D2298D3AB00BD7491 /* file_relay.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587ED2298D3AA00BD7491 /* file_relay.h */; };
+		BF45881E2298D3AB00BD7491 /* misagent.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587EE2298D3AA00BD7491 /* misagent.c */; };
+		BF45881F2298D3AB00BD7491 /* device_link_service.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587EF2298D3AA00BD7491 /* device_link_service.h */; };
+		BF4588202298D3AB00BD7491 /* mobile_image_mounter.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587F02298D3AA00BD7491 /* mobile_image_mounter.h */; };
+		BF4588212298D3AB00BD7491 /* idevice.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587F12298D3AA00BD7491 /* idevice.c */; };
+		BF4588222298D3AB00BD7491 /* mobileactivation.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587F22298D3AA00BD7491 /* mobileactivation.c */; };
+		BF4588232298D3AB00BD7491 /* mobilesync.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587F32298D3AA00BD7491 /* mobilesync.c */; };
+		BF4588242298D3AB00BD7491 /* property_list_service.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587F42298D3AA00BD7491 /* property_list_service.c */; };
+		BF4588252298D3AB00BD7491 /* property_list_service.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587F52298D3AA00BD7491 /* property_list_service.h */; };
+		BF4588262298D3AB00BD7491 /* lockdown.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587F62298D3AB00BD7491 /* lockdown.c */; };
+		BF4588272298D3AB00BD7491 /* service.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587F72298D3AB00BD7491 /* service.c */; };
+		BF4588332298D3C100BD7491 /* socket.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4588292298D3C000BD7491 /* socket.h */; };
+		BF4588342298D3C100BD7491 /* userpref.h in Headers */ = {isa = PBXBuildFile; fileRef = BF45882A2298D3C000BD7491 /* userpref.h */; };
+		BF4588352298D3C100BD7491 /* userpref.c in Sources */ = {isa = PBXBuildFile; fileRef = BF45882B2298D3C000BD7491 /* userpref.c */; };
+		BF4588362298D3C100BD7491 /* debug.h in Headers */ = {isa = PBXBuildFile; fileRef = BF45882C2298D3C000BD7491 /* debug.h */; };
+		BF4588372298D3C100BD7491 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = BF45882D2298D3C000BD7491 /* utils.c */; };
+		BF4588392298D3C100BD7491 /* socket.c in Sources */ = {isa = PBXBuildFile; fileRef = BF45882F2298D3C000BD7491 /* socket.c */; };
+		BF45883A2298D3C100BD7491 /* debug.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4588302298D3C000BD7491 /* debug.c */; };
+		BF45883C2298D3C100BD7491 /* utils.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4588322298D3C100BD7491 /* utils.h */; };
+		BF4588402298D3F800BD7491 /* collection.h in Headers */ = {isa = PBXBuildFile; fileRef = BF45883E2298D3F800BD7491 /* collection.h */; };
+		BF4588412298D3F800BD7491 /* collection.c in Sources */ = {isa = PBXBuildFile; fileRef = BF45883F2298D3F800BD7491 /* collection.c */; };
+		BF4588432298D40000BD7491 /* libusbmuxd.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4588422298D40000BD7491 /* libusbmuxd.c */; };
+		BF45884A2298D55000BD7491 /* thread.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4588482298D55000BD7491 /* thread.c */; };
+		BF45884B2298D55000BD7491 /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4588492298D55000BD7491 /* thread.h */; };
+		BF77A67025795A5600BFE477 /* AltXPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF77A66F25795A5600BFE477 /* AltXPC.swift */; };
+		BF77A67E25795BBE00BFE477 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF77A67D25795BBE00BFE477 /* main.swift */; };
+		BFD52C0122A1A9CB000B7ED1 /* ptrarray.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BE522A1A9CA000B7ED1 /* ptrarray.c */; };
+		BFD52C0222A1A9CB000B7ED1 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BE622A1A9CA000B7ED1 /* base64.c */; };
+		BFD52C0322A1A9CB000B7ED1 /* hashtable.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BE722A1A9CA000B7ED1 /* hashtable.c */; };
+		BFD52C0422A1A9CB000B7ED1 /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BE822A1A9CA000B7ED1 /* Dictionary.cpp */; };
+		BFD52C0522A1A9CB000B7ED1 /* ptrarray.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD52BE922A1A9CA000B7ED1 /* ptrarray.h */; };
+		BFD52C0622A1A9CB000B7ED1 /* bplist.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BEA22A1A9CA000B7ED1 /* bplist.c */; };
+		BFD52C0722A1A9CB000B7ED1 /* String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BEB22A1A9CA000B7ED1 /* String.cpp */; };
+		BFD52C0822A1A9CB000B7ED1 /* time64.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BEC22A1A9CA000B7ED1 /* time64.c */; };
+		BFD52C0922A1A9CB000B7ED1 /* plist.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD52BED22A1A9CA000B7ED1 /* plist.h */; };
+		BFD52C0A22A1A9CB000B7ED1 /* plist.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BEE22A1A9CA000B7ED1 /* plist.c */; };
+		BFD52C0B22A1A9CB000B7ED1 /* hashtable.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD52BEF22A1A9CA000B7ED1 /* hashtable.h */; };
+		BFD52C0C22A1A9CB000B7ED1 /* Date.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BF022A1A9CA000B7ED1 /* Date.cpp */; };
+		BFD52C0D22A1A9CB000B7ED1 /* Uid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BF122A1A9CA000B7ED1 /* Uid.cpp */; };
+		BFD52C0E22A1A9CB000B7ED1 /* Boolean.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BF222A1A9CA000B7ED1 /* Boolean.cpp */; };
+		BFD52C0F22A1A9CB000B7ED1 /* Real.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BF322A1A9CA000B7ED1 /* Real.cpp */; };
+		BFD52C1022A1A9CB000B7ED1 /* strbuf.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD52BF422A1A9CA000B7ED1 /* strbuf.h */; };
+		BFD52C1122A1A9CB000B7ED1 /* bytearray.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BF522A1A9CA000B7ED1 /* bytearray.c */; };
+		BFD52C1222A1A9CB000B7ED1 /* base64.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD52BF622A1A9CA000B7ED1 /* base64.h */; };
+		BFD52C1322A1A9CB000B7ED1 /* Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BF722A1A9CA000B7ED1 /* Data.cpp */; };
+		BFD52C1422A1A9CB000B7ED1 /* Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BF822A1A9CB000B7ED1 /* Array.cpp */; };
+		BFD52C1522A1A9CB000B7ED1 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BF922A1A9CB000B7ED1 /* Node.cpp */; };
+		BFD52C1622A1A9CB000B7ED1 /* bytearray.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD52BFA22A1A9CB000B7ED1 /* bytearray.h */; };
+		BFD52C1722A1A9CB000B7ED1 /* Key.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BFB22A1A9CB000B7ED1 /* Key.cpp */; };
+		BFD52C1822A1A9CB000B7ED1 /* Integer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BFC22A1A9CB000B7ED1 /* Integer.cpp */; };
+		BFD52C1922A1A9CB000B7ED1 /* Structure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD52BFD22A1A9CB000B7ED1 /* Structure.cpp */; };
+		BFD52C1A22A1A9CB000B7ED1 /* time64_limits.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD52BFE22A1A9CB000B7ED1 /* time64_limits.h */; };
+		BFD52C1B22A1A9CB000B7ED1 /* time64.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD52BFF22A1A9CB000B7ED1 /* time64.h */; };
+		BFD52C1C22A1A9CB000B7ED1 /* xplist.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52C0022A1A9CB000B7ED1 /* xplist.c */; };
+		BFD52C2022A1A9EC000B7ED1 /* node.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52C1D22A1A9EC000B7ED1 /* node.c */; };
+		BFD52C2122A1A9EC000B7ED1 /* node_list.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52C1E22A1A9EC000B7ED1 /* node_list.c */; };
+		BFD52C2222A1A9EC000B7ED1 /* cnary.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52C1F22A1A9EC000B7ED1 /* cnary.c */; };
+		CE649C3729CDC33E009AD7E5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C3629CDC33E009AD7E5 /* main.swift */; };
+		CE649C3B29CDC388009AD7E5 /* ALTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BF718BD723C93DB700A89F2D /* ALTConstants.m */; };
+		CE649C3C29CDC388009AD7E5 /* ServerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E3128229F474900370A3C /* ServerProtocol.swift */; };
+		CE649C3D29CDC388009AD7E5 /* CodableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD44605241188C300EAB90A /* CodableError.swift */; };
+		CE649C3E29CDC388009AD7E5 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF18BFF22485828200DD5981 /* ConnectionManager.swift */; };
+		CE649C3F29CDC388009AD7E5 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF18BFF624858BDE00DD5981 /* Connection.swift */; };
+		CE649C4029CDC388009AD7E5 /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF767CD2489ABE90097E58C /* NetworkConnection.swift */; };
+		CE649C4129CDC388009AD7E5 /* XPCConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC712C12512D5F100AB5EBE /* XPCConnection.swift */; };
+		CE649C4229CDC388009AD7E5 /* ALTLocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DB145828F9DC1000A8F606 /* ALTLocalizedError.swift */; };
+		CE649C4329CDC388009AD7E5 /* ALTWrappedError.m in Sources */ = {isa = PBXBuildFile; fileRef = D51AD27D29356B7B00967AAA /* ALTWrappedError.m */; };
+		CE649C4429CDC388009AD7E5 /* Result+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBAC8852295C90300587369 /* Result+Conveniences.swift */; };
+		CE649C4529CDC388009AD7E5 /* Bundle+AltStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E314122A05D4C00370A3C /* Bundle+AltStore.swift */; };
+		CE649C4629CDC388009AD7E5 /* ALTServerError+Conveniences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF767CB2489AB5C0097E58C /* ALTServerError+Conveniences.swift */; };
+		CE649C4729CDC388009AD7E5 /* NSXPCConnection+MachServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1FE357251A9FB000C3CE09 /* NSXPCConnection+MachServices.swift */; };
+		CE649C4829CDC388009AD7E5 /* ALTApplication+AltStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF435D7255CBDAB00DD724F /* ALTApplication+AltStoreApp.swift */; };
+		CE649C4929CDC388009AD7E5 /* NSError+AltStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C336124197D700034FD24 /* NSError+AltStore.swift */; };
+		CE649C4A29CDC388009AD7E5 /* OperatingSystemVersion+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5708416292448DA00D42D34 /* OperatingSystemVersion+Comparable.swift */; };
+		CE649C4B29CDC388009AD7E5 /* NSError+ALTServerError.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1E314922A060F400370A3C /* NSError+ALTServerError.m */; };
+		CE649C4C29CDC388009AD7E5 /* CFNotificationName+AltStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BF718BC823C919E300A89F2D /* CFNotificationName+AltStore.m */; };
+		CE649C6A29CDC3A5009AD7E5 /* NSError+libimobiledevice.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE649C4F29CDC3A4009AD7E5 /* NSError+libimobiledevice.mm */; };
+		CE649C6B29CDC3A5009AD7E5 /* ALTDeviceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE649C5129CDC3A4009AD7E5 /* ALTDeviceManager.mm */; };
+		CE649C6C29CDC3A5009AD7E5 /* ALTDeviceManager+Installation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C5229CDC3A4009AD7E5 /* ALTDeviceManager+Installation.swift */; };
+		CE649C6D29CDC3A5009AD7E5 /* FileManager+URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C5529CDC3A4009AD7E5 /* FileManager+URLs.swift */; };
+		CE649C6E29CDC3A5009AD7E5 /* UserDefaults+AltServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C5629CDC3A4009AD7E5 /* UserDefaults+AltServer.swift */; };
+		CE649C6F29CDC3A5009AD7E5 /* AnisetteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C5729CDC3A4009AD7E5 /* AnisetteDataManager.swift */; };
+		CE649C7029CDC3A5009AD7E5 /* PluginVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C5929CDC3A4009AD7E5 /* PluginVersion.swift */; };
+		CE649C7129CDC3A5009AD7E5 /* PluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C5A29CDC3A4009AD7E5 /* PluginManager.swift */; };
+		CE649C7229CDC3A5009AD7E5 /* ALTWiredConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE649C5C29CDC3A5009AD7E5 /* ALTWiredConnection.mm */; };
+		CE649C7329CDC3A5009AD7E5 /* ALTNotificationConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE649C5E29CDC3A5009AD7E5 /* ALTNotificationConnection.mm */; };
+		CE649C7429CDC3A5009AD7E5 /* WirelessConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C6029CDC3A5009AD7E5 /* WirelessConnectionHandler.swift */; };
+		CE649C7529CDC3A5009AD7E5 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C6329CDC3A5009AD7E5 /* RequestHandler.swift */; };
+		CE649C7629CDC3A5009AD7E5 /* ALTDebugConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE649C6629CDC3A5009AD7E5 /* ALTDebugConnection.mm */; };
+		CE649C7729CDC3A5009AD7E5 /* WiredConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C6729CDC3A5009AD7E5 /* WiredConnectionHandler.swift */; };
+		CE649C7829CDC3A5009AD7E5 /* DeveloperDiskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C6929CDC3A5009AD7E5 /* DeveloperDiskManager.swift */; };
+		CE649C7A29CDC3CA009AD7E5 /* AltSign-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CE649C7929CDC3CA009AD7E5 /* AltSign-Dynamic */; };
+		CE649C7E29CDC3CA009AD7E5 /* OpenSSL.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF088D322501A4FF008082D9 /* OpenSSL.xcframework */; };
+		CE649C8029CDC3F3009AD7E5 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE649C7F29CDC3F3009AD7E5 /* libxml2.tbd */; };
+		CE649C8529D13D02009AD7E5 /* libimobiledevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF45872B2298D31600BD7491 /* libimobiledevice.a */; };
+		CE66AA9D29D2166900B03C36 /* ALTAnisetteData.m in Sources */ = {isa = PBXBuildFile; fileRef = CE66AA9729D2057E00B03C36 /* ALTAnisetteData.m */; };
+		CE66AA9E29D2166900B03C36 /* ALTPluginService.m in Sources */ = {isa = PBXBuildFile; fileRef = CE66AA9C29D2163F00B03C36 /* ALTPluginService.m */; };
+		CE66AA9F29D2226E00B03C36 /* ALTAnisetteData.m in Sources */ = {isa = PBXBuildFile; fileRef = CE66AA9729D2057E00B03C36 /* ALTAnisetteData.m */; };
+		CE66AAA029D2226E00B03C36 /* ALTPluginService.m in Sources */ = {isa = PBXBuildFile; fileRef = CE66AA9C29D2163F00B03C36 /* ALTPluginService.m */; };
+		CE6834A029D1F2C100840122 /* AltPlugin.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE649C9229D19B26009AD7E5 /* AltPlugin.zip */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE649C8329CDC3FE009AD7E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFD247622284B9A500981D42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF45872A2298D31600BD7491;
+			remoteInfo = libimobiledevice;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF5C5FE9237E438C00EDD0C6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE68349F29D1F2B600840122 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				CE6834A029D1F2C100840122 /* AltPlugin.zip in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		035DB8235B4843F514BB9727 /* Pods-MiniAppHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniAppHelper.release.xcconfig"; path = "Target Support Files/Pods-MiniAppHelper/Pods-MiniAppHelper.release.xcconfig"; sourceTree = "<group>"; };
+		59618F4167C1F2A9FB3615A0 /* Pods-MiniAppHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniAppHelper.debug.xcconfig"; path = "Target Support Files/Pods-MiniAppHelper/Pods-MiniAppHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		A87E862759DA9B92B091C6E8 /* Pods-MiniAppHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniAppHelper.release.xcconfig"; path = "Target Support Files/Pods-MiniAppHelper/Pods-MiniAppHelper.release.xcconfig"; sourceTree = "<group>"; };
+		BF088D322501A4FF008082D9 /* OpenSSL.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OpenSSL.xcframework; path = Dependencies/AltSign/Dependencies/OpenSSL/Frameworks/OpenSSL.xcframework; sourceTree = "<group>"; };
+		BF18BFF22485828200DD5981 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		BF18BFF624858BDE00DD5981 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		BF18BFFE2485A42800DD5981 /* ALTConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTConnection.h; sourceTree = "<group>"; };
+		BF1E3128229F474900370A3C /* ServerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerProtocol.swift; sourceTree = "<group>"; };
+		BF1E314122A05D4C00370A3C /* Bundle+AltStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+AltStore.swift"; sourceTree = "<group>"; };
+		BF1E314822A060F400370A3C /* NSError+ALTServerError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+ALTServerError.h"; sourceTree = "<group>"; };
+		BF1E314922A060F400370A3C /* NSError+ALTServerError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSError+ALTServerError.m"; sourceTree = "<group>"; };
+		BF1FE357251A9FB000C3CE09 /* NSXPCConnection+MachServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSXPCConnection+MachServices.swift"; sourceTree = "<group>"; };
+		BF45872B2298D31600BD7491 /* libimobiledevice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libimobiledevice.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF4587C82298D3A800BD7491 /* service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = service.h; path = Dependencies/libimobiledevice/src/service.h; sourceTree = SOURCE_ROOT; };
+		BF4587C92298D3A800BD7491 /* diagnostics_relay.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = diagnostics_relay.c; path = Dependencies/libimobiledevice/src/diagnostics_relay.c; sourceTree = SOURCE_ROOT; };
+		BF4587CA2298D3A800BD7491 /* diagnostics_relay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = diagnostics_relay.h; path = Dependencies/libimobiledevice/src/diagnostics_relay.h; sourceTree = SOURCE_ROOT; };
+		BF4587CB2298D3A800BD7491 /* notification_proxy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = notification_proxy.c; path = Dependencies/libimobiledevice/src/notification_proxy.c; sourceTree = SOURCE_ROOT; };
+		BF4587CC2298D3A800BD7491 /* sbservices.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sbservices.c; path = Dependencies/libimobiledevice/src/sbservices.c; sourceTree = SOURCE_ROOT; };
+		BF4587CD2298D3A800BD7491 /* sbservices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sbservices.h; path = Dependencies/libimobiledevice/src/sbservices.h; sourceTree = SOURCE_ROOT; };
+		BF4587CE2298D3A800BD7491 /* mobilebackup2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mobilebackup2.h; path = Dependencies/libimobiledevice/src/mobilebackup2.h; sourceTree = SOURCE_ROOT; };
+		BF4587CF2298D3A800BD7491 /* heartbeat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = heartbeat.c; path = Dependencies/libimobiledevice/src/heartbeat.c; sourceTree = SOURCE_ROOT; };
+		BF4587D02298D3A800BD7491 /* restore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = restore.h; path = Dependencies/libimobiledevice/src/restore.h; sourceTree = SOURCE_ROOT; };
+		BF4587D12298D3A800BD7491 /* installation_proxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = installation_proxy.h; path = Dependencies/libimobiledevice/src/installation_proxy.h; sourceTree = SOURCE_ROOT; };
+		BF4587D22298D3A800BD7491 /* file_relay.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = file_relay.c; path = Dependencies/libimobiledevice/src/file_relay.c; sourceTree = SOURCE_ROOT; };
+		BF4587D32298D3A800BD7491 /* syslog_relay.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = syslog_relay.c; path = Dependencies/libimobiledevice/src/syslog_relay.c; sourceTree = SOURCE_ROOT; };
+		BF4587D42298D3A800BD7491 /* lockdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lockdown.h; path = Dependencies/libimobiledevice/src/lockdown.h; sourceTree = SOURCE_ROOT; };
+		BF4587D52298D3A800BD7491 /* idevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = idevice.h; path = Dependencies/libimobiledevice/src/idevice.h; sourceTree = SOURCE_ROOT; };
+		BF4587D62298D3A800BD7491 /* webinspector.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = webinspector.c; path = Dependencies/libimobiledevice/src/webinspector.c; sourceTree = SOURCE_ROOT; };
+		BF4587D72298D3A800BD7491 /* afc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = afc.c; path = Dependencies/libimobiledevice/src/afc.c; sourceTree = SOURCE_ROOT; };
+		BF4587D82298D3A800BD7491 /* mobile_image_mounter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mobile_image_mounter.c; path = Dependencies/libimobiledevice/src/mobile_image_mounter.c; sourceTree = SOURCE_ROOT; };
+		BF4587D92298D3A900BD7491 /* installation_proxy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = installation_proxy.c; path = Dependencies/libimobiledevice/src/installation_proxy.c; sourceTree = SOURCE_ROOT; };
+		BF4587DA2298D3A900BD7491 /* screenshotr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = screenshotr.h; path = Dependencies/libimobiledevice/src/screenshotr.h; sourceTree = SOURCE_ROOT; };
+		BF4587DB2298D3A900BD7491 /* mobilesync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mobilesync.h; path = Dependencies/libimobiledevice/src/mobilesync.h; sourceTree = SOURCE_ROOT; };
+		BF4587DC2298D3A900BD7491 /* mobilebackup2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mobilebackup2.c; path = Dependencies/libimobiledevice/src/mobilebackup2.c; sourceTree = SOURCE_ROOT; };
+		BF4587DD2298D3A900BD7491 /* mobilebackup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mobilebackup.c; path = Dependencies/libimobiledevice/src/mobilebackup.c; sourceTree = SOURCE_ROOT; };
+		BF4587DE2298D3A900BD7491 /* debugserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = debugserver.h; path = Dependencies/libimobiledevice/src/debugserver.h; sourceTree = SOURCE_ROOT; };
+		BF4587DF2298D3A900BD7491 /* debugserver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = debugserver.c; path = Dependencies/libimobiledevice/src/debugserver.c; sourceTree = SOURCE_ROOT; };
+		BF4587E02298D3A900BD7491 /* heartbeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = heartbeat.h; path = Dependencies/libimobiledevice/src/heartbeat.h; sourceTree = SOURCE_ROOT; };
+		BF4587E12298D3A900BD7491 /* misagent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = misagent.h; path = Dependencies/libimobiledevice/src/misagent.h; sourceTree = SOURCE_ROOT; };
+		BF4587E22298D3A900BD7491 /* house_arrest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = house_arrest.h; path = Dependencies/libimobiledevice/src/house_arrest.h; sourceTree = SOURCE_ROOT; };
+		BF4587E32298D3A900BD7491 /* notification_proxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = notification_proxy.h; path = Dependencies/libimobiledevice/src/notification_proxy.h; sourceTree = SOURCE_ROOT; };
+		BF4587E42298D3A900BD7491 /* device_link_service.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = device_link_service.c; path = Dependencies/libimobiledevice/src/device_link_service.c; sourceTree = SOURCE_ROOT; };
+		BF4587E52298D3A900BD7491 /* mobilebackup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mobilebackup.h; path = Dependencies/libimobiledevice/src/mobilebackup.h; sourceTree = SOURCE_ROOT; };
+		BF4587E62298D3A900BD7491 /* restore.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = restore.c; path = Dependencies/libimobiledevice/src/restore.c; sourceTree = SOURCE_ROOT; };
+		BF4587E72298D3A900BD7491 /* screenshotr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = screenshotr.c; path = Dependencies/libimobiledevice/src/screenshotr.c; sourceTree = SOURCE_ROOT; };
+		BF4587E82298D3A900BD7491 /* syslog_relay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = syslog_relay.h; path = Dependencies/libimobiledevice/src/syslog_relay.h; sourceTree = SOURCE_ROOT; };
+		BF4587E92298D3AA00BD7491 /* webinspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = webinspector.h; path = Dependencies/libimobiledevice/src/webinspector.h; sourceTree = SOURCE_ROOT; };
+		BF4587EA2298D3AA00BD7491 /* mobileactivation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mobileactivation.h; path = Dependencies/libimobiledevice/src/mobileactivation.h; sourceTree = SOURCE_ROOT; };
+		BF4587EB2298D3AA00BD7491 /* house_arrest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = house_arrest.c; path = Dependencies/libimobiledevice/src/house_arrest.c; sourceTree = SOURCE_ROOT; };
+		BF4587EC2298D3AA00BD7491 /* afc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = afc.h; path = Dependencies/libimobiledevice/src/afc.h; sourceTree = SOURCE_ROOT; };
+		BF4587ED2298D3AA00BD7491 /* file_relay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = file_relay.h; path = Dependencies/libimobiledevice/src/file_relay.h; sourceTree = SOURCE_ROOT; };
+		BF4587EE2298D3AA00BD7491 /* misagent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = misagent.c; path = Dependencies/libimobiledevice/src/misagent.c; sourceTree = SOURCE_ROOT; };
+		BF4587EF2298D3AA00BD7491 /* device_link_service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = device_link_service.h; path = Dependencies/libimobiledevice/src/device_link_service.h; sourceTree = SOURCE_ROOT; };
+		BF4587F02298D3AA00BD7491 /* mobile_image_mounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mobile_image_mounter.h; path = Dependencies/libimobiledevice/src/mobile_image_mounter.h; sourceTree = SOURCE_ROOT; };
+		BF4587F12298D3AA00BD7491 /* idevice.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = idevice.c; path = Dependencies/libimobiledevice/src/idevice.c; sourceTree = SOURCE_ROOT; };
+		BF4587F22298D3AA00BD7491 /* mobileactivation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mobileactivation.c; path = Dependencies/libimobiledevice/src/mobileactivation.c; sourceTree = SOURCE_ROOT; };
+		BF4587F32298D3AA00BD7491 /* mobilesync.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mobilesync.c; path = Dependencies/libimobiledevice/src/mobilesync.c; sourceTree = SOURCE_ROOT; };
+		BF4587F42298D3AA00BD7491 /* property_list_service.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = property_list_service.c; path = Dependencies/libimobiledevice/src/property_list_service.c; sourceTree = SOURCE_ROOT; };
+		BF4587F52298D3AA00BD7491 /* property_list_service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = property_list_service.h; path = Dependencies/libimobiledevice/src/property_list_service.h; sourceTree = SOURCE_ROOT; };
+		BF4587F62298D3AB00BD7491 /* lockdown.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lockdown.c; path = Dependencies/libimobiledevice/src/lockdown.c; sourceTree = SOURCE_ROOT; };
+		BF4587F72298D3AB00BD7491 /* service.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = service.c; path = Dependencies/libimobiledevice/src/service.c; sourceTree = SOURCE_ROOT; };
+		BF4588292298D3C000BD7491 /* socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = socket.h; path = Dependencies/libimobiledevice/common/socket.h; sourceTree = SOURCE_ROOT; };
+		BF45882A2298D3C000BD7491 /* userpref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = userpref.h; path = Dependencies/libimobiledevice/common/userpref.h; sourceTree = SOURCE_ROOT; };
+		BF45882B2298D3C000BD7491 /* userpref.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = userpref.c; path = Dependencies/libimobiledevice/common/userpref.c; sourceTree = SOURCE_ROOT; };
+		BF45882C2298D3C000BD7491 /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = debug.h; path = Dependencies/libimobiledevice/common/debug.h; sourceTree = SOURCE_ROOT; };
+		BF45882D2298D3C000BD7491 /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = utils.c; path = Dependencies/libimobiledevice/common/utils.c; sourceTree = SOURCE_ROOT; };
+		BF45882F2298D3C000BD7491 /* socket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = socket.c; path = Dependencies/libimobiledevice/common/socket.c; sourceTree = SOURCE_ROOT; };
+		BF4588302298D3C000BD7491 /* debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = debug.c; path = Dependencies/libimobiledevice/common/debug.c; sourceTree = SOURCE_ROOT; };
+		BF4588322298D3C100BD7491 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utils.h; path = Dependencies/libimobiledevice/common/utils.h; sourceTree = SOURCE_ROOT; };
+		BF45883E2298D3F800BD7491 /* collection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = collection.h; path = Dependencies/libusbmuxd/common/collection.h; sourceTree = SOURCE_ROOT; };
+		BF45883F2298D3F800BD7491 /* collection.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = collection.c; path = Dependencies/libusbmuxd/common/collection.c; sourceTree = SOURCE_ROOT; };
+		BF4588422298D40000BD7491 /* libusbmuxd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libusbmuxd.c; path = Dependencies/libusbmuxd/src/libusbmuxd.c; sourceTree = SOURCE_ROOT; };
+		BF4588482298D55000BD7491 /* thread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = thread.c; path = Dependencies/libusbmuxd/common/thread.c; sourceTree = SOURCE_ROOT; };
+		BF4588492298D55000BD7491 /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = thread.h; path = Dependencies/libusbmuxd/common/thread.h; sourceTree = SOURCE_ROOT; };
+		BF4588872298DD3F00BD7491 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib/libxml2.tbd; sourceTree = DEVELOPER_DIR; };
+		BF580497246A3D19008AE704 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BF5C5FC5237DF5AE00EDD0C6 /* AltPlugin.mailbundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AltPlugin.mailbundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF6C336124197D700034FD24 /* NSError+AltStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+AltStore.swift"; sourceTree = "<group>"; };
+		BF718BC723C919CC00A89F2D /* CFNotificationName+AltStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CFNotificationName+AltStore.h"; sourceTree = "<group>"; };
+		BF718BC823C919E300A89F2D /* CFNotificationName+AltStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CFNotificationName+AltStore.m"; sourceTree = "<group>"; };
+		BF718BD723C93DB700A89F2D /* ALTConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALTConstants.m; sourceTree = "<group>"; };
+		BF77A66E25795A5600BFE477 /* AltXPC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AltXPC-Bridging-Header.h"; sourceTree = "<group>"; };
+		BF77A66F25795A5600BFE477 /* AltXPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltXPC.swift; sourceTree = "<group>"; };
+		BF77A67D25795BBE00BFE477 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		BFBAC8852295C90300587369 /* Result+Conveniences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Conveniences.swift"; sourceTree = "<group>"; };
+		BFC712C12512D5F100AB5EBE /* XPCConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XPCConnection.swift; sourceTree = "<group>"; };
+		BFD247862284BB3B00981D42 /* Roxas.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Roxas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFD44605241188C300EAB90A /* CodableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableError.swift; sourceTree = "<group>"; };
+		BFD52BD222A06EFB000B7ED1 /* ALTConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTConstants.h; sourceTree = "<group>"; };
+		BFD52BE522A1A9CA000B7ED1 /* ptrarray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ptrarray.c; path = Dependencies/libplist/src/ptrarray.c; sourceTree = SOURCE_ROOT; };
+		BFD52BE622A1A9CA000B7ED1 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = base64.c; path = Dependencies/libplist/src/base64.c; sourceTree = SOURCE_ROOT; };
+		BFD52BE722A1A9CA000B7ED1 /* hashtable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hashtable.c; path = Dependencies/libplist/src/hashtable.c; sourceTree = SOURCE_ROOT; };
+		BFD52BE822A1A9CA000B7ED1 /* Dictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Dictionary.cpp; path = Dependencies/libplist/src/Dictionary.cpp; sourceTree = SOURCE_ROOT; };
+		BFD52BE922A1A9CA000B7ED1 /* ptrarray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ptrarray.h; path = Dependencies/libplist/src/ptrarray.h; sourceTree = SOURCE_ROOT; };
+		BFD52BEA22A1A9CA000B7ED1 /* bplist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bplist.c; path = Dependencies/libplist/src/bplist.c; sourceTree = SOURCE_ROOT; };
+		BFD52BEB22A1A9CA000B7ED1 /* String.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = String.cpp; path = Dependencies/libplist/src/String.cpp; sourceTree = SOURCE_ROOT; };
+		BFD52BEC22A1A9CA000B7ED1 /* time64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = time64.c; path = Dependencies/libplist/src/time64.c; sourceTree = SOURCE_ROOT; };
+		BFD52BED22A1A9CA000B7ED1 /* plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plist.h; path = Dependencies/libplist/src/plist.h; sourceTree = SOURCE_ROOT; };
+		BFD52BEE22A1A9CA000B7ED1 /* plist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = plist.c; path = Dependencies/libplist/src/plist.c; sourceTree = SOURCE_ROOT; };
+		BFD52BEF22A1A9CA000B7ED1 /* hashtable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hashtable.h; path = Dependencies/libplist/src/hashtable.h; sourceTree = SOURCE_ROOT; };
+		BFD52BF022A1A9CA000B7ED1 /* Date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Date.cpp; path = Dependencies/libplist/src/Date.cpp; sourceTree = SOURCE_ROOT; };
+		BFD52BF122A1A9CA000B7ED1 /* Uid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Uid.cpp; path = Dependencies/libplist/src/Uid.cpp; sourceTree = SOURCE_ROOT; };
+		BFD52BF222A1A9CA000B7ED1 /* Boolean.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Boolean.cpp; path = Dependencies/libplist/src/Boolean.cpp; sourceTree = SOURCE_ROOT; };
+		BFD52BF322A1A9CA000B7ED1 /* Real.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Real.cpp; path = Dependencies/libplist/src/Real.cpp; sourceTree = SOURCE_ROOT; };
+		BFD52BF422A1A9CA000B7ED1 /* strbuf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = strbuf.h; path = Dependencies/libplist/src/strbuf.h; sourceTree = SOURCE_ROOT; };
+		BFD52BF522A1A9CA000B7ED1 /* bytearray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bytearray.c; path = Dependencies/libplist/src/bytearray.c; sourceTree = SOURCE_ROOT; };
+		BFD52BF622A1A9CA000B7ED1 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base64.h; path = Dependencies/libplist/src/base64.h; sourceTree = SOURCE_ROOT; };
+		BFD52BF722A1A9CA000B7ED1 /* Data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Data.cpp; path = Dependencies/libplist/src/Data.cpp; sourceTree = SOURCE_ROOT; };
+		BFD52BF822A1A9CB000B7ED1 /* Array.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Array.cpp; path = Dependencies/libplist/src/Array.cpp; sourceTree = SOURCE_ROOT; };
+		BFD52BF922A1A9CB000B7ED1 /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Node.cpp; path = Dependencies/libplist/src/Node.cpp; sourceTree = SOURCE_ROOT; };
+		BFD52BFA22A1A9CB000B7ED1 /* bytearray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bytearray.h; path = Dependencies/libplist/src/bytearray.h; sourceTree = SOURCE_ROOT; };
+		BFD52BFB22A1A9CB000B7ED1 /* Key.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Key.cpp; path = Dependencies/libplist/src/Key.cpp; sourceTree = SOURCE_ROOT; };
+		BFD52BFC22A1A9CB000B7ED1 /* Integer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Integer.cpp; path = Dependencies/libplist/src/Integer.cpp; sourceTree = SOURCE_ROOT; };
+		BFD52BFD22A1A9CB000B7ED1 /* Structure.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Structure.cpp; path = Dependencies/libplist/src/Structure.cpp; sourceTree = SOURCE_ROOT; };
+		BFD52BFE22A1A9CB000B7ED1 /* time64_limits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = time64_limits.h; path = Dependencies/libplist/src/time64_limits.h; sourceTree = SOURCE_ROOT; };
+		BFD52BFF22A1A9CB000B7ED1 /* time64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = time64.h; path = Dependencies/libplist/src/time64.h; sourceTree = SOURCE_ROOT; };
+		BFD52C0022A1A9CB000B7ED1 /* xplist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = xplist.c; path = Dependencies/libplist/src/xplist.c; sourceTree = SOURCE_ROOT; };
+		BFD52C1D22A1A9EC000B7ED1 /* node.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = node.c; path = Dependencies/libplist/libcnary/node.c; sourceTree = SOURCE_ROOT; };
+		BFD52C1E22A1A9EC000B7ED1 /* node_list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = node_list.c; path = Dependencies/libplist/libcnary/node_list.c; sourceTree = SOURCE_ROOT; };
+		BFD52C1F22A1A9EC000B7ED1 /* cnary.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cnary.c; path = Dependencies/libplist/libcnary/cnary.c; sourceTree = SOURCE_ROOT; };
+		BFF435D7255CBDAB00DD724F /* ALTApplication+AltStoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ALTApplication+AltStoreApp.swift"; sourceTree = "<group>"; };
+		BFF767CB2489AB5C0097E58C /* ALTServerError+Conveniences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ALTServerError+Conveniences.swift"; sourceTree = "<group>"; };
+		BFF767CD2489ABE90097E58C /* NetworkConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
+		BFF7C904257844C900E55F36 /* AltXPC.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = AltXPC.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFF7C906257844C900E55F36 /* AltXPCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AltXPCProtocol.h; sourceTree = "<group>"; };
+		BFF7C90C257844C900E55F36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFF7C93B257849C600E55F36 /* AltXPC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AltXPC.entitlements; sourceTree = "<group>"; };
+		CE649C3429CDC33C009AD7E5 /* MiniAppHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MiniAppHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE649C3629CDC33E009AD7E5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		CE649C4E29CDC3A4009AD7E5 /* NSError+libimobiledevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+libimobiledevice.h"; sourceTree = "<group>"; };
+		CE649C4F29CDC3A4009AD7E5 /* NSError+libimobiledevice.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSError+libimobiledevice.mm"; sourceTree = "<group>"; };
+		CE649C5129CDC3A4009AD7E5 /* ALTDeviceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ALTDeviceManager.mm; sourceTree = "<group>"; };
+		CE649C5229CDC3A4009AD7E5 /* ALTDeviceManager+Installation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ALTDeviceManager+Installation.swift"; sourceTree = "<group>"; };
+		CE649C5329CDC3A4009AD7E5 /* ALTDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTDeviceManager.h; sourceTree = "<group>"; };
+		CE649C5529CDC3A4009AD7E5 /* FileManager+URLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+URLs.swift"; sourceTree = "<group>"; };
+		CE649C5629CDC3A4009AD7E5 /* UserDefaults+AltServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+AltServer.swift"; sourceTree = "<group>"; };
+		CE649C5729CDC3A4009AD7E5 /* AnisetteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnisetteDataManager.swift; sourceTree = "<group>"; };
+		CE649C5929CDC3A4009AD7E5 /* PluginVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginVersion.swift; sourceTree = "<group>"; };
+		CE649C5A29CDC3A4009AD7E5 /* PluginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginManager.swift; sourceTree = "<group>"; };
+		CE649C5C29CDC3A5009AD7E5 /* ALTWiredConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ALTWiredConnection.mm; sourceTree = "<group>"; };
+		CE649C5D29CDC3A5009AD7E5 /* ALTDebugConnection+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALTDebugConnection+Private.h"; sourceTree = "<group>"; };
+		CE649C5E29CDC3A5009AD7E5 /* ALTNotificationConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ALTNotificationConnection.mm; sourceTree = "<group>"; };
+		CE649C5F29CDC3A5009AD7E5 /* ALTWiredConnection+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALTWiredConnection+Private.h"; sourceTree = "<group>"; };
+		CE649C6029CDC3A5009AD7E5 /* WirelessConnectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WirelessConnectionHandler.swift; sourceTree = "<group>"; };
+		CE649C6129CDC3A5009AD7E5 /* ALTNotificationConnection+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALTNotificationConnection+Private.h"; sourceTree = "<group>"; };
+		CE649C6229CDC3A5009AD7E5 /* ALTDebugConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTDebugConnection.h; sourceTree = "<group>"; };
+		CE649C6329CDC3A5009AD7E5 /* RequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
+		CE649C6429CDC3A5009AD7E5 /* ALTWiredConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTWiredConnection.h; sourceTree = "<group>"; };
+		CE649C6529CDC3A5009AD7E5 /* ALTNotificationConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTNotificationConnection.h; sourceTree = "<group>"; };
+		CE649C6629CDC3A5009AD7E5 /* ALTDebugConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ALTDebugConnection.mm; sourceTree = "<group>"; };
+		CE649C6729CDC3A5009AD7E5 /* WiredConnectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiredConnectionHandler.swift; sourceTree = "<group>"; };
+		CE649C6829CDC3A5009AD7E5 /* MiniAppHelper-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MiniAppHelper-Bridging-Header.h"; sourceTree = "<group>"; };
+		CE649C6929CDC3A5009AD7E5 /* DeveloperDiskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperDiskManager.swift; sourceTree = "<group>"; };
+		CE649C7F29CDC3F3009AD7E5 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		CE649C9029D19092009AD7E5 /* MiniAppHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MiniAppHelper.entitlements; sourceTree = "<group>"; };
+		CE649C9229D19B26009AD7E5 /* AltPlugin.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = AltPlugin.zip; sourceTree = "<group>"; };
+		CE66AA9729D2057E00B03C36 /* ALTAnisetteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALTAnisetteData.m; path = "Dependencies/AltSign/AltSign/Model/Apple API/ALTAnisetteData.m"; sourceTree = SOURCE_ROOT; };
+		CE66AA9C29D2163F00B03C36 /* ALTPluginService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ALTPluginService.m; path = AltPlugin/ALTPluginService.m; sourceTree = SOURCE_ROOT; };
+		D51AD27C29356B7B00967AAA /* ALTWrappedError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTWrappedError.h; sourceTree = "<group>"; };
+		D51AD27D29356B7B00967AAA /* ALTWrappedError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALTWrappedError.m; sourceTree = "<group>"; };
+		D533E8B62727841800A9B5DD /* libAppleArchive.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libAppleArchive.tbd; path = usr/lib/libAppleArchive.tbd; sourceTree = SDKROOT; };
+		D5708416292448DA00D42D34 /* OperatingSystemVersion+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperatingSystemVersion+Comparable.swift"; sourceTree = "<group>"; };
+		D5DB145828F9DC1000A8F606 /* ALTLocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALTLocalizedError.swift; sourceTree = "<group>"; };
+		F0BE79CB125D3E6B5EB64436 /* Pods-MiniAppHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniAppHelper.debug.xcconfig"; path = "Target Support Files/Pods-MiniAppHelper/Pods-MiniAppHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		F31FC1970CFA6992F41903B0 /* Pods_MiniAppHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniAppHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		678E094C3184B66357EAA4AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF5C5FC2237DF5AE00EDD0C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFF7C901257844C900E55F36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE649C3129CDC33C009AD7E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE649C8529D13D02009AD7E5 /* libimobiledevice.a in Frameworks */,
+				CE649C8029CDC3F3009AD7E5 /* libxml2.tbd in Frameworks */,
+				CE649C7E29CDC3CA009AD7E5 /* OpenSSL.xcframework in Frameworks */,
+				CE649C7A29CDC3CA009AD7E5 /* AltSign-Dynamic in Frameworks */,
+				1B13115E4E3EE377F8666785 /* Pods_MiniAppHelper.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4460E048E3AC1C9708C4FA33 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59618F4167C1F2A9FB3615A0 /* Pods-MiniAppHelper.debug.xcconfig */,
+				A87E862759DA9B92B091C6E8 /* Pods-MiniAppHelper.release.xcconfig */,
+				F0BE79CB125D3E6B5EB64436 /* Pods-MiniAppHelper.debug.xcconfig */,
+				035DB8235B4843F514BB9727 /* Pods-MiniAppHelper.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BF18BFFF2485A75F00DD5981 /* Server Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				BF1E3128229F474900370A3C /* ServerProtocol.swift */,
+				BFD44605241188C300EAB90A /* CodableError.swift */,
+			);
+			path = "Server Protocol";
+			sourceTree = "<group>";
+		};
+		BF1E315122A0616100370A3C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BFD52BD222A06EFB000B7ED1 /* ALTConstants.h */,
+				BF718BD723C93DB700A89F2D /* ALTConstants.m */,
+				BF18BFFF2485A75F00DD5981 /* Server Protocol */,
+				BFF767CF2489AC240097E58C /* Connections */,
+				BFF7C92D2578464D00E55F36 /* XPC */,
+				D5DB145728F9DC0300A8F606 /* Errors */,
+				BFF767C32489A6800097E58C /* Extensions */,
+				BFF767C42489A6980097E58C /* Categories */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		BF45872C2298D31600BD7491 /* libimobiledevice */ = {
+			isa = PBXGroup;
+			children = (
+				BF4588562298DC6D00BD7491 /* libplist */,
+				BF4587972298D36400BD7491 /* libimobiledevice */,
+				BF45883D2298D3E800BD7491 /* libusbmuxd */,
+			);
+			path = libimobiledevice;
+			sourceTree = "<group>";
+		};
+		BF4587972298D36400BD7491 /* libimobiledevice */ = {
+			isa = PBXGroup;
+			children = (
+				BF4588282298D3B400BD7491 /* common */,
+				BF4587D72298D3A800BD7491 /* afc.c */,
+				BF4587EC2298D3AA00BD7491 /* afc.h */,
+				BF4587DF2298D3A900BD7491 /* debugserver.c */,
+				BF4587DE2298D3A900BD7491 /* debugserver.h */,
+				BF4587E42298D3A900BD7491 /* device_link_service.c */,
+				BF4587EF2298D3AA00BD7491 /* device_link_service.h */,
+				BF4587C92298D3A800BD7491 /* diagnostics_relay.c */,
+				BF4587CA2298D3A800BD7491 /* diagnostics_relay.h */,
+				BF4587D22298D3A800BD7491 /* file_relay.c */,
+				BF4587ED2298D3AA00BD7491 /* file_relay.h */,
+				BF4587CF2298D3A800BD7491 /* heartbeat.c */,
+				BF4587E02298D3A900BD7491 /* heartbeat.h */,
+				BF4587EB2298D3AA00BD7491 /* house_arrest.c */,
+				BF4587E22298D3A900BD7491 /* house_arrest.h */,
+				BF4587F12298D3AA00BD7491 /* idevice.c */,
+				BF4587D52298D3A800BD7491 /* idevice.h */,
+				BF4587D92298D3A900BD7491 /* installation_proxy.c */,
+				BF4587D12298D3A800BD7491 /* installation_proxy.h */,
+				BF4587F62298D3AB00BD7491 /* lockdown.c */,
+				BF4587D42298D3A800BD7491 /* lockdown.h */,
+				BF4587EE2298D3AA00BD7491 /* misagent.c */,
+				BF4587E12298D3A900BD7491 /* misagent.h */,
+				BF4587D82298D3A800BD7491 /* mobile_image_mounter.c */,
+				BF4587F02298D3AA00BD7491 /* mobile_image_mounter.h */,
+				BF4587F22298D3AA00BD7491 /* mobileactivation.c */,
+				BF4587EA2298D3AA00BD7491 /* mobileactivation.h */,
+				BF4587DD2298D3A900BD7491 /* mobilebackup.c */,
+				BF4587E52298D3A900BD7491 /* mobilebackup.h */,
+				BF4587DC2298D3A900BD7491 /* mobilebackup2.c */,
+				BF4587CE2298D3A800BD7491 /* mobilebackup2.h */,
+				BF4587F32298D3AA00BD7491 /* mobilesync.c */,
+				BF4587DB2298D3A900BD7491 /* mobilesync.h */,
+				BF4587CB2298D3A800BD7491 /* notification_proxy.c */,
+				BF4587E32298D3A900BD7491 /* notification_proxy.h */,
+				BF4587F42298D3AA00BD7491 /* property_list_service.c */,
+				BF4587F52298D3AA00BD7491 /* property_list_service.h */,
+				BF4587E62298D3A900BD7491 /* restore.c */,
+				BF4587D02298D3A800BD7491 /* restore.h */,
+				BF4587CC2298D3A800BD7491 /* sbservices.c */,
+				BF4587CD2298D3A800BD7491 /* sbservices.h */,
+				BF4587E72298D3A900BD7491 /* screenshotr.c */,
+				BF4587DA2298D3A900BD7491 /* screenshotr.h */,
+				BF4587F72298D3AB00BD7491 /* service.c */,
+				BF4587C82298D3A800BD7491 /* service.h */,
+				BF4587D32298D3A800BD7491 /* syslog_relay.c */,
+				BF4587E82298D3A900BD7491 /* syslog_relay.h */,
+				BF4587D62298D3A800BD7491 /* webinspector.c */,
+				BF4587E92298D3AA00BD7491 /* webinspector.h */,
+			);
+			name = libimobiledevice;
+			sourceTree = "<group>";
+		};
+		BF4588282298D3B400BD7491 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				BF4588302298D3C000BD7491 /* debug.c */,
+				BF45882C2298D3C000BD7491 /* debug.h */,
+				BF45882F2298D3C000BD7491 /* socket.c */,
+				BF4588292298D3C000BD7491 /* socket.h */,
+				BF45882B2298D3C000BD7491 /* userpref.c */,
+				BF45882A2298D3C000BD7491 /* userpref.h */,
+				BF45882D2298D3C000BD7491 /* utils.c */,
+				BF4588322298D3C100BD7491 /* utils.h */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		BF45883D2298D3E800BD7491 /* libusbmuxd */ = {
+			isa = PBXGroup;
+			children = (
+				BF4588422298D40000BD7491 /* libusbmuxd.c */,
+				BF45883F2298D3F800BD7491 /* collection.c */,
+				BF45883E2298D3F800BD7491 /* collection.h */,
+				BF4588482298D55000BD7491 /* thread.c */,
+				BF4588492298D55000BD7491 /* thread.h */,
+			);
+			name = libusbmuxd;
+			sourceTree = "<group>";
+		};
+		BF4588562298DC6D00BD7491 /* libplist */ = {
+			isa = PBXGroup;
+			children = (
+				BF4588892298DDEA00BD7491 /* libcnary */,
+				BFD52BF822A1A9CB000B7ED1 /* Array.cpp */,
+				BFD52BE622A1A9CA000B7ED1 /* base64.c */,
+				BFD52BF622A1A9CA000B7ED1 /* base64.h */,
+				BFD52BF222A1A9CA000B7ED1 /* Boolean.cpp */,
+				BFD52BEA22A1A9CA000B7ED1 /* bplist.c */,
+				BFD52BF522A1A9CA000B7ED1 /* bytearray.c */,
+				BFD52BFA22A1A9CB000B7ED1 /* bytearray.h */,
+				BFD52BF722A1A9CA000B7ED1 /* Data.cpp */,
+				BFD52BF022A1A9CA000B7ED1 /* Date.cpp */,
+				BFD52BE822A1A9CA000B7ED1 /* Dictionary.cpp */,
+				BFD52BE722A1A9CA000B7ED1 /* hashtable.c */,
+				BFD52BEF22A1A9CA000B7ED1 /* hashtable.h */,
+				BFD52BFC22A1A9CB000B7ED1 /* Integer.cpp */,
+				BFD52BFB22A1A9CB000B7ED1 /* Key.cpp */,
+				BFD52BF922A1A9CB000B7ED1 /* Node.cpp */,
+				BFD52BEE22A1A9CA000B7ED1 /* plist.c */,
+				BFD52BED22A1A9CA000B7ED1 /* plist.h */,
+				BFD52BE522A1A9CA000B7ED1 /* ptrarray.c */,
+				BFD52BE922A1A9CA000B7ED1 /* ptrarray.h */,
+				BFD52BF322A1A9CA000B7ED1 /* Real.cpp */,
+				BFD52BF422A1A9CA000B7ED1 /* strbuf.h */,
+				BFD52BEB22A1A9CA000B7ED1 /* String.cpp */,
+				BFD52BFD22A1A9CB000B7ED1 /* Structure.cpp */,
+				BFD52BFE22A1A9CB000B7ED1 /* time64_limits.h */,
+				BFD52BEC22A1A9CA000B7ED1 /* time64.c */,
+				BFD52BFF22A1A9CB000B7ED1 /* time64.h */,
+				BFD52BF122A1A9CA000B7ED1 /* Uid.cpp */,
+				BFD52C0022A1A9CB000B7ED1 /* xplist.c */,
+			);
+			name = libplist;
+			sourceTree = "<group>";
+		};
+		BF4588892298DDEA00BD7491 /* libcnary */ = {
+			isa = PBXGroup;
+			children = (
+				BFD52C1F22A1A9EC000B7ED1 /* cnary.c */,
+				BFD52C1E22A1A9EC000B7ED1 /* node_list.c */,
+				BFD52C1D22A1A9EC000B7ED1 /* node.c */,
+			);
+			name = libcnary;
+			sourceTree = "<group>";
+		};
+		BFD247612284B9A500981D42 = {
+			isa = PBXGroup;
+			children = (
+				BF1E315122A0616100370A3C /* Shared */,
+				BF45872C2298D31600BD7491 /* libimobiledevice */,
+				BFF7C905257844C900E55F36 /* AltXPC */,
+				CE649C3529CDC33E009AD7E5 /* MiniAppHelper */,
+				BFD247852284BB3300981D42 /* Frameworks */,
+				BFD2476B2284B9A500981D42 /* Products */,
+				4460E048E3AC1C9708C4FA33 /* Pods */,
+				CE1A085F29D36AB700A4A12B /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		BFD2476B2284B9A500981D42 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF45872B2298D31600BD7491 /* libimobiledevice.a */,
+				BF5C5FC5237DF5AE00EDD0C6 /* AltPlugin.mailbundle */,
+				BFF7C904257844C900E55F36 /* AltXPC.xpc */,
+				CE649C3429CDC33C009AD7E5 /* MiniAppHelper */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BFD247852284BB3300981D42 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE649C7F29CDC3F3009AD7E5 /* libxml2.tbd */,
+				D533E8B62727841800A9B5DD /* libAppleArchive.tbd */,
+				BF088D322501A4FF008082D9 /* OpenSSL.xcframework */,
+				BF580497246A3D19008AE704 /* UIKit.framework */,
+				BF4588872298DD3F00BD7491 /* libxml2.tbd */,
+				BFD247862284BB3B00981D42 /* Roxas.framework */,
+				F31FC1970CFA6992F41903B0 /* Pods_MiniAppHelper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BFF767C32489A6800097E58C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BFBAC8852295C90300587369 /* Result+Conveniences.swift */,
+				BF1E314122A05D4C00370A3C /* Bundle+AltStore.swift */,
+				BFF767CB2489AB5C0097E58C /* ALTServerError+Conveniences.swift */,
+				BF1FE357251A9FB000C3CE09 /* NSXPCConnection+MachServices.swift */,
+				BFF435D7255CBDAB00DD724F /* ALTApplication+AltStoreApp.swift */,
+				BF6C336124197D700034FD24 /* NSError+AltStore.swift */,
+				D5708416292448DA00D42D34 /* OperatingSystemVersion+Comparable.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BFF767C42489A6980097E58C /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				BF1E314822A060F400370A3C /* NSError+ALTServerError.h */,
+				BF1E314922A060F400370A3C /* NSError+ALTServerError.m */,
+				BF718BC723C919CC00A89F2D /* CFNotificationName+AltStore.h */,
+				BF718BC823C919E300A89F2D /* CFNotificationName+AltStore.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		BFF767CF2489AC240097E58C /* Connections */ = {
+			isa = PBXGroup;
+			children = (
+				BF18BFF22485828200DD5981 /* ConnectionManager.swift */,
+				BF18BFFE2485A42800DD5981 /* ALTConnection.h */,
+				BF18BFF624858BDE00DD5981 /* Connection.swift */,
+				BFF767CD2489ABE90097E58C /* NetworkConnection.swift */,
+				BFC712C12512D5F100AB5EBE /* XPCConnection.swift */,
+			);
+			path = Connections;
+			sourceTree = "<group>";
+		};
+		BFF7C905257844C900E55F36 /* AltXPC */ = {
+			isa = PBXGroup;
+			children = (
+				BFF7C93B257849C600E55F36 /* AltXPC.entitlements */,
+				BF77A67D25795BBE00BFE477 /* main.swift */,
+				BF77A66F25795A5600BFE477 /* AltXPC.swift */,
+				BF77A66E25795A5600BFE477 /* AltXPC-Bridging-Header.h */,
+				BFF7C90C257844C900E55F36 /* Info.plist */,
+			);
+			path = AltXPC;
+			sourceTree = "<group>";
+		};
+		BFF7C92D2578464D00E55F36 /* XPC */ = {
+			isa = PBXGroup;
+			children = (
+				BFF7C906257844C900E55F36 /* AltXPCProtocol.h */,
+			);
+			path = XPC;
+			sourceTree = "<group>";
+		};
+		CE1A085F29D36AB700A4A12B /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				CE66AA9729D2057E00B03C36 /* ALTAnisetteData.m */,
+				CE66AA9C29D2163F00B03C36 /* ALTPluginService.m */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		CE649C3529CDC33E009AD7E5 /* MiniAppHelper */ = {
+			isa = PBXGroup;
+			children = (
+				CE649C9529D19B67009AD7E5 /* Resources */,
+				CE649C9029D19092009AD7E5 /* MiniAppHelper.entitlements */,
+				CE649C6829CDC3A5009AD7E5 /* MiniAppHelper-Bridging-Header.h */,
+				CE649C5729CDC3A4009AD7E5 /* AnisetteDataManager.swift */,
+				CE649C4D29CDC3A4009AD7E5 /* Categories */,
+				CE649C5B29CDC3A5009AD7E5 /* Connections */,
+				CE649C6929CDC3A5009AD7E5 /* DeveloperDiskManager.swift */,
+				CE649C5029CDC3A4009AD7E5 /* Devices */,
+				CE649C5429CDC3A4009AD7E5 /* Extensions */,
+				CE649C5829CDC3A4009AD7E5 /* Plugin */,
+				CE649C3629CDC33E009AD7E5 /* main.swift */,
+			);
+			path = MiniAppHelper;
+			sourceTree = "<group>";
+		};
+		CE649C4D29CDC3A4009AD7E5 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CE649C4E29CDC3A4009AD7E5 /* NSError+libimobiledevice.h */,
+				CE649C4F29CDC3A4009AD7E5 /* NSError+libimobiledevice.mm */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		CE649C5029CDC3A4009AD7E5 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				CE649C5129CDC3A4009AD7E5 /* ALTDeviceManager.mm */,
+				CE649C5229CDC3A4009AD7E5 /* ALTDeviceManager+Installation.swift */,
+				CE649C5329CDC3A4009AD7E5 /* ALTDeviceManager.h */,
+			);
+			path = Devices;
+			sourceTree = "<group>";
+		};
+		CE649C5429CDC3A4009AD7E5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE649C5529CDC3A4009AD7E5 /* FileManager+URLs.swift */,
+				CE649C5629CDC3A4009AD7E5 /* UserDefaults+AltServer.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CE649C5829CDC3A4009AD7E5 /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				CE649C5929CDC3A4009AD7E5 /* PluginVersion.swift */,
+				CE649C5A29CDC3A4009AD7E5 /* PluginManager.swift */,
+			);
+			path = Plugin;
+			sourceTree = "<group>";
+		};
+		CE649C5B29CDC3A5009AD7E5 /* Connections */ = {
+			isa = PBXGroup;
+			children = (
+				CE649C5C29CDC3A5009AD7E5 /* ALTWiredConnection.mm */,
+				CE649C5D29CDC3A5009AD7E5 /* ALTDebugConnection+Private.h */,
+				CE649C5E29CDC3A5009AD7E5 /* ALTNotificationConnection.mm */,
+				CE649C5F29CDC3A5009AD7E5 /* ALTWiredConnection+Private.h */,
+				CE649C6029CDC3A5009AD7E5 /* WirelessConnectionHandler.swift */,
+				CE649C6129CDC3A5009AD7E5 /* ALTNotificationConnection+Private.h */,
+				CE649C6229CDC3A5009AD7E5 /* ALTDebugConnection.h */,
+				CE649C6329CDC3A5009AD7E5 /* RequestHandler.swift */,
+				CE649C6429CDC3A5009AD7E5 /* ALTWiredConnection.h */,
+				CE649C6529CDC3A5009AD7E5 /* ALTNotificationConnection.h */,
+				CE649C6629CDC3A5009AD7E5 /* ALTDebugConnection.mm */,
+				CE649C6729CDC3A5009AD7E5 /* WiredConnectionHandler.swift */,
+			);
+			path = Connections;
+			sourceTree = "<group>";
+		};
+		CE649C9529D19B67009AD7E5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE649C9229D19B26009AD7E5 /* AltPlugin.zip */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D5DB145728F9DC0300A8F606 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				D5DB145828F9DC1000A8F606 /* ALTLocalizedError.swift */,
+				D51AD27C29356B7B00967AAA /* ALTWrappedError.h */,
+				D51AD27D29356B7B00967AAA /* ALTWrappedError.m */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BF4587272298D31600BD7491 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF4588112298D3AB00BD7491 /* misagent.h in Headers */,
+				BF4588042298D3AB00BD7491 /* lockdown.h in Headers */,
+				BF4588402298D3F800BD7491 /* collection.h in Headers */,
+				BF45880B2298D3AB00BD7491 /* mobilesync.h in Headers */,
+				BF4588002298D3AB00BD7491 /* restore.h in Headers */,
+				BF4588332298D3C100BD7491 /* socket.h in Headers */,
+				BF4588152298D3AB00BD7491 /* mobilebackup.h in Headers */,
+				BF4588182298D3AB00BD7491 /* syslog_relay.h in Headers */,
+				BFD52C1022A1A9CB000B7ED1 /* strbuf.h in Headers */,
+				BF45881D2298D3AB00BD7491 /* file_relay.h in Headers */,
+				BFD52C0922A1A9CB000B7ED1 /* plist.h in Headers */,
+				BF4587FD2298D3AB00BD7491 /* sbservices.h in Headers */,
+				BF4588362298D3C100BD7491 /* debug.h in Headers */,
+				BF4588202298D3AB00BD7491 /* mobile_image_mounter.h in Headers */,
+				BF4588122298D3AB00BD7491 /* house_arrest.h in Headers */,
+				BF45881F2298D3AB00BD7491 /* device_link_service.h in Headers */,
+				BFD52C1A22A1A9CB000B7ED1 /* time64_limits.h in Headers */,
+				BF45880E2298D3AB00BD7491 /* debugserver.h in Headers */,
+				BF45884B2298D55000BD7491 /* thread.h in Headers */,
+				BF4588102298D3AB00BD7491 /* heartbeat.h in Headers */,
+				BF4587FA2298D3AB00BD7491 /* diagnostics_relay.h in Headers */,
+				BFD52C1622A1A9CB000B7ED1 /* bytearray.h in Headers */,
+				BFD52C1222A1A9CB000B7ED1 /* base64.h in Headers */,
+				BF4588192298D3AB00BD7491 /* webinspector.h in Headers */,
+				BF4588342298D3C100BD7491 /* userpref.h in Headers */,
+				BF45880A2298D3AB00BD7491 /* screenshotr.h in Headers */,
+				BF45883C2298D3C100BD7491 /* utils.h in Headers */,
+				BFD52C0B22A1A9CB000B7ED1 /* hashtable.h in Headers */,
+				BF4587FE2298D3AB00BD7491 /* mobilebackup2.h in Headers */,
+				BFD52C0522A1A9CB000B7ED1 /* ptrarray.h in Headers */,
+				BF45881C2298D3AB00BD7491 /* afc.h in Headers */,
+				BF45881A2298D3AB00BD7491 /* mobileactivation.h in Headers */,
+				BF4588052298D3AB00BD7491 /* idevice.h in Headers */,
+				BF4588012298D3AB00BD7491 /* installation_proxy.h in Headers */,
+				BF4587F82298D3AB00BD7491 /* service.h in Headers */,
+				BF4588252298D3AB00BD7491 /* property_list_service.h in Headers */,
+				BF4588132298D3AB00BD7491 /* notification_proxy.h in Headers */,
+				BFD52C1B22A1A9CB000B7ED1 /* time64.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BF45872A2298D31600BD7491 /* libimobiledevice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF4587332298D31600BD7491 /* Build configuration list for PBXNativeTarget "libimobiledevice" */;
+			buildPhases = (
+				BF4587272298D31600BD7491 /* Headers */,
+				BF4587282298D31600BD7491 /* Sources */,
+				678E094C3184B66357EAA4AF /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libimobiledevice;
+			productName = libimobiledevice;
+			productReference = BF45872B2298D31600BD7491 /* libimobiledevice.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		BF5C5FC4237DF5AE00EDD0C6 /* AltPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF5C5FC8237DF5AE00EDD0C6 /* Build configuration list for PBXNativeTarget "AltPlugin" */;
+			buildPhases = (
+				BF5C5FC1237DF5AE00EDD0C6 /* Sources */,
+				BF5C5FC2237DF5AE00EDD0C6 /* Frameworks */,
+				BF5C5FC3237DF5AE00EDD0C6 /* Resources */,
+				BF5C5FE9237E438C00EDD0C6 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AltPlugin;
+			productName = AltPlugin;
+			productReference = BF5C5FC5237DF5AE00EDD0C6 /* AltPlugin.mailbundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		BFF7C903257844C900E55F36 /* AltXPC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFF7C913257844C900E55F36 /* Build configuration list for PBXNativeTarget "AltXPC" */;
+			buildPhases = (
+				BFF7C900257844C900E55F36 /* Sources */,
+				BFF7C901257844C900E55F36 /* Frameworks */,
+				BFF7C902257844C900E55F36 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AltXPC;
+			productName = AltXPC;
+			productReference = BFF7C904257844C900E55F36 /* AltXPC.xpc */;
+			productType = "com.apple.product-type.xpc-service";
+		};
+		CE649C3329CDC33C009AD7E5 /* MiniAppHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE649C3829CDC33E009AD7E5 /* Build configuration list for PBXNativeTarget "MiniAppHelper" */;
+			buildPhases = (
+				66BB84DD3D678DA115BB6CCA /* [CP] Check Pods Manifest.lock */,
+				CE649C3029CDC33C009AD7E5 /* Sources */,
+				CE649C3129CDC33C009AD7E5 /* Frameworks */,
+				CE68349F29D1F2B600840122 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE649C8429CDC3FE009AD7E5 /* PBXTargetDependency */,
+			);
+			name = MiniAppHelper;
+			packageProductDependencies = (
+				CE649C7929CDC3CA009AD7E5 /* AltSign-Dynamic */,
+			);
+			productName = MiniAppHelper;
+			productReference = CE649C3429CDC33C009AD7E5 /* MiniAppHelper */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFD247622284B9A500981D42 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Riley Testut";
+				TargetAttributes = {
+					BF45872A2298D31600BD7491 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					BF5C5FC4237DF5AE00EDD0C6 = {
+						CreatedOnToolsVersion = 11.2;
+						LastSwiftMigration = 1120;
+					};
+					BFF7C903257844C900E55F36 = {
+						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
+					};
+					CE649C3329CDC33C009AD7E5 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = BFD247652284B9A500981D42 /* Build configuration list for PBXProject "MiniAppHelper" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BFD247612284B9A500981D42;
+			packageReferences = (
+				D58D5F2C26DFE68E00E55E38 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+			);
+			productRefGroup = BFD2476B2284B9A500981D42 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE649C3329CDC33C009AD7E5 /* MiniAppHelper */,
+				BF45872A2298D31600BD7491 /* libimobiledevice */,
+				BF5C5FC4237DF5AE00EDD0C6 /* AltPlugin */,
+				BFF7C903257844C900E55F36 /* AltXPC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF5C5FC3237DF5AE00EDD0C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFF7C902257844C900E55F36 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		66BB84DD3D678DA115BB6CCA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiniAppHelper-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF4587282298D31600BD7491 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF45881B2298D3AB00BD7491 /* house_arrest.c in Sources */,
+				BFD52C0622A1A9CB000B7ED1 /* bplist.c in Sources */,
+				BF4588232298D3AB00BD7491 /* mobilesync.c in Sources */,
+				BF4588072298D3AB00BD7491 /* afc.c in Sources */,
+				BF4588082298D3AB00BD7491 /* mobile_image_mounter.c in Sources */,
+				BFD52C1122A1A9CB000B7ED1 /* bytearray.c in Sources */,
+				BF4588022298D3AB00BD7491 /* file_relay.c in Sources */,
+				BF45880F2298D3AB00BD7491 /* debugserver.c in Sources */,
+				BF4588162298D3AB00BD7491 /* restore.c in Sources */,
+				BFD52C0422A1A9CB000B7ED1 /* Dictionary.cpp in Sources */,
+				BF4588412298D3F800BD7491 /* collection.c in Sources */,
+				BF4588372298D3C100BD7491 /* utils.c in Sources */,
+				BFD52C0222A1A9CB000B7ED1 /* base64.c in Sources */,
+				BFD52C2022A1A9EC000B7ED1 /* node.c in Sources */,
+				BF4588092298D3AB00BD7491 /* installation_proxy.c in Sources */,
+				BF4587FF2298D3AB00BD7491 /* heartbeat.c in Sources */,
+				BF4588222298D3AB00BD7491 /* mobileactivation.c in Sources */,
+				BFD52C1822A1A9CB000B7ED1 /* Integer.cpp in Sources */,
+				BF4588212298D3AB00BD7491 /* idevice.c in Sources */,
+				BFD52C1C22A1A9CB000B7ED1 /* xplist.c in Sources */,
+				BF4587F92298D3AB00BD7491 /* diagnostics_relay.c in Sources */,
+				BF4588062298D3AB00BD7491 /* webinspector.c in Sources */,
+				BFD52C1722A1A9CB000B7ED1 /* Key.cpp in Sources */,
+				BF45880D2298D3AB00BD7491 /* mobilebackup.c in Sources */,
+				BFD52C0C22A1A9CB000B7ED1 /* Date.cpp in Sources */,
+				BFD52C0A22A1A9CB000B7ED1 /* plist.c in Sources */,
+				BFD52C1322A1A9CB000B7ED1 /* Data.cpp in Sources */,
+				BF45883A2298D3C100BD7491 /* debug.c in Sources */,
+				BFD52C0F22A1A9CB000B7ED1 /* Real.cpp in Sources */,
+				BF45884A2298D55000BD7491 /* thread.c in Sources */,
+				BF4587FB2298D3AB00BD7491 /* notification_proxy.c in Sources */,
+				BF4588352298D3C100BD7491 /* userpref.c in Sources */,
+				BFD52C0122A1A9CB000B7ED1 /* ptrarray.c in Sources */,
+				BFD52C0E22A1A9CB000B7ED1 /* Boolean.cpp in Sources */,
+				BFD52C0822A1A9CB000B7ED1 /* time64.c in Sources */,
+				BFD52C2122A1A9EC000B7ED1 /* node_list.c in Sources */,
+				BFD52C1422A1A9CB000B7ED1 /* Array.cpp in Sources */,
+				BF4588242298D3AB00BD7491 /* property_list_service.c in Sources */,
+				BF45881E2298D3AB00BD7491 /* misagent.c in Sources */,
+				BF4587FC2298D3AB00BD7491 /* sbservices.c in Sources */,
+				BF4588392298D3C100BD7491 /* socket.c in Sources */,
+				BFD52C1522A1A9CB000B7ED1 /* Node.cpp in Sources */,
+				BF4588142298D3AB00BD7491 /* device_link_service.c in Sources */,
+				BF4588172298D3AB00BD7491 /* screenshotr.c in Sources */,
+				BFD52C0D22A1A9CB000B7ED1 /* Uid.cpp in Sources */,
+				BFD52C0322A1A9CB000B7ED1 /* hashtable.c in Sources */,
+				BF4588432298D40000BD7491 /* libusbmuxd.c in Sources */,
+				BF4588032298D3AB00BD7491 /* syslog_relay.c in Sources */,
+				BF4588272298D3AB00BD7491 /* service.c in Sources */,
+				BFD52C0722A1A9CB000B7ED1 /* String.cpp in Sources */,
+				BF4588262298D3AB00BD7491 /* lockdown.c in Sources */,
+				BFD52C2222A1A9EC000B7ED1 /* cnary.c in Sources */,
+				BF45880C2298D3AB00BD7491 /* mobilebackup2.c in Sources */,
+				BFD52C1922A1A9CB000B7ED1 /* Structure.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF5C5FC1237DF5AE00EDD0C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE66AA9F29D2226E00B03C36 /* ALTAnisetteData.m in Sources */,
+				CE66AAA029D2226E00B03C36 /* ALTPluginService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFF7C900257844C900E55F36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE66AA9D29D2166900B03C36 /* ALTAnisetteData.m in Sources */,
+				CE66AA9E29D2166900B03C36 /* ALTPluginService.m in Sources */,
+				BF77A67E25795BBE00BFE477 /* main.swift in Sources */,
+				BF77A67025795A5600BFE477 /* AltXPC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE649C3029CDC33C009AD7E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE649C7529CDC3A5009AD7E5 /* RequestHandler.swift in Sources */,
+				CE649C3B29CDC388009AD7E5 /* ALTConstants.m in Sources */,
+				CE649C6E29CDC3A5009AD7E5 /* UserDefaults+AltServer.swift in Sources */,
+				CE649C7829CDC3A5009AD7E5 /* DeveloperDiskManager.swift in Sources */,
+				CE649C3C29CDC388009AD7E5 /* ServerProtocol.swift in Sources */,
+				CE649C3D29CDC388009AD7E5 /* CodableError.swift in Sources */,
+				CE649C3E29CDC388009AD7E5 /* ConnectionManager.swift in Sources */,
+				CE649C3F29CDC388009AD7E5 /* Connection.swift in Sources */,
+				CE649C6A29CDC3A5009AD7E5 /* NSError+libimobiledevice.mm in Sources */,
+				CE649C7329CDC3A5009AD7E5 /* ALTNotificationConnection.mm in Sources */,
+				CE649C4029CDC388009AD7E5 /* NetworkConnection.swift in Sources */,
+				CE649C4129CDC388009AD7E5 /* XPCConnection.swift in Sources */,
+				CE649C6D29CDC3A5009AD7E5 /* FileManager+URLs.swift in Sources */,
+				CE649C4229CDC388009AD7E5 /* ALTLocalizedError.swift in Sources */,
+				CE649C4329CDC388009AD7E5 /* ALTWrappedError.m in Sources */,
+				CE649C4429CDC388009AD7E5 /* Result+Conveniences.swift in Sources */,
+				CE649C7429CDC3A5009AD7E5 /* WirelessConnectionHandler.swift in Sources */,
+				CE649C7229CDC3A5009AD7E5 /* ALTWiredConnection.mm in Sources */,
+				CE649C4529CDC388009AD7E5 /* Bundle+AltStore.swift in Sources */,
+				CE649C4629CDC388009AD7E5 /* ALTServerError+Conveniences.swift in Sources */,
+				CE649C4729CDC388009AD7E5 /* NSXPCConnection+MachServices.swift in Sources */,
+				CE649C4829CDC388009AD7E5 /* ALTApplication+AltStoreApp.swift in Sources */,
+				CE649C7629CDC3A5009AD7E5 /* ALTDebugConnection.mm in Sources */,
+				CE649C4929CDC388009AD7E5 /* NSError+AltStore.swift in Sources */,
+				CE649C4A29CDC388009AD7E5 /* OperatingSystemVersion+Comparable.swift in Sources */,
+				CE649C4B29CDC388009AD7E5 /* NSError+ALTServerError.m in Sources */,
+				CE649C4C29CDC388009AD7E5 /* CFNotificationName+AltStore.m in Sources */,
+				CE649C6B29CDC3A5009AD7E5 /* ALTDeviceManager.mm in Sources */,
+				CE649C6F29CDC3A5009AD7E5 /* AnisetteDataManager.swift in Sources */,
+				CE649C7729CDC3A5009AD7E5 /* WiredConnectionHandler.swift in Sources */,
+				CE649C7129CDC3A5009AD7E5 /* PluginManager.swift in Sources */,
+				CE649C7029CDC3A5009AD7E5 /* PluginVersion.swift in Sources */,
+				CE649C3729CDC33E009AD7E5 /* main.swift in Sources */,
+				CE649C6C29CDC3A5009AD7E5 /* ALTDeviceManager+Installation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE649C8429CDC3FE009AD7E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF45872A2298D31600BD7491 /* libimobiledevice */;
+			targetProxy = CE649C8329CDC3FE009AD7E5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BF4587342298D31600BD7491 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					HAVE_OPENSSL,
+					HAVE_STPNCPY,
+					HAVE_STPCPY,
+					HAVE_VASPRINTF,
+					HAVE_ASPRINTF,
+					"\"PACKAGE_STRING=\\\"AltServer 1.0\\\"\"",
+					HAVE_GETIFADDRS,
+				);
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Dependencies/libplist/include\"",
+					"\"$(SRCROOT)/Dependencies/libimobiledevice\"",
+					"\"$(SRCROOT)/Dependencies/libimobiledevice/include\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/OpenSSL/macosx/include\"",
+					"\"$(SRCROOT)/Dependencies/libusbmuxd/include\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/libzip/lib\"",
+					"\"$(SRCROOT)/Dependencies/libplist/libcnary/include\"",
+					"\"${SDKROOT}/usr/include/libxml2\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/libzip/xcode\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_NAME = imobiledevice;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BF4587352298D31600BD7491 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					HAVE_OPENSSL,
+					HAVE_STPNCPY,
+					HAVE_STPCPY,
+					HAVE_VASPRINTF,
+					HAVE_ASPRINTF,
+					"\"PACKAGE_STRING=\\\"AltServer 1.0\\\"\"",
+					HAVE_GETIFADDRS,
+				);
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Dependencies/libplist/include\"",
+					"\"$(SRCROOT)/Dependencies/libimobiledevice\"",
+					"\"$(SRCROOT)/Dependencies/libimobiledevice/include\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/OpenSSL/macosx/include\"",
+					"\"$(SRCROOT)/Dependencies/libusbmuxd/include\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/libzip/lib\"",
+					"\"$(SRCROOT)/Dependencies/libplist/libcnary/include\"",
+					"\"${SDKROOT}/usr/include/libxml2\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/libzip/xcode\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_NAME = imobiledevice;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		BF5C5FC9237DF5AE00EDD0C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 12;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = AltPlugin/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Mail/Bundles/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+					"/Users/Riley/Library/Developer/Xcode/DerivedData/AltStore-bhqnkrahfutztzeudtxhcxccgtlo/Build/Products/Debug",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.AltPlugin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = mailbundle;
+			};
+			name = Debug;
+		};
+		BF5C5FCA237DF5AE00EDD0C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 12;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = AltPlugin/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Mail/Bundles/";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+					"/Users/Riley/Library/Developer/Xcode/DerivedData/AltStore-bhqnkrahfutztzeudtxhcxccgtlo/Build/Products/Debug",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.AltPlugin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = NO;
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = mailbundle;
+			};
+			name = Release;
+		};
+		BFD2477C2284B9A700981D42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-Wno-module-import-in-extern-c",
+				);
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG BETA";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependencies/AltSign/Dependencies\"";
+			};
+			name = Debug;
+		};
+		BFD2477D2284B9A700981D42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-Wno-module-import-in-extern-c",
+				);
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SYSTEM_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependencies/AltSign/Dependencies\"";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BFF7C911257844C900E55F36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = AltXPC/AltXPC.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = D5ZVDUJRKG;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = AltXPC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.AltXPC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AltXPC/AltXPC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BFF7C912257844C900E55F36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = AltXPC/AltXPC.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6XVY5G3U44;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = AltXPC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rileytestut.AltXPC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AltXPC/AltXPC-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CE649C3929CDC33E009AD7E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0BE79CB125D3E6B5EB64436 /* Pods-MiniAppHelper.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = MiniAppHelper/MiniAppHelper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = D5ZVDUJRKG;
+				ENABLE_HARDENED_RUNTIME = YES;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/STPrivilegedTask\"",
+					"\"${PODS_ROOT}/Sparkle\"",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"\"${PODS_ROOT}/STPrivilegedTask\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/ldid/libplist/include\"",
+					"\"$(SRCROOT)/Dependencies/libimobiledevice\"",
+					"\"$(SRCROOT)/Dependencies/libimobiledevice/include\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/OpenSSL/macos/include\"",
+					"\"$(SRCROOT)/Dependencies/libusbmuxd/include\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/libzip/lib\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/ldid/libplist/libcnary/include\"",
+					"\"${SDKROOT}/usr/include/libxml2\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/libzip/xcode\"",
+				);
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"'@executable_path/../Frameworks'",
+					"'@loader_path/Frameworks'",
+					"@loader_path/../Frameworks",
+					"'@executable_path/STPrivilegedTask'",
+					"'@executable_path/Sparkle'",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "MiniAppHelper/MiniAppHelper-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				SYSTEM_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependencies/AltSign/Dependencies\"";
+				USER_HEADER_SEARCH_PATHS = "";
+				USE_HEADERMAP = YES;
+			};
+			name = Debug;
+		};
+		CE649C3A29CDC33E009AD7E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 035DB8235B4843F514BB9727 /* Pods-MiniAppHelper.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = MiniAppHelper/MiniAppHelper.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D5ZVDUJRKG;
+				ENABLE_HARDENED_RUNTIME = YES;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/STPrivilegedTask\"",
+					"\"${PODS_ROOT}/Sparkle\"",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"\"${PODS_ROOT}/STPrivilegedTask\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/ldid/libplist/include\"",
+					"\"$(SRCROOT)/Dependencies/libimobiledevice\"",
+					"\"$(SRCROOT)/Dependencies/libimobiledevice/include\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/OpenSSL/macos/include\"",
+					"\"$(SRCROOT)/Dependencies/libusbmuxd/include\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/libzip/lib\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/ldid/libplist/libcnary/include\"",
+					"\"${SDKROOT}/usr/include/libxml2\"",
+					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/libzip/xcode\"",
+				);
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"'@executable_path/../Frameworks'",
+					"'@loader_path/Frameworks'",
+					"@loader_path/../Frameworks",
+					"'@executable_path/STPrivilegedTask'",
+					"'@executable_path/Sparkle'",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "MiniAppHelper/MiniAppHelper-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				SYSTEM_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependencies/AltSign/Dependencies\"";
+				USER_HEADER_SEARCH_PATHS = "";
+				USE_HEADERMAP = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF4587332298D31600BD7491 /* Build configuration list for PBXNativeTarget "libimobiledevice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF4587342298D31600BD7491 /* Debug */,
+				BF4587352298D31600BD7491 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF5C5FC8237DF5AE00EDD0C6 /* Build configuration list for PBXNativeTarget "AltPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF5C5FC9237DF5AE00EDD0C6 /* Debug */,
+				BF5C5FCA237DF5AE00EDD0C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFD247652284B9A500981D42 /* Build configuration list for PBXProject "MiniAppHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFD2477C2284B9A700981D42 /* Debug */,
+				BFD2477D2284B9A700981D42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFF7C913257844C900E55F36 /* Build configuration list for PBXNativeTarget "AltXPC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFF7C911257844C900E55F36 /* Debug */,
+				BFF7C912257844C900E55F36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE649C3829CDC33E009AD7E5 /* Build configuration list for PBXNativeTarget "MiniAppHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE649C3929CDC33E009AD7E5 /* Debug */,
+				CE649C3A29CDC33E009AD7E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D58D5F2C26DFE68E00E55E38 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE649C7929CDC3CA009AD7E5 /* AltSign-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "AltSign-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = BFD247622284B9A500981D42 /* Project object */;
+}
