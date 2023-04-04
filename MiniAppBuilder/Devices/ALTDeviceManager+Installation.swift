@@ -158,7 +158,7 @@ extension ALTDeviceManager
                                                     switch result
                                                     {
                                                     case .failure(let error):
-                                                        print("Failed to install DeveloperDiskImage.dmg to \(device).", error)
+                                                        printStdErr("Failed to install DeveloperDiskImage.dmg to \(device).", error)
                                                         fallthrough // Continue installing app even if we couldn't install Developer disk image.
                                                     
                                                     case .success:
@@ -303,7 +303,7 @@ private extension ALTDeviceManager
                 completionHandler(.success(fileURL))
                 
                 do { try FileManager.default.removeItem(at: fileURL) }
-                catch { print("Failed to remove downloaded .ipa.", error) }
+                catch { printStdErr("Failed to remove downloaded .ipa.", error) }
             }
             catch
             {
@@ -467,7 +467,7 @@ private extension ALTDeviceManager
                                     {
                                         // Cache certificate.
                                         do { try encryptedData.write(to: certificateFileURL, options: .atomic) }
-                                        catch { print("Failed to cache certificate:", error) }
+                                        catch { printStdErr("Failed to cache certificate:", error) }
                                     }
                                 }
                                 catch
@@ -916,14 +916,14 @@ private extension ALTDeviceManager
                     }
                     catch
                     {
-                        print("Failed to install app", error)
+                        printStdErr("Failed to install app", error)
                         completionHandler(.failure(error))
                     }
                 }
             }
             catch
             {
-                print("Failed to install AltStore", error)
+                printStdErr("Failed to install AltStore", error)
                 completionHandler(.failure(error))
             }
         }

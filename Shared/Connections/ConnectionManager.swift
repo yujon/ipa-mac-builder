@@ -122,7 +122,7 @@ private extension ConnectionManager
             {
                 let response = ErrorResponse(error: ALTServerError(error))
                 connection.send(response, shouldDisconnect: true) { (result) in
-                    print("Sent error response \(response) with result:", result)
+                    printStdErr("Sent error response \(response) with result:", result)
                 }
             }
         }

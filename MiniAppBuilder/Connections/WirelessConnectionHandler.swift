@@ -122,7 +122,7 @@ private extension WirelessConnectionHandler
                 print("Waiting for connection...")
                 
             case .failed(let error):
-                print("Failed to connect to service \(nwConnection.endpoint).", error)
+                printStdErr("Failed to connect to service \(nwConnection.endpoint).", error)
                 self?.disconnect(connection)
                 
             case .cancelled:

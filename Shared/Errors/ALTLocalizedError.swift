@@ -180,3 +180,18 @@ public func ~=(pattern: any Swift.Error, value: any Swift.Error) -> Bool
 //    let isMatch = Code.errorDomain == value._domain && pattern.rawValue == value._code
 //    return isMatch
 //}
+
+
+extension FileHandle: TextOutputStream {
+    public func write(_ string: String) {
+        let data = Data(string.utf8)
+        self.write(data)
+    }
+}
+
+
+public func printStdErr(_ args: Any...) {
+    var standardError = FileHandle.standardError
+    print(args, to: &standardError)
+}
+

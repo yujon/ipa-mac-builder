@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:MiniAppHelper.xcodeproj">
+      location = "group:MiniAppBuilder.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Dependencies/AltSign">

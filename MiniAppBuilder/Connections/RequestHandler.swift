@@ -41,7 +41,7 @@ struct ServerRequestHandler: RequestHandler
             if let temporaryURL = temporaryURL
             {
                 do { try FileManager.default.removeItem(at: temporaryURL) }
-                catch { print("Failed to remove .ipa.", error) }
+                catch { printStdErr("Failed to remove .ipa.", error) }
             }
             
             completionHandler(result)
@@ -91,7 +91,7 @@ struct ServerRequestHandler: RequestHandler
         ALTDeviceManager.shared.installProvisioningProfiles(request.provisioningProfiles, toDeviceWithUDID: request.udid, activeProvisioningProfiles: request.activeProfiles) { (success, error) in
             if let error = error, !success
             {
-                print("Failed to install profiles \(request.provisioningProfiles.map { $0.bundleIdentifier }):", error)
+                printStdErr("Failed to install profiles \(request.provisioningProfiles.map { $0.bundleIdentifier }):", error)
                 completionHandler(.failure(ALTServerError(error)))
             }
             else
@@ -110,7 +110,7 @@ struct ServerRequestHandler: RequestHandler
         ALTDeviceManager.shared.removeProvisioningProfiles(forBundleIdentifiers: request.bundleIdentifiers, fromDeviceWithUDID: request.udid) { (success, error) in
             if let error = error, !success
             {
-                print("Failed to remove profiles \(request.bundleIdentifiers):", error)
+                printStdErr("Failed to remove profiles \(request.bundleIdentifiers):", error)
                 completionHandler(.failure(ALTServerError(error)))
             }
             else
@@ -128,7 +128,7 @@ struct ServerRequestHandler: RequestHandler
         ALTDeviceManager.shared.removeApp(forBundleIdentifier: request.bundleIdentifier, fromDeviceWithUDID: request.udid) { (success, error) in
             if let error = error, !success
             {
-                print("Failed to remove app \(request.bundleIdentifier):", error)
+                printStdErr("Failed to remove app \(request.bundleIdentifier):", error)
                 completionHandler(.failure(ALTServerError(error)))
             }
             else
@@ -157,7 +157,7 @@ struct ServerRequestHandler: RequestHandler
                     {
                         if let error = error, !success
                         {
-                            print("Failed to enable unsigned code execution for process \(request.processID?.description ?? request.processName ?? "nil"):", error)
+                            printStdErr("Failed to enable unsigned code execution for process \(request.processID?.description ?? request.processName ?? "nil"):", error)
                             completionHandler(.failure(ALTServerError(error)))
                         }
                         else
@@ -211,7 +211,7 @@ private extension RequestHandler
             }
             catch
             {
-                print("Error processing app data:", error)
+                printStdErr("Error processing app data:", error)
                 
                 completionHandler(.failure(ALTServerError(error)))
             }

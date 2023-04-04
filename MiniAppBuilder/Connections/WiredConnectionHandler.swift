@@ -69,7 +69,7 @@ private extension WiredConnectionHandler
             connection.sendNotification(.wiredServerConnectionAvailableResponse) { (success, error) in
                 if let error = error, !success
                 {
-                    print("Error sending wired server connection response.", error)
+                    printStdErr("Error sending wired server connection response.", error)
                 }
                 else
                 {
@@ -94,7 +94,7 @@ private extension WiredConnectionHandler
                 }
                 else if let error = error
                 {
-                    print("Error starting wired server connection.", error)
+                    printStdErr("Error starting wired server connection.", error)
                 }
             }
 

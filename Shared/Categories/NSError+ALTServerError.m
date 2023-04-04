@@ -7,7 +7,7 @@
 //
 
 #import "NSError+ALTServerError.h"
-#import "MiniAppHelper-Swift.h"
+#import "MiniAppBuilder-Swift.h"
 
 @import AltSign;
 

@@ -18,7 +18,7 @@
 
 #import <AppKit/AppKit.h>
 #import <UserNotifications/UserNotifications.h>
-#import "MiniAppHelper-Swift.h"
+#import "MiniAppBuilder-Swift.h"
 
 #include <libimobiledevice/libimobiledevice.h>
 #include <libimobiledevice/lockdown.h>

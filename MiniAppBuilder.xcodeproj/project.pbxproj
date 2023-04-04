@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B13115E4E3EE377F8666785 /* Pods_MiniAppHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31FC1970CFA6992F41903B0 /* Pods_MiniAppHelper.framework */; };
+		1B13115E4E3EE377F8666785 /* Pods_MiniAppBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31FC1970CFA6992F41903B0 /* Pods_MiniAppBuilder.framework */; };
 		BF4587F82298D3AB00BD7491 /* service.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587C82298D3A800BD7491 /* service.h */; };
 		BF4587F92298D3AB00BD7491 /* diagnostics_relay.c in Sources */ = {isa = PBXBuildFile; fileRef = BF4587C92298D3A800BD7491 /* diagnostics_relay.c */; };
 		BF4587FA2298D3AB00BD7491 /* diagnostics_relay.h in Headers */ = {isa = PBXBuildFile; fileRef = BF4587CA2298D3A800BD7491 /* diagnostics_relay.h */; };
@@ -136,7 +136,6 @@
 		CE649C7629CDC3A5009AD7E5 /* ALTDebugConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE649C6629CDC3A5009AD7E5 /* ALTDebugConnection.mm */; };
 		CE649C7729CDC3A5009AD7E5 /* WiredConnectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C6729CDC3A5009AD7E5 /* WiredConnectionHandler.swift */; };
 		CE649C7829CDC3A5009AD7E5 /* DeveloperDiskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C6929CDC3A5009AD7E5 /* DeveloperDiskManager.swift */; };
-		CE649C7A29CDC3CA009AD7E5 /* AltSign-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CE649C7929CDC3CA009AD7E5 /* AltSign-Dynamic */; };
 		CE649C7E29CDC3CA009AD7E5 /* OpenSSL.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF088D322501A4FF008082D9 /* OpenSSL.xcframework */; };
 		CE649C8029CDC3F3009AD7E5 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE649C7F29CDC3F3009AD7E5 /* libxml2.tbd */; };
 		CE649C8529D13D02009AD7E5 /* libimobiledevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF45872B2298D31600BD7491 /* libimobiledevice.a */; };
@@ -145,6 +144,8 @@
 		CE66AA9F29D2226E00B03C36 /* ALTAnisetteData.m in Sources */ = {isa = PBXBuildFile; fileRef = CE66AA9729D2057E00B03C36 /* ALTAnisetteData.m */; };
 		CE66AAA029D2226E00B03C36 /* ALTPluginService.m in Sources */ = {isa = PBXBuildFile; fileRef = CE66AA9C29D2163F00B03C36 /* ALTPluginService.m */; };
 		CE6834A029D1F2C100840122 /* AltPlugin.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE649C9229D19B26009AD7E5 /* AltPlugin.zip */; };
+		CE94633929DBCDEB0044F4E1 /* AltSign-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CE94633829DBCDEB0044F4E1 /* AltSign-Dynamic */; };
+		CE94633A29DBCDEB0044F4E1 /* AltSign-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = CE94633829DBCDEB0044F4E1 /* AltSign-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,12 +178,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE94633B29DBCDEC0044F4E1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CE94633A29DBCDEB0044F4E1 /* AltSign-Dynamic in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		035DB8235B4843F514BB9727 /* Pods-MiniAppHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniAppHelper.release.xcconfig"; path = "Target Support Files/Pods-MiniAppHelper/Pods-MiniAppHelper.release.xcconfig"; sourceTree = "<group>"; };
-		59618F4167C1F2A9FB3615A0 /* Pods-MiniAppHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniAppHelper.debug.xcconfig"; path = "Target Support Files/Pods-MiniAppHelper/Pods-MiniAppHelper.debug.xcconfig"; sourceTree = "<group>"; };
-		A87E862759DA9B92B091C6E8 /* Pods-MiniAppHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniAppHelper.release.xcconfig"; path = "Target Support Files/Pods-MiniAppHelper/Pods-MiniAppHelper.release.xcconfig"; sourceTree = "<group>"; };
+		035DB8235B4843F514BB9727 /* Pods-MiniAppBuilder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniAppBuilder.release.xcconfig"; path = "Target Support Files/Pods-MiniAppBuilder/Pods-MiniAppBuilder.release.xcconfig"; sourceTree = "<group>"; };
+		59618F4167C1F2A9FB3615A0 /* Pods-MiniAppBuilder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniAppBuilder.debug.xcconfig"; path = "Target Support Files/Pods-MiniAppBuilder/Pods-MiniAppBuilder.debug.xcconfig"; sourceTree = "<group>"; };
+		A87E862759DA9B92B091C6E8 /* Pods-MiniAppBuilder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniAppBuilder.release.xcconfig"; path = "Target Support Files/Pods-MiniAppBuilder/Pods-MiniAppBuilder.release.xcconfig"; sourceTree = "<group>"; };
 		BF088D322501A4FF008082D9 /* OpenSSL.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OpenSSL.xcframework; path = Dependencies/AltSign/Dependencies/OpenSSL/Frameworks/OpenSSL.xcframework; sourceTree = "<group>"; };
 		BF18BFF22485828200DD5981 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		BF18BFF624858BDE00DD5981 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
@@ -307,7 +319,7 @@
 		BFF7C906257844C900E55F36 /* AltXPCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AltXPCProtocol.h; sourceTree = "<group>"; };
 		BFF7C90C257844C900E55F36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFF7C93B257849C600E55F36 /* AltXPC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AltXPC.entitlements; sourceTree = "<group>"; };
-		CE649C3429CDC33C009AD7E5 /* MiniAppHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MiniAppHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE649C3429CDC33C009AD7E5 /* MiniAppBuilder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MiniAppBuilder; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE649C3629CDC33E009AD7E5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CE649C4E29CDC3A4009AD7E5 /* NSError+libimobiledevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+libimobiledevice.h"; sourceTree = "<group>"; };
 		CE649C4F29CDC3A4009AD7E5 /* NSError+libimobiledevice.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSError+libimobiledevice.mm"; sourceTree = "<group>"; };
@@ -331,10 +343,10 @@
 		CE649C6529CDC3A5009AD7E5 /* ALTNotificationConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTNotificationConnection.h; sourceTree = "<group>"; };
 		CE649C6629CDC3A5009AD7E5 /* ALTDebugConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ALTDebugConnection.mm; sourceTree = "<group>"; };
 		CE649C6729CDC3A5009AD7E5 /* WiredConnectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiredConnectionHandler.swift; sourceTree = "<group>"; };
-		CE649C6829CDC3A5009AD7E5 /* MiniAppHelper-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MiniAppHelper-Bridging-Header.h"; sourceTree = "<group>"; };
+		CE649C6829CDC3A5009AD7E5 /* MiniAppBuilder-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MiniAppBuilder-Bridging-Header.h"; sourceTree = "<group>"; };
 		CE649C6929CDC3A5009AD7E5 /* DeveloperDiskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperDiskManager.swift; sourceTree = "<group>"; };
 		CE649C7F29CDC3F3009AD7E5 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
-		CE649C9029D19092009AD7E5 /* MiniAppHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MiniAppHelper.entitlements; sourceTree = "<group>"; };
+		CE649C9029D19092009AD7E5 /* MiniAppBuilder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MiniAppBuilder.entitlements; sourceTree = "<group>"; };
 		CE649C9229D19B26009AD7E5 /* AltPlugin.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = AltPlugin.zip; sourceTree = "<group>"; };
 		CE66AA9729D2057E00B03C36 /* ALTAnisetteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALTAnisetteData.m; path = "Dependencies/AltSign/AltSign/Model/Apple API/ALTAnisetteData.m"; sourceTree = SOURCE_ROOT; };
 		CE66AA9C29D2163F00B03C36 /* ALTPluginService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ALTPluginService.m; path = AltPlugin/ALTPluginService.m; sourceTree = SOURCE_ROOT; };
@@ -343,8 +355,8 @@
 		D533E8B62727841800A9B5DD /* libAppleArchive.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libAppleArchive.tbd; path = usr/lib/libAppleArchive.tbd; sourceTree = SDKROOT; };
 		D5708416292448DA00D42D34 /* OperatingSystemVersion+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperatingSystemVersion+Comparable.swift"; sourceTree = "<group>"; };
 		D5DB145828F9DC1000A8F606 /* ALTLocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ALTLocalizedError.swift; sourceTree = "<group>"; };
-		F0BE79CB125D3E6B5EB64436 /* Pods-MiniAppHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniAppHelper.debug.xcconfig"; path = "Target Support Files/Pods-MiniAppHelper/Pods-MiniAppHelper.debug.xcconfig"; sourceTree = "<group>"; };
-		F31FC1970CFA6992F41903B0 /* Pods_MiniAppHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniAppHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0BE79CB125D3E6B5EB64436 /* Pods-MiniAppBuilder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniAppBuilder.debug.xcconfig"; path = "Target Support Files/Pods-MiniAppBuilder/Pods-MiniAppBuilder.debug.xcconfig"; sourceTree = "<group>"; };
+		F31FC1970CFA6992F41903B0 /* Pods_MiniAppBuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniAppBuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,8 +388,8 @@
 				CE649C8529D13D02009AD7E5 /* libimobiledevice.a in Frameworks */,
 				CE649C8029CDC3F3009AD7E5 /* libxml2.tbd in Frameworks */,
 				CE649C7E29CDC3CA009AD7E5 /* OpenSSL.xcframework in Frameworks */,
-				CE649C7A29CDC3CA009AD7E5 /* AltSign-Dynamic in Frameworks */,
-				1B13115E4E3EE377F8666785 /* Pods_MiniAppHelper.framework in Frameworks */,
+				CE94633929DBCDEB0044F4E1 /* AltSign-Dynamic in Frameworks */,
+				1B13115E4E3EE377F8666785 /* Pods_MiniAppBuilder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,10 +399,10 @@
 		4460E048E3AC1C9708C4FA33 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				59618F4167C1F2A9FB3615A0 /* Pods-MiniAppHelper.debug.xcconfig */,
-				A87E862759DA9B92B091C6E8 /* Pods-MiniAppHelper.release.xcconfig */,
-				F0BE79CB125D3E6B5EB64436 /* Pods-MiniAppHelper.debug.xcconfig */,
-				035DB8235B4843F514BB9727 /* Pods-MiniAppHelper.release.xcconfig */,
+				59618F4167C1F2A9FB3615A0 /* Pods-MiniAppBuilder.debug.xcconfig */,
+				A87E862759DA9B92B091C6E8 /* Pods-MiniAppBuilder.release.xcconfig */,
+				F0BE79CB125D3E6B5EB64436 /* Pods-MiniAppBuilder.debug.xcconfig */,
+				035DB8235B4843F514BB9727 /* Pods-MiniAppBuilder.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -564,7 +576,7 @@
 				BF1E315122A0616100370A3C /* Shared */,
 				BF45872C2298D31600BD7491 /* libimobiledevice */,
 				BFF7C905257844C900E55F36 /* AltXPC */,
-				CE649C3529CDC33E009AD7E5 /* MiniAppHelper */,
+				CE649C3529CDC33E009AD7E5 /* MiniAppBuilder */,
 				BFD247852284BB3300981D42 /* Frameworks */,
 				BFD2476B2284B9A500981D42 /* Products */,
 				4460E048E3AC1C9708C4FA33 /* Pods */,
@@ -578,7 +590,7 @@
 				BF45872B2298D31600BD7491 /* libimobiledevice.a */,
 				BF5C5FC5237DF5AE00EDD0C6 /* AltPlugin.mailbundle */,
 				BFF7C904257844C900E55F36 /* AltXPC.xpc */,
-				CE649C3429CDC33C009AD7E5 /* MiniAppHelper */,
+				CE649C3429CDC33C009AD7E5 /* MiniAppBuilder */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -592,7 +604,7 @@
 				BF580497246A3D19008AE704 /* UIKit.framework */,
 				BF4588872298DD3F00BD7491 /* libxml2.tbd */,
 				BFD247862284BB3B00981D42 /* Roxas.framework */,
-				F31FC1970CFA6992F41903B0 /* Pods_MiniAppHelper.framework */,
+				F31FC1970CFA6992F41903B0 /* Pods_MiniAppBuilder.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -663,12 +675,12 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		CE649C3529CDC33E009AD7E5 /* MiniAppHelper */ = {
+		CE649C3529CDC33E009AD7E5 /* MiniAppBuilder */ = {
 			isa = PBXGroup;
 			children = (
 				CE649C9529D19B67009AD7E5 /* Resources */,
-				CE649C9029D19092009AD7E5 /* MiniAppHelper.entitlements */,
-				CE649C6829CDC3A5009AD7E5 /* MiniAppHelper-Bridging-Header.h */,
+				CE649C9029D19092009AD7E5 /* MiniAppBuilder.entitlements */,
+				CE649C6829CDC3A5009AD7E5 /* MiniAppBuilder-Bridging-Header.h */,
 				CE649C5729CDC3A4009AD7E5 /* AnisetteDataManager.swift */,
 				CE649C4D29CDC3A4009AD7E5 /* Categories */,
 				CE649C5B29CDC3A5009AD7E5 /* Connections */,
@@ -678,7 +690,7 @@
 				CE649C5829CDC3A4009AD7E5 /* Plugin */,
 				CE649C3629CDC33E009AD7E5 /* main.swift */,
 			);
-			path = MiniAppHelper;
+			path = MiniAppBuilder;
 			sourceTree = "<group>";
 		};
 		CE649C4D29CDC3A4009AD7E5 /* Categories */ = {
@@ -858,26 +870,27 @@
 			productReference = BFF7C904257844C900E55F36 /* AltXPC.xpc */;
 			productType = "com.apple.product-type.xpc-service";
 		};
-		CE649C3329CDC33C009AD7E5 /* MiniAppHelper */ = {
+		CE649C3329CDC33C009AD7E5 /* MiniAppBuilder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE649C3829CDC33E009AD7E5 /* Build configuration list for PBXNativeTarget "MiniAppHelper" */;
+			buildConfigurationList = CE649C3829CDC33E009AD7E5 /* Build configuration list for PBXNativeTarget "MiniAppBuilder" */;
 			buildPhases = (
 				66BB84DD3D678DA115BB6CCA /* [CP] Check Pods Manifest.lock */,
 				CE649C3029CDC33C009AD7E5 /* Sources */,
 				CE649C3129CDC33C009AD7E5 /* Frameworks */,
 				CE68349F29D1F2B600840122 /* CopyFiles */,
+				CE94633B29DBCDEC0044F4E1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				CE649C8429CDC3FE009AD7E5 /* PBXTargetDependency */,
 			);
-			name = MiniAppHelper;
+			name = MiniAppBuilder;
 			packageProductDependencies = (
-				CE649C7929CDC3CA009AD7E5 /* AltSign-Dynamic */,
+				CE94633829DBCDEB0044F4E1 /* AltSign-Dynamic */,
 			);
-			productName = MiniAppHelper;
-			productReference = CE649C3429CDC33C009AD7E5 /* MiniAppHelper */;
+			productName = MiniAppBuilder;
+			productReference = CE649C3429CDC33C009AD7E5 /* MiniAppBuilder */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -906,7 +919,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BFD247652284B9A500981D42 /* Build configuration list for PBXProject "MiniAppHelper" */;
+			buildConfigurationList = BFD247652284B9A500981D42 /* Build configuration list for PBXProject "MiniAppBuilder" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -922,7 +935,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CE649C3329CDC33C009AD7E5 /* MiniAppHelper */,
+				CE649C3329CDC33C009AD7E5 /* MiniAppBuilder */,
 				BF45872A2298D31600BD7491 /* libimobiledevice */,
 				BF5C5FC4237DF5AE00EDD0C6 /* AltPlugin */,
 				BFF7C903257844C900E55F36 /* AltXPC */,
@@ -963,7 +976,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MiniAppHelper-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MiniAppBuilder-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1433,13 +1446,13 @@
 		};
 		CE649C3929CDC33E009AD7E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F0BE79CB125D3E6B5EB64436 /* Pods-MiniAppHelper.debug.xcconfig */;
+			baseConfigurationReference = F0BE79CB125D3E6B5EB64436 /* Pods-MiniAppBuilder.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_ENTITLEMENTS = MiniAppHelper/MiniAppHelper.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MiniAppBuilder/MiniAppBuilder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = D5ZVDUJRKG;
@@ -1475,7 +1488,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OBJC_BRIDGING_HEADER = "MiniAppHelper/MiniAppHelper-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MiniAppBuilder/MiniAppBuilder-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				SYSTEM_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependencies/AltSign/Dependencies\"";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1485,13 +1498,13 @@
 		};
 		CE649C3A29CDC33E009AD7E5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 035DB8235B4843F514BB9727 /* Pods-MiniAppHelper.release.xcconfig */;
+			baseConfigurationReference = 035DB8235B4843F514BB9727 /* Pods-MiniAppBuilder.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_ENTITLEMENTS = MiniAppHelper/MiniAppHelper.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MiniAppBuilder/MiniAppBuilder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D5ZVDUJRKG;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1525,7 +1538,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = "MiniAppHelper/MiniAppHelper-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MiniAppBuilder/MiniAppBuilder-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				SYSTEM_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependencies/AltSign/Dependencies\"";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1554,7 +1567,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BFD247652284B9A500981D42 /* Build configuration list for PBXProject "MiniAppHelper" */ = {
+		BFD247652284B9A500981D42 /* Build configuration list for PBXProject "MiniAppBuilder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BFD2477C2284B9A700981D42 /* Debug */,
@@ -1572,7 +1585,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE649C3829CDC33E009AD7E5 /* Build configuration list for PBXNativeTarget "MiniAppHelper" */ = {
+		CE649C3829CDC33E009AD7E5 /* Build configuration list for PBXNativeTarget "MiniAppBuilder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE649C3929CDC33E009AD7E5 /* Debug */,
@@ -1595,7 +1608,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CE649C7929CDC3CA009AD7E5 /* AltSign-Dynamic */ = {
+		CE94633829DBCDEB0044F4E1 /* AltSign-Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "AltSign-Dynamic";
 		};

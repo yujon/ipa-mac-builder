@@ -15,10 +15,14 @@ import AltSign
 
 extension ALTDevice {}
 
+enum ArgValidateError: Error {
+    case invalidLength
+    case notConnectedDevice
+}
+
 class Application {
 
     private let pluginManager = PluginManager()
-    
     
     private weak var authenticationAppleIDTextField: NSTextField?
     private weak var authenticationPasswordTextField: NSSecureTextField?
@@ -39,16 +43,16 @@ class Application {
         
         var count = CommandLine.argc
         if count != 4 {
-            print("the length of argument should be 3")
-            return
+            printStdErr("the length of argument shoule be greater than 3")
+            throw ArgValidateError.invalidLength
         }
         let username = CommandLine.arguments[1]
         let password = CommandLine.arguments[2]
         let fileURL =  URL(string: CommandLine.arguments[3])
         
         if ALTDeviceManager.shared.availableDevices.count == 0 {
-            print("there is not connected device")
-            return
+            printStdErr("there is not connected device")
+            throw ArgValidateError.notConnectedDevice
         }
             
         let device = ALTDeviceManager.shared.availableDevices[0]
@@ -195,7 +199,8 @@ do {
     let app = Application()
     try await app.launch()
     print("The App exit")
+    exit(0)
 } catch {
-    print("The App exit error:")
-    print(error)
+    printStdErr("The App exit error:", error)
+    exit(1)
 }

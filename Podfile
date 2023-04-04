@@ -1,6 +1,6 @@
 inhibit_all_warnings!
 
-target 'MiniAppHelper' do
+target 'MiniAppBuilder' do
   platform :macos, '10.14'
 
   use_frameworks!

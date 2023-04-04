@@ -17,7 +17,7 @@
                BlueprintIdentifier = "BFF7C903257844C900E55F36"
                BuildableName = "AltXPC.xpc"
                BlueprintName = "AltXPC"
-               ReferencedContainer = "container:MiniAppHelper.xcodeproj">
+               ReferencedContainer = "container:MiniAppBuilder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "BF45868C229872EA00BD7491"
             BuildableName = "AltServer.app"
             BlueprintName = "AltServer"
-            ReferencedContainer = "container:MiniAppHelper.xcodeproj">
+            ReferencedContainer = "container:MiniAppBuilder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,7 +63,7 @@
             BlueprintIdentifier = "BFF7C903257844C900E55F36"
             BuildableName = "AltXPC.xpc"
             BlueprintName = "AltXPC"
-            ReferencedContainer = "container:MiniAppHelper.xcodeproj">
+            ReferencedContainer = "container:MiniAppBuilder.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
