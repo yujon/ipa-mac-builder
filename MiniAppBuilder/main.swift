@@ -41,7 +41,6 @@ class Application {
         let device = ALTDeviceManager.shared.availableDevices[0]
 
         UserDefaults.standard.registerDefaults()
-        ServerConnectionManager.shared.start()
         try await self.installApplication(at: fileURL!, to: device, appleID: username, password: password)
         
     }

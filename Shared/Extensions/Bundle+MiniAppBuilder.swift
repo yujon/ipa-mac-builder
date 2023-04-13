@@ -1,5 +1,5 @@
 //
-//  Bundle+AltStore.swift
+//  Bundle+MiniAppBuilder.swift
 //
 //
 
@@ -41,11 +41,6 @@ public extension Bundle
     var certificateURL: URL {
         let certificateURL = self.bundleURL.appendingPathComponent("ALTCertificate.p12")
         return certificateURL
-    }
-    
-    var altstorePlistURL: URL {
-        let altstorePlistURL = self.bundleURL.appendingPathComponent("AltStore.plist")
-        return altstorePlistURL
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  UserDefaults+AltServer.swift
+//  UserDefaults+MiniAppBuilder.swift
 //
 //
 

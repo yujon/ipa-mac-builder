@@ -8,9 +8,9 @@
 
 @import AltSign;
 
-NSErrorDomain const AltServerErrorDomain = @"AltServer.ServerError";
+NSErrorDomain const AltServerErrorDomain = @"MiniAppBuilder.ServerError";
 NSErrorDomain const AltServerInstallationErrorDomain = @"Apple.InstallationError";
-NSErrorDomain const AltServerConnectionErrorDomain = @"AltServer.ConnectionError";
+NSErrorDomain const AltServerConnectionErrorDomain = @"MiniAppBuilder.ConnectionError";
 
 NSErrorUserInfoKey const ALTUnderlyingErrorDomainErrorKey = @"underlyingErrorDomain";
 NSErrorUserInfoKey const ALTUnderlyingErrorCodeErrorKey = @"underlyingErrorCode";
@@ -104,11 +104,7 @@ NSErrorUserInfoKey const ALTOperatingSystemVersionErrorKey = @"ALTOperatingSyste
             if (underlyingError.localizedFailureReason != nil)
             {
                 // Only return localized failure if there is an underlying error with failure reason.
-#if TARGET_OS_OSX
                 return NSLocalizedString(@"There was an error connecting to the device.", @"");
-#else
-                return NSLocalizedString(@"AltServer could not establish a connection to AltStore.", @"");
-#endif
             }
             
             return nil;
@@ -153,22 +149,17 @@ NSErrorUserInfoKey const ALTOperatingSystemVersionErrorKey = @"ALTOperatingSyste
             }
             
             // Return fallback failure reason if there isn't an underlying error with failure reason.
-            
-#if TARGET_OS_OSX
             return NSLocalizedString(@"There was an error connecting to the device.", @"");
-#else
-            return NSLocalizedString(@"AltServer could not establish a connection to AltStore.", @"");
-#endif
         }
             
         case ALTServerErrorLostConnection:
-            return NSLocalizedString(@"The connection to AltServer was lost.", @"");
+            return NSLocalizedString(@"The connection to MiniAppBuilder was lost.", @"");
             
         case ALTServerErrorDeviceNotFound:
-            return NSLocalizedString(@"AltServer could not find this device.", @"");
+            return NSLocalizedString(@"MiniAppBuilder could not find this device.", @"");
             
         case ALTServerErrorDeviceWriteFailed:
-            return NSLocalizedString(@"AltServer could not write data to this device.", @"");
+            return NSLocalizedString(@"MiniAppBuilder could not write data to this device.", @"");
             
         case ALTServerErrorInvalidRequest:
         {
@@ -178,7 +169,7 @@ NSErrorUserInfoKey const ALTOperatingSystemVersionErrorKey = @"ALTOperatingSyste
                 return underlyingError.localizedFailureReason;
             }
             
-            return NSLocalizedString(@"AltServer received an invalid request.", @"");
+            return NSLocalizedString(@"MiniAppBuilder received an invalid request.", @"");
         }
             
         case ALTServerErrorInvalidResponse:
@@ -189,7 +180,7 @@ NSErrorUserInfoKey const ALTOperatingSystemVersionErrorKey = @"ALTOperatingSyste
                 return underlyingError.localizedFailureReason;
             }
             
-            return NSLocalizedString(@"AltServer sent an invalid response.", @"");
+            return NSLocalizedString(@"MiniAppBuilder sent an invalid response.", @"");
         }
             
         case ALTServerErrorInvalidApp:
@@ -223,16 +214,16 @@ NSErrorUserInfoKey const ALTOperatingSystemVersionErrorKey = @"ALTOperatingSyste
         }
             
         case ALTServerErrorUnknownRequest:
-            return NSLocalizedString(@"AltServer does not support this request.", @"");
+            return NSLocalizedString(@"MiniAppBuilder does not support this request.", @"");
             
         case ALTServerErrorUnknownResponse:
-            return NSLocalizedString(@"AltStore received an unknown response from AltServer.", @"");
+            return NSLocalizedString(@"The App received an unknown response from MiniAppBuilder.", @"");
             
         case ALTServerErrorInvalidAnisetteData:
             return NSLocalizedString(@"The provided anisette data is invalid.", @"");
             
         case ALTServerErrorPluginNotFound:
-            return NSLocalizedString(@"AltServer could not connect to Mail plug-in.", @"");
+            return NSLocalizedString(@"MiniAppBuilder could not connect to Mail plug-in.", @"");
             
         case ALTServerErrorProfileNotFound:
             return [self profileErrorLocalizedDescriptionWithBaseDescription:NSLocalizedString(@"Could not find profile", "")];
@@ -396,13 +387,13 @@ NSErrorUserInfoKey const ALTOperatingSystemVersionErrorKey = @"ALTOperatingSyste
         case ALTServerConnectionErrorInvalidRequest:
         {
             NSString *deviceName = self.userInfo[ALTDeviceNameErrorKey] ?: NSLocalizedString(@"The device", @"");
-            return [NSString stringWithFormat:NSLocalizedString(@"%@ received an invalid request from AltServer.", @""), deviceName];
+            return [NSString stringWithFormat:NSLocalizedString(@"%@ received an invalid request from MiniAppBuilder.", @""), deviceName];
         }
             
         case ALTServerConnectionErrorInvalidResponse:
         {
             NSString *deviceName = self.userInfo[ALTDeviceNameErrorKey] ?: NSLocalizedString(@"the device", @"");
-            return [NSString stringWithFormat:NSLocalizedString(@"AltServer received an invalid response from %@.", @""), deviceName];
+            return [NSString stringWithFormat:NSLocalizedString(@"MiniAppBuilder received an invalid response from %@.", @""), deviceName];
         }
             
         case ALTServerConnectionErrorUsbmuxd:
@@ -413,13 +404,13 @@ NSErrorUserInfoKey const ALTOperatingSystemVersionErrorKey = @"ALTOperatingSyste
         case ALTServerConnectionErrorSSL:
         {
             NSString *deviceName = self.userInfo[ALTDeviceNameErrorKey] ?: NSLocalizedString(@"the device", @"");
-            return [NSString stringWithFormat:NSLocalizedString(@"AltServer could not establish a secure connection to %@.", @""), deviceName];
+            return [NSString stringWithFormat:NSLocalizedString(@"MiniAppBuilder could not establish a secure connection to %@.", @""), deviceName];
         }
             
         case ALTServerConnectionErrorTimedOut:
         {
             NSString *deviceName = self.userInfo[ALTDeviceNameErrorKey] ?: NSLocalizedString(@"the device", @"");
-            return [NSString stringWithFormat:NSLocalizedString(@"AltServer's connection to %@ timed out.", @""), deviceName];
+            return [NSString stringWithFormat:NSLocalizedString(@"MiniAppBuilder's connection to %@ timed out.", @""), deviceName];
         }
     }
     

@@ -6,10 +6,6 @@
 
 #import "ALTDeviceManager.h"
 
-#import "ALTWiredConnection+Private.h"
-#import "ALTNotificationConnection+Private.h"
-#import "ALTDebugConnection+Private.h"
-
 #import "ALTConstants.h"
 #import "NSError+ALTServerError.h"
 #import "NSError+libimobiledevice.h"
@@ -1268,120 +1264,23 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
         plist_free(result);
         
         // Verify that the developer disk has been successfully installed.
-        ALTDebugConnection *testConnection = [[ALTDebugConnection alloc] initWithDevice:altDevice];
-        [testConnection connectWithCompletionHandler:^(BOOL success, NSError * _Nullable error) {
-            [testConnection disconnect];
+        // ALTDebugConnection *testConnection = [[ALTDebugConnection alloc] initWithDevice:altDevice];
+        // [testConnection connectWithCompletionHandler:^(BOOL success, NSError * _Nullable error) {
+        //     [testConnection disconnect];
             
-            if (success)
-            {
-                finish(nil);
-            }
-            else
-            {
-                finish(error);
-            }
-        }];
+        //     if (success)
+        //     {
+        //         finish(nil);
+        //     }
+        //     else
+        //     {
+        //         finish(error);
+        //     }
+        // }];
     });
 }
 
 
-#pragma mark - Connections -
-
-- (void)startWiredConnectionToDevice:(ALTDevice *)altDevice completionHandler:(void (^)(ALTWiredConnection * _Nullable, NSError * _Nullable))completionHandler
-{
-    void (^finish)(ALTWiredConnection *connection, NSError *error) = ^(ALTWiredConnection *connection, NSError *error) {
-        if (error != nil)
-        {
-            NSLog(@"Wired Connection Error: %@", error);
-        }
-        
-        completionHandler(connection, error);
-    };
-    
-    idevice_t device = NULL;
-    idevice_connection_t connection = NULL;
-    
-    /* Find Device */
-    if (idevice_new_with_options(&device, altDevice.identifier.UTF8String, IDEVICE_LOOKUP_USBMUX) != IDEVICE_E_SUCCESS)
-    {
-        return finish(nil, [NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorDeviceNotFound userInfo:nil]);
-    }
-    
-    /* Connect to Listening Socket */
-    if (idevice_connect(device, ALTDeviceListeningSocket, &connection) != IDEVICE_E_SUCCESS)
-    {
-        return finish(nil, [NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
-    }
-    
-    idevice_free(device);
-    
-    ALTWiredConnection *wiredConnection = [[ALTWiredConnection alloc] initWithDevice:altDevice connection:connection];
-    finish(wiredConnection, nil);
-}
-
-- (void)startNotificationConnectionToDevice:(ALTDevice *)altDevice completionHandler:(void (^)(ALTNotificationConnection * _Nullable, NSError * _Nullable))completionHandler
-{
-    void (^finish)(ALTNotificationConnection *, NSError *) = ^(ALTNotificationConnection *connection, NSError *error) {
-        if (error != nil)
-        {
-            NSLog(@"Notification Connection Error: %@", error);
-        }
-        
-        completionHandler(connection, error);
-    };
-    
-    idevice_t device = NULL;
-    lockdownd_client_t lockdownClient = NULL;
-    lockdownd_service_descriptor_t service = NULL;
-    
-    np_client_t client = NULL;
-    
-    /* Find Device */
-    if (idevice_new_with_options(&device, altDevice.identifier.UTF8String, IDEVICE_LOOKUP_USBMUX) != IDEVICE_E_SUCCESS)
-    {
-        return finish(nil, [NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorDeviceNotFound userInfo:nil]);
-    }
-    
-    /* Connect to Device */
-    if (lockdownd_client_new_with_handshake(device, &lockdownClient, "altserver") != LOCKDOWN_E_SUCCESS)
-    {
-        return finish(nil, [NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
-    }
-
-    /* Connect to Notification Proxy */
-    if ((lockdownd_start_service(lockdownClient, "com.apple.mobile.notification_proxy", &service) != LOCKDOWN_E_SUCCESS) || service == NULL)
-    {
-        return finish(nil, [NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
-    }
-    
-    /* Connect to Client */
-    if (np_client_new(device, service, &client) != NP_E_SUCCESS)
-    {
-        return finish(nil, [NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
-    }
-    
-    lockdownd_service_descriptor_free(service);
-    lockdownd_client_free(lockdownClient);
-    idevice_free(device);
-    
-    ALTNotificationConnection *notificationConnection = [[ALTNotificationConnection alloc] initWithDevice:altDevice client:client];
-    completionHandler(notificationConnection, nil);
-}
-
-- (void)startDebugConnectionToDevice:(ALTDevice *)device completionHandler:(void (^)(ALTDebugConnection * _Nullable, NSError * _Nullable))completionHandler
-{
-    ALTDebugConnection *connection = [[ALTDebugConnection alloc] initWithDevice:device];
-    [connection connectWithCompletionHandler:^(BOOL success, NSError * _Nullable error) {
-        if (success)
-        {
-            completionHandler(connection, nil);
-        }
-        else
-        {
-            completionHandler(nil, error);
-        }
-    }];
-}
 #pragma mark - Getters -
 
 - (NSArray<ALTDevice *> *)connectedDevices

@@ -1,5 +1,5 @@
 //
-//  NSError+AltStore.swift
+//  NSError+MiniAppBuilder.swift
 //
 //
 

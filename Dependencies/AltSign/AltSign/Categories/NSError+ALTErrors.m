@@ -72,7 +72,7 @@ NSErrorUserInfoKey const ALTAppNameErrorKey = @"appName";
 
 - (nullable NSString *)altsign_localizedFailure
 {
-    // Copied logic from AltStore's NSError+AltStore.swift.
+    // Copied logic from AltStore's NSError+MiniAppBuilder.swift.
     NSString *localizedFailure = self.userInfo[NSLocalizedFailureErrorKey];
     if (localizedFailure != nil)
     {
