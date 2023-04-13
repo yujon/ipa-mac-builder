@@ -2,9 +2,7 @@
 //  AltSign.h
 //  AltSign
 //
-//  Created by Riley Testut on 5/10/19.
-//  Copyright © 2019 Riley Testut. All rights reserved.
-//
+
 
 // Apple API
 #import <AltSign/ALTAppleAPI.h>

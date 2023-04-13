@@ -1,9 +1,6 @@
 //
 //  AnisetteDataManager.swift
-//  AltServer
 //
-//  Created by Riley Testut on 11/16/19.
-//  Copyright © 2019 Riley Testut. All rights reserved.
 //
 
 import Foundation
@@ -13,7 +10,7 @@ private extension Bundle
     struct ID
     {
         static let mail = "com.apple.mail"
-        static let altXPC = "com.rileytestut.AltXPC"
+        static let miniAppXPC = "com.tencent.miniAppXPC"
     }
 }
 
@@ -38,7 +35,7 @@ class AnisetteDataManager: NSObject
     private var anisetteDataTimers: [String: Timer] = [:]
     
     private lazy var xpcConnection: NSXPCConnection = {
-        let connection = NSXPCConnection(serviceName: Bundle.ID.altXPC)
+        let connection = NSXPCConnection(serviceName: Bundle.ID.miniAppXPC)
         connection.remoteObjectInterface = NSXPCInterface(with: AltXPCProtocol.self)
         connection.resume()
         return connection
@@ -48,7 +45,7 @@ class AnisetteDataManager: NSObject
     {
         super.init()
         
-        DistributedNotificationCenter.default().addObserver(self, selector: #selector(AnisetteDataManager.handleAnisetteDataResponse(_:)), name: Notification.Name("com.rileytestut.AltServer.AnisetteDataResponse"), object: nil)
+        DistributedNotificationCenter.default().addObserver(self, selector: #selector(AnisetteDataManager.handleAnisetteDataResponse(_:)), name: Notification.Name("com.tencent.miniappBuilder.AnisetteDataResponse"), object: nil)
     }
     
     func requestAnisetteData(_ completion: @escaping (Result<ALTAnisetteData, Error>) -> Void)
@@ -105,7 +102,7 @@ private extension AnisetteDataManager
     //     }) as? AltXPCProtocol else { return }
         
     //     proxy.requestAnisetteData { (anisetteData, error) in
-    //         anisetteData?.sanitize(byReplacingBundleID: Bundle.ID.altXPC)
+    //         anisetteData?.sanitize(byReplacingBundleID: Bundle.ID.miniAppXPC)
     //         completion(Result(anisetteData, error))
     //     }
     // }
@@ -122,7 +119,7 @@ private extension AnisetteDataManager
         
         RunLoop.main.add(timer, forMode: .default)
         
-        DistributedNotificationCenter.default().postNotificationName(Notification.Name("com.rileytestut.AltServer.FetchAnisetteData"), object: nil, userInfo: ["requestUUID": requestUUID], options: .deliverImmediately)
+        DistributedNotificationCenter.default().postNotificationName(Notification.Name("com.tencent.MiniAppBuilder.FetchAnisetteData"), object: nil, userInfo: ["requestUUID": requestUUID], options: .deliverImmediately)
     }
     
     @objc func handleAnisetteDataResponse(_ notification: Notification)

@@ -1,10 +1,7 @@
 //
 //  AltXPCProtocol.h
-//  AltXPC
 //
-//  Created by Riley Testut on 12/2/20.
-//  Copyright © 2020 Riley Testut. All rights reserved.
-//
+
 
 #import <Foundation/Foundation.h>
 

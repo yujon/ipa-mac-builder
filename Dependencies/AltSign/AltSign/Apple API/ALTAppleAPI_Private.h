@@ -2,9 +2,6 @@
 //  ALTAppleAPI+Private.h
 //  AltSign
 //
-//  Created by Riley Testut on 11/16/19.
-//  Copyright © 2019 Riley Testut. All rights reserved.
-//
 
 #import <AltSign/ALTAppleAPI.h>
 

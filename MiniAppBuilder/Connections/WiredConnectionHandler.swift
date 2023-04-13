@@ -1,6 +1,6 @@
 //
 //  WiredConnectionHandler.swift
-//  AltServer
+//
 //
 
 import Foundation

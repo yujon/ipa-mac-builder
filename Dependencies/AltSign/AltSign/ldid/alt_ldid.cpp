@@ -4,9 +4,6 @@
 //
 //  ldid implentation file wrapper used to add our own logic without modifying ldid source.
 //
-//  Created by Riley Testut on 3/12/17.
-//  Copyright © 2017 Riley Testut. All rights reserved.
-//
 
 // Redefine ldid's main function to ldid_main to prevent duplicate main declarations.
 #define main ldid_main

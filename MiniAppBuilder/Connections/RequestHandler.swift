@@ -1,6 +1,6 @@
 //
 //  RequestHandler.swift
-//  AltServer
+//
 //
 
 import Foundation

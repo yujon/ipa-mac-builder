@@ -2,9 +2,6 @@
 //  CoreCryptoMacros.swift
 //  AltSign
 //
-//  Created by Riley Testut on 8/20/20.
-//  Copyright © 2020 Riley Testut. All rights reserved.
-//
 
 @_exported import CCoreCrypto
 

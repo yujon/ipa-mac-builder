@@ -2,9 +2,6 @@
 //  Data+Encryption.swift
 //  AltSign
 //
-//  Created by Riley Testut on 8/20/20.
-//  Copyright © 2020 Riley Testut. All rights reserved.
-//
 
 import Foundation
 import CoreCrypto

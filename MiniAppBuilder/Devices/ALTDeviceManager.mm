@@ -1,9 +1,7 @@
 //
 //  ALTDeviceManager.m
-//  AltServer
 //
-//  Created by Riley Testut on 5/24/19.
-//  Copyright © 2019 Riley Testut. All rights reserved.
+//
 //
 
 #import "ALTDeviceManager.h"
@@ -73,8 +71,8 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
         
         _installationProgress = [NSMutableDictionary dictionary];
         
-        _installationQueue = dispatch_queue_create("com.rileytestut.AltServer.Installation", DISPATCH_QUEUE_SERIAL);
-        _devicesQueue = dispatch_queue_create("com.rileytestut.AltServer.Devices", DISPATCH_QUEUE_CONCURRENT_WITH_AUTORELEASE_POOL);
+        _installationQueue = dispatch_queue_create("com.tencent.MiniAppBuilder.Installation", DISPATCH_QUEUE_SERIAL);
+        _devicesQueue = dispatch_queue_create("com.tencent.MiniAppBuilder.Devices", DISPATCH_QUEUE_CONCURRENT_WITH_AUTORELEASE_POOL);
         
         _cachedDevices = [NSMutableSet set];
     }

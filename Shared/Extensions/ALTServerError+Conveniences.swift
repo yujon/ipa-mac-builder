@@ -1,9 +1,6 @@
 //
-//  ALTServerError+Conveniences.swift
+//Error+Conveniences.swift
 //  AltKit
-//
-//  Created by Riley Testut on 6/4/20.
-//  Copyright © 2020 Riley Testut. All rights reserved.
 //
 
 import Foundation

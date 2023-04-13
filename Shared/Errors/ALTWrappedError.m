@@ -1,9 +1,9 @@
 //
 //  ALTWrappedError.m
-//  AltStoreCore
+//Core
 //
-//  Created by Riley Testut on 11/28/22.
-//  Copyright © 2022 Riley Testut. All rights reserved.
+//
+//
 //
 
 #import "ALTWrappedError.h"

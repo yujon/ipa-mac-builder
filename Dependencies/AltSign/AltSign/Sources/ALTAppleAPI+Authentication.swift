@@ -2,9 +2,7 @@
 //  ALTAppleAPI+Authentication.swift
 //  AltSign
 //
-//  Created by Riley Testut on 8/15/20.
-//  Copyright © 2020 Riley Testut. All rights reserved.
-//
+
 
 import Foundation
 

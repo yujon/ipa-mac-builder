@@ -1,10 +1,8 @@
 //
 //  NSError+AltStore.swift
-//  AltStore
 //
-//  Created by Riley Testut on 3/11/20.
-//  Copyright © 2020 Riley Testut. All rights reserved.
 //
+
 
 import Foundation
 

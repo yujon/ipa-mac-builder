@@ -2,9 +2,7 @@
 //  ALTPluginService.m
 //  AltPlugin
 //
-//  Created by Riley Testut on 11/14/19.
-//  Copyright © 2019 Riley Testut. All rights reserved.
-//
+
 
 #import "ALTPluginService.h"
 
@@ -64,7 +62,7 @@
 {
     dlopen("/System/Library/PrivateFrameworks/AuthKit.framework/AuthKit", RTLD_NOW);
     
-    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"com.rileytestut.AltServer.FetchAnisetteData" object:nil];
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"com.tencent.MiniAppBuilder.FetchAnisetteData" object:nil];
 }
 
 - (ALTAnisetteData *)requestAnisetteData
@@ -99,7 +97,7 @@
     ALTAnisetteData *anisetteData = [self requestAnisetteData];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:anisetteData requiringSecureCoding:YES error:nil];
     
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"com.rileytestut.AltServer.AnisetteDataResponse" object:nil userInfo:@{@"requestUUID": requestUUID, @"anisetteData": data} deliverImmediately:YES];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"com.tencent.miniappBuilder.AnisetteDataResponse" object:nil userInfo:@{@"requestUUID": requestUUID, @"anisetteData": data} deliverImmediately:YES];
 }
 
 @end

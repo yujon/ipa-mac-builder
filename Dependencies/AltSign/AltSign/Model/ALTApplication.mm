@@ -2,9 +2,6 @@
 //  ALTApplication.m
 //  AltSign
 //
-//  Created by Riley Testut on 6/24/19.
-//  Copyright © 2019 Riley Testut. All rights reserved.
-//
 
 #import "ALTApplication.h"
 #import "ALTProvisioningProfile.h"

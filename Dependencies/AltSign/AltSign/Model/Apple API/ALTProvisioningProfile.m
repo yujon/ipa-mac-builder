@@ -2,9 +2,6 @@
 //  ALTProvisioningProfile.m
 //  AltSign
 //
-//  Created by Riley Testut on 5/22/19.
-//  Copyright © 2019 Riley Testut. All rights reserved.
-//
 
 #import "ALTProvisioningProfile.h"
 #import "ALTCertificate.h"
@@ -127,8 +124,6 @@
             
             NSString *bundleIdentifier = [value substringFromIndex:location + 1];
             self->_bundleIdentifier = [bundleIdentifier copy];
-
-            // self->_bundleIdentifier = @"com.tencent.devtoolssaaademo.db";
             *stop = YES;
         }];
         

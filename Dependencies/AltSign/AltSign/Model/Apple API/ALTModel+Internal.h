@@ -2,9 +2,6 @@
 //  ALTModel+Internal.h
 //  AltSign
 //
-//  Created by Riley Testut on 5/28/19.
-//  Copyright © 2019 Riley Testut. All rights reserved.
-//
 
 #import <AltSign/ALTAccount.h>
 #import <AltSign/ALTTeam.h>

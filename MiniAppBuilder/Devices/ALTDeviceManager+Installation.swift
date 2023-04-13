@@ -1,26 +1,11 @@
 //
 //  ALTDeviceManager+Installation.swift
-//  AltServer
 //
-//  Created by Riley Testut on 7/1/19.
-//  Copyright © 2019 Riley Testut. All rights reserved.
 //
 
 import Cocoa
 import UserNotifications
 import ObjectiveC
-
-#if STAGING
-let altstoreSourceURL = URL(string: "https://f000.backblazeb2.com/file/altstore-staging/apps-staging.json")!
-#else
-let altstoreSourceURL = URL(string: "https://apps.altstore.io")!
-#endif
-
-#if BETA
-let altstoreBundleID = "com.rileytestut.AltStore.Beta"
-#else
-let altstoreBundleID = "com.rileytestut.AltStore"
-#endif
 
 private let appGroupsSemaphore = DispatchSemaphore(value: 1)
 private let developerDiskManager = DeveloperDiskManager()
@@ -162,53 +147,49 @@ extension ALTDeviceManager
                                                         fallthrough // Continue installing app even if we couldn't install Developer disk image.
                                                     
                                                     case .success:
-                                                        // self.downloadApp(from: ipaFileURL, for: altDevice) { (result) in
-                                                             do
-                                                             {
-                                                                // let fileURL = try result.get()
-                                                                let fileURL = ipaFileURL
-                                                                
-                                                                try FileManager.default.createDirectory(at: destinationDirectoryURL, withIntermediateDirectories: true, attributes: nil)
-                                                                
-                                                                let appBundleURL = try FileManager.default.unzipAppBundle(at: fileURL, toDirectory: destinationDirectoryURL)
-                                                                guard let application = ALTApplication(fileURL: appBundleURL) else { throw ALTError(.invalidApp) }
-                                                                
-                                                                appName = application.name
-                                                                
-                                                                // Refresh anisette data to prevent session timeouts.
-                                                                AnisetteDataManager.shared.requestAnisetteData { (result) in
-                                                                    do
-                                                                    {
-                                                                        let anisetteData = try result.get()
-                                                                        session.anisetteData = anisetteData
-                                                                        
-                                                                        self.prepareAllProvisioningProfiles(for: application, device: device, team: team, session: session) { (result) in
-                                                                            do
-                                                                            {
-                                                                                let profiles = try result.get()
-                                                                                
-                                                                                self.install(application, to: device, team: team, certificate: certificate, profiles: profiles) { (result) in
-                                                                                    finish(result.map { application })
-                                                                                }
-                                                                            }
-                                                                            catch
-                                                                            {
-                                                                                finish(.failure(error), failure: NSLocalizedString("AltServer could not fetch new provisioning profiles.", comment: ""))
+                                                        do{
+                                                            let fileURL = ipaFileURL
+                                                            
+                                                            try FileManager.default.createDirectory(at: destinationDirectoryURL, withIntermediateDirectories: true, attributes: nil)
+                                                            
+                                                            let appBundleURL = try FileManager.default.unzipAppBundle(at: fileURL, toDirectory: destinationDirectoryURL)
+                                                            guard let application = ALTApplication(fileURL: appBundleURL) else { throw ALTError(.invalidApp) }
+                                                            
+                                                            appName = application.name
+                                                            
+                                                            // Refresh anisette data to prevent session timeouts.
+                                                            AnisetteDataManager.shared.requestAnisetteData { (result) in
+                                                                do
+                                                                {
+                                                                    let anisetteData = try result.get()
+                                                                    session.anisetteData = anisetteData
+                                                                    
+                                                                    self.prepareAllProvisioningProfiles(for: application, device: device, team: team, session: session) { (result) in
+                                                                        do
+                                                                        {
+                                                                            let profiles = try result.get()
+                                                                            
+                                                                            self.install(application, to: device, team: team, certificate: certificate, profiles: profiles) { (result) in
+                                                                                finish(result.map { application })
                                                                             }
                                                                         }
-                                                                    }
-                                                                    catch
-                                                                    {
-                                                                        finish(.failure(error))
+                                                                        catch
+                                                                        {
+                                                                            finish(.failure(error), failure: NSLocalizedString("AltServer could not fetch new provisioning profiles.", comment: ""))
+                                                                        }
                                                                     }
                                                                 }
-                                                             }
-                                                             catch
-                                                             {
-                                                                 let failure = String(format: NSLocalizedString("%@ could not be downloaded.", comment: ""), appName)
-                                                                 finish(.failure(error), failure: failure)
-                                                             }
-                                                        // }
+                                                                catch
+                                                                {
+                                                                    finish(.failure(error))
+                                                                }
+                                                            }
+                                                        }
+                                                        catch
+                                                        {
+                                                            let failure = String(format: NSLocalizedString("%@ could not be downloaded.", comment: ""), appName)
+                                                            finish(.failure(error), failure: failure)
+                                                        }
                                                     }
                                                 }
                                             }
@@ -232,7 +213,7 @@ extension ALTDeviceManager
                     }
                     catch
                     {
-                        finish(.failure(error), failure: NSLocalizedString("AltServer could not sign in with your Apple ID.", comment: ""))
+                        finish(.failure(error), failure: NSLocalizedString("MiniAppBuilder could not sign in with your Apple ID.", comment: ""))
                     }
                 }
             }
@@ -284,36 +265,6 @@ extension ALTDeviceManager
 
 private extension ALTDeviceManager
 {
-    func downloadApp(from url: URL?, for device: ALTDevice, completionHandler: @escaping (Result<URL, Error>) -> Void)
-    {
-        if let url, url.isFileURL
-        {
-            return completionHandler(.success(url))
-        }
-
-        let downloadTask = URLSession.shared.downloadTask(with: url!) { (fileURL, response, error) in
-            do
-            {
-                if let response = response as? HTTPURLResponse
-                {
-                    guard response.statusCode != 404 else { throw CocoaError(.fileNoSuchFile, userInfo: [NSURLErrorKey: url]) }
-                }
-                
-                let (fileURL, _) = try Result((fileURL, response), error).get()
-                completionHandler(.success(fileURL))
-                
-                do { try FileManager.default.removeItem(at: fileURL) }
-                catch { printStdErr("Failed to remove downloaded .ipa.", error) }
-            }
-            catch
-            {
-                completionHandler(.failure(error))
-            }
-        }
-        
-        downloadTask.resume()
-    }
-    
     
     func authenticate(appleID: String, password: String, anisetteData: ALTAnisetteData, completionHandler: @escaping (Result<(ALTAccount, ALTAppleAPISession), Error>) -> Void)
     {
@@ -401,16 +352,15 @@ private extension ALTDeviceManager
         ALTAppleAPI.shared.fetchCertificates(for: team, session: session) { (certificates, error) in
             do
             {
+                var isCancelled = false
                 let certificates = try Result(certificates, error).get()
                 
                 let certificateFileURL = FileManager.default.certificatesDirectory.appendingPathComponent(team.identifier + ".p12")
                 try FileManager.default.createDirectory(at: FileManager.default.certificatesDirectory, withIntermediateDirectories: true, attributes: nil)
                 
-                var isCancelled = false
-                
-                // Check if there is another AltStore certificate, which means AltStore has been installed with this Apple ID before.
-                let altstoreCertificate = certificates.first { $0.machineName?.starts(with: "AltStore") == true }
-                if let previousCertificate = altstoreCertificate
+                // Check if there is another MiniAppBuilder certificate, which means MiniAppBuilder has been installed with this Apple ID before.
+                let miniappCertificate = certificates.first { $0.machineName?.starts(with: "MiniAppBuilder") == true }
+                if let previousCertificate = miniappCertificate
                 {
                     if FileManager.default.fileExists(atPath: certificateFileURL.path),
                        let data = try? Data(contentsOf: certificateFileURL),
@@ -420,30 +370,12 @@ private extension ALTDeviceManager
                         certificate.machineIdentifier = previousCertificate.machineIdentifier
                         return completionHandler(.success(certificate))
                     }
-                                        
-                    DispatchQueue.main.sync {
-                        let alert = NSAlert()
-                        alert.messageText = NSLocalizedString("Multiple AltServers Not Supported", comment: "")
-                        alert.informativeText = NSLocalizedString("Please use the same AltServer you previously used with this Apple ID, or else apps installed with other AltServers will stop working.\n\nAre you sure you want to continue?", comment: "")
-                        
-                        alert.addButton(withTitle: NSLocalizedString("Continue", comment: ""))
-                        alert.addButton(withTitle: NSLocalizedString("Cancel", comment: ""))
-                        
-                        NSRunningApplication.current.activate(options: .activateIgnoringOtherApps)
-                        
-                        let buttonIndex = alert.runModal()
-                        if buttonIndex == NSApplication.ModalResponse.alertSecondButtonReturn
-                        {
-                            isCancelled = true
-                        }
-                    }
-                    
-                    guard !isCancelled else { return completionHandler(.failure(OperationError(.cancelled))) }
                 }
-                
+
+                // 安装证书
                 func addCertificate()
                 {
-                    ALTAppleAPI.shared.addCertificate(machineName: "AltStore", to: team, session: session) { (certificate, error) in
+                    ALTAppleAPI.shared.addCertificate(machineName: "MiniAppBuilder", to: team, session: session) { (certificate, error) in
                         do
                         {
                             let certificate = try Result(certificate, error).get()
@@ -483,8 +415,10 @@ private extension ALTDeviceManager
                     }
                 }
                 
-                if let certificate = altstoreCertificate ?? certificates.first
+                // 已安装的话先撤销再重新安装
+                if let certificate = miniappCertificate ?? certificates.first
                 {
+                    // 收费账号，给个提醒
                     if team.type != .free
                     {
                         DispatchQueue.main.sync {
@@ -510,7 +444,7 @@ private extension ALTDeviceManager
                         
                         guard !isCancelled else { return completionHandler(.failure(OperationError(.cancelled))) }
                     }
-                    
+                
                     ALTAppleAPI.shared.revoke(certificate, for: team, session: session) { (success, error) in
                         do
                         {
@@ -765,7 +699,7 @@ private extension ALTDeviceManager
                             dispatchGroup.enter()
                             
                             // Not all characters are allowed in group names, so we replace periods with spaces (like Apple does).
-                            let name = "AltStore " + groupIdentifier.replacingOccurrences(of: ".", with: " ")
+                            let name = "MiniAppBuilder " + groupIdentifier.replacingOccurrences(of: ".", with: " ")
                             
                             ALTAppleAPI.shared.addAppGroup(withName: name, groupIdentifier: adjustedGroupIdentifier, team: team, session: session) { (group, error) in
                                 switch Result(group, error)
@@ -864,15 +798,15 @@ private extension ALTDeviceManager
                 guard let appBundle = Bundle(url: application.fileURL) else { throw ALTError(.missingAppBundle) }
                 guard let infoDictionary = appBundle.completeInfoDictionary else { throw ALTError(.missingInfoPlist) }
                 
-                let openAppURL = URL(string: "altstore-" + application.bundleIdentifier + "://")!
+                let openAppURL = URL(string: "miniappBuilder-" + application.bundleIdentifier + "://")!
                 
                 var allURLSchemes = infoDictionary[Bundle.Info.urlTypes] as? [[String: Any]] ?? []
                 
-                // Embed open URL so AltBackup can return to AltStore.
-                let altstoreURLScheme = ["CFBundleTypeRole": "Editor",
+                // Embed open URL so AltBackup can return to MiniAppBuilder.
+                let miniappBuilderURLScheme = ["CFBundleTypeRole": "Editor",
                                          "CFBundleURLName": application.bundleIdentifier,
                                          "CFBundleURLSchemes": [openAppURL.scheme!]] as [String : Any]
-                allURLSchemes.append(altstoreURLScheme)
+                allURLSchemes.append(miniappBuilderURLScheme)
                 
                 var additionalValues: [String: Any] = [Bundle.Info.urlTypes: allURLSchemes]
                 additionalValues[Bundle.Info.deviceID] = device.identifier
@@ -923,7 +857,7 @@ private extension ALTDeviceManager
             }
             catch
             {
-                printStdErr("Failed to install AltStore", error)
+                printStdErr("Failed to install app", error)
                 completionHandler(.failure(error))
             }
         }

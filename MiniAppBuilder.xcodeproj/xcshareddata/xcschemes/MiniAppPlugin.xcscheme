@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BF5C5FC4237DF5AE00EDD0C6"
-               BuildableName = "AltPlugin.mailbundle"
-               BlueprintName = "AltPlugin"
+               BuildableName = "MiniAppPlugin.mailbundle"
+               BlueprintName = "MiniAppPlugin"
                ReferencedContainer = "container:MiniAppBuilder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BF5C5FC4237DF5AE00EDD0C6"
-            BuildableName = "AltPlugin.mailbundle"
-            BlueprintName = "AltPlugin"
+            BuildableName = "MiniAppPlugin.mailbundle"
+            BlueprintName = "MiniAppPlugin"
             ReferencedContainer = "container:MiniAppBuilder.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

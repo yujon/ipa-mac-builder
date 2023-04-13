@@ -1,10 +1,8 @@
 //
 //  DeveloperDiskManager.swift
-//  AltServer
 //
-//  Created by Riley Testut on 2/19/21.
-//  Copyright © 2021 Riley Testut. All rights reserved.
 //
+
 
 import Foundation
 

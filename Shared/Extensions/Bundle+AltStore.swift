@@ -1,10 +1,8 @@
 //
 //  Bundle+AltStore.swift
-//  AltStore
 //
-//  Created by Riley Testut on 5/30/19.
-//  Copyright © 2019 Riley Testut. All rights reserved.
 //
+
 
 import Foundation
 
@@ -53,15 +51,8 @@ public extension Bundle
 
 public extension Bundle
 {
-    static var baseAltStoreAppGroupID = "group.com.rileytestut.AltStore"
-    
     var appGroups: [String] {
         return self.infoDictionary?[Bundle.Info.appGroups] as? [String] ?? []
-    }
-    
-    var altstoreAppGroup: String? {        
-        let appGroup = self.appGroups.first { $0.contains(Bundle.baseAltStoreAppGroupID) }
-        return appGroup
     }
     
     var completeInfoDictionary: [String : Any]? {

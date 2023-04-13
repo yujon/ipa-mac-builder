@@ -1,9 +1,9 @@
 //
 //  ALTLocalizedError.swift
-//  AltStore
+//
 //
 //  Created by Riley Testut on 10/14/22.
-//  Copyright © 2022 Riley Testut. All rights reserved.
+//
 //
 
 import Foundation

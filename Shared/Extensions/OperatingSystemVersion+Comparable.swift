@@ -1,9 +1,9 @@
 //
 //  OperatingSystemVersion+Comparable.swift
-//  AltStoreCore
+//Core
 //
 //  Created by Riley Testut on 11/15/22.
-//  Copyright © 2022 Riley Testut. All rights reserved.
+//
 //
 
 import Foundation

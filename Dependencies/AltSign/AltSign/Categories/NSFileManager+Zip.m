@@ -2,9 +2,7 @@
 //  NSFileManager+Zip.m
 //  AltSign
 //
-//  Created by Riley Testut on 5/28/19.
-//  Copyright © 2019 Riley Testut. All rights reserved.
-//
+
 
 #import "NSFileManager+Zip.h"
 

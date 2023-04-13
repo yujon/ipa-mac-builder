@@ -2,9 +2,6 @@
 //  ALTCertificate.m
 //  AltSign
 //
-//  Created by Riley Testut on 5/10/19.
-//  Copyright © 2019 Riley Testut. All rights reserved.
-//
 
 #import "ALTCertificate.h"
 

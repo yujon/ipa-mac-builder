@@ -2,9 +2,6 @@
 //  ALTAnisetteData.m
 //  AltSign
 //
-//  Created by Riley Testut on 11/13/19.
-//  Copyright © 2019 Riley Testut. All rights reserved.
-//
 
 #import "ALTAnisetteData.h"
 

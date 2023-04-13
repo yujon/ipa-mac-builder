@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BFF7C903257844C900E55F36"
-               BuildableName = "AltXPC.xpc"
-               BlueprintName = "AltXPC"
+               BuildableName = "MiniAppXPC.xpc"
+               BlueprintName = "MiniAppXPC"
                ReferencedContainer = "container:MiniAppBuilder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -61,8 +61,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFF7C903257844C900E55F36"
-            BuildableName = "AltXPC.xpc"
-            BlueprintName = "AltXPC"
+            BuildableName = "MiniAppXPC.xpc"
+            BlueprintName = "MiniAppXPC"
             ReferencedContainer = "container:MiniAppBuilder.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
