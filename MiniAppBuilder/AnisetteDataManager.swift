@@ -45,7 +45,7 @@ class AnisetteDataManager: NSObject
     {
         super.init()
         
-        DistributedNotificationCenter.default().addObserver(self, selector: #selector(AnisetteDataManager.handleAnisetteDataResponse(_:)), name: Notification.Name("com.tencent.miniappBuilder.AnisetteDataResponse"), object: nil)
+        DistributedNotificationCenter.default().addObserver(self, selector: #selector(AnisetteDataManager.handleAnisetteDataResponse(_:)), name: Notification.Name("com.rileytestut.AltServer.AnisetteDataResponse"), object: nil)
     }
     
     func requestAnisetteData(_ completion: @escaping (Result<ALTAnisetteData, Error>) -> Void)
@@ -119,7 +119,7 @@ private extension AnisetteDataManager
         
         RunLoop.main.add(timer, forMode: .default)
         
-        DistributedNotificationCenter.default().postNotificationName(Notification.Name("com.tencent.MiniAppBuilder.FetchAnisetteData"), object: nil, userInfo: ["requestUUID": requestUUID], options: .deliverImmediately)
+        DistributedNotificationCenter.default().postNotificationName(Notification.Name("com.rileytestut.AltServer.FetchAnisetteData"), object: nil, userInfo: ["requestUUID": requestUUID], options: .deliverImmediately)
     }
     
     @objc func handleAnisetteDataResponse(_ notification: Notification)

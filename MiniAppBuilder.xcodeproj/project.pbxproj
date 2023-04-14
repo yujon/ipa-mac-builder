@@ -100,6 +100,7 @@
 		BFD52C2022A1A9EC000B7ED1 /* node.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52C1D22A1A9EC000B7ED1 /* node.c */; };
 		BFD52C2122A1A9EC000B7ED1 /* node_list.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52C1E22A1A9EC000B7ED1 /* node_list.c */; };
 		BFD52C2222A1A9EC000B7ED1 /* cnary.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52C1F22A1A9EC000B7ED1 /* cnary.c */; };
+		CE4B74B129E94FEC00987862 /* MiniAppPlugin.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE4B74B029E94FB600987862 /* MiniAppPlugin.zip */; };
 		CE649C3729CDC33E009AD7E5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C3629CDC33E009AD7E5 /* main.swift */; };
 		CE649C3B29CDC388009AD7E5 /* ALTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BF718BD723C93DB700A89F2D /* ALTConstants.m */; };
 		CE649C3C29CDC388009AD7E5 /* ServerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E3128229F474900370A3C /* ServerProtocol.swift */; };
@@ -128,7 +129,6 @@
 		CE87A14829E7003800557926 /* ALTPluginService.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87A14629E7003800557926 /* ALTPluginService.m */; };
 		CE87A14929E7003800557926 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE87A14729E7003800557926 /* Info.plist */; };
 		CE87A43B29E701C900557926 /* ALTAnisetteData.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87A43929E701C800557926 /* ALTAnisetteData.m */; };
-		CE87A44429E7181E00557926 /* MiniAppPlugin.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE649C9229D19B26009AD7E5 /* MiniAppPlugin.zip */; };
 		CE94633929DBCDEB0044F4E1 /* AltSign-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CE94633829DBCDEB0044F4E1 /* AltSign-Dynamic */; };
 		CE94633A29DBCDEB0044F4E1 /* AltSign-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = CE94633829DBCDEB0044F4E1 /* AltSign-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -159,7 +159,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				CE87A44429E7181E00557926 /* MiniAppPlugin.zip in CopyFiles */,
+				CE4B74B129E94FEC00987862 /* MiniAppPlugin.zip in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +299,7 @@
 		BFF767CD2489ABE90097E58C /* NetworkConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
 		BFF7C904257844C900E55F36 /* MiniAppXPC.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = MiniAppXPC.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF7C906257844C900E55F36 /* AltXPCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AltXPCProtocol.h; sourceTree = "<group>"; };
+		CE4B74B029E94FB600987862 /* MiniAppPlugin.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = MiniAppPlugin.zip; sourceTree = "<group>"; };
 		CE649C3429CDC33C009AD7E5 /* MiniAppBuilder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MiniAppBuilder; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE649C3629CDC33E009AD7E5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CE649C4E29CDC3A4009AD7E5 /* NSError+libimobiledevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+libimobiledevice.h"; sourceTree = "<group>"; };
@@ -310,23 +311,10 @@
 		CE649C5629CDC3A4009AD7E5 /* UserDefaults+MiniAppBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+MiniAppBuilder.swift"; sourceTree = "<group>"; };
 		CE649C5729CDC3A4009AD7E5 /* AnisetteDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnisetteDataManager.swift; sourceTree = "<group>"; };
 		CE649C5A29CDC3A4009AD7E5 /* PluginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginManager.swift; sourceTree = "<group>"; };
-		CE649C5C29CDC3A5009AD7E5 /* ALTWiredConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ALTWiredConnection.mm; sourceTree = "<group>"; };
-		CE649C5D29CDC3A5009AD7E5 /* ALTDebugConnection+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALTDebugConnection+Private.h"; sourceTree = "<group>"; };
-		CE649C5E29CDC3A5009AD7E5 /* ALTNotificationConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ALTNotificationConnection.mm; sourceTree = "<group>"; };
-		CE649C5F29CDC3A5009AD7E5 /* ALTWiredConnection+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALTWiredConnection+Private.h"; sourceTree = "<group>"; };
-		CE649C6029CDC3A5009AD7E5 /* WirelessConnectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WirelessConnectionHandler.swift; sourceTree = "<group>"; };
-		CE649C6129CDC3A5009AD7E5 /* ALTNotificationConnection+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALTNotificationConnection+Private.h"; sourceTree = "<group>"; };
-		CE649C6229CDC3A5009AD7E5 /* ALTDebugConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTDebugConnection.h; sourceTree = "<group>"; };
-		CE649C6329CDC3A5009AD7E5 /* RequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
-		CE649C6429CDC3A5009AD7E5 /* ALTWiredConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTWiredConnection.h; sourceTree = "<group>"; };
-		CE649C6529CDC3A5009AD7E5 /* ALTNotificationConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTNotificationConnection.h; sourceTree = "<group>"; };
-		CE649C6629CDC3A5009AD7E5 /* ALTDebugConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ALTDebugConnection.mm; sourceTree = "<group>"; };
-		CE649C6729CDC3A5009AD7E5 /* WiredConnectionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiredConnectionHandler.swift; sourceTree = "<group>"; };
 		CE649C6829CDC3A5009AD7E5 /* MiniAppBuilder-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MiniAppBuilder-Bridging-Header.h"; sourceTree = "<group>"; };
 		CE649C6929CDC3A5009AD7E5 /* DeveloperDiskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperDiskManager.swift; sourceTree = "<group>"; };
 		CE649C7F29CDC3F3009AD7E5 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		CE649C9029D19092009AD7E5 /* MiniAppBuilder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MiniAppBuilder.entitlements; sourceTree = "<group>"; };
-		CE649C9229D19B26009AD7E5 /* MiniAppPlugin.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = MiniAppPlugin.zip; sourceTree = "<group>"; };
 		CE87A14529E7003800557926 /* ALTPluginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTPluginService.h; sourceTree = "<group>"; };
 		CE87A14629E7003800557926 /* ALTPluginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTPluginService.m; sourceTree = "<group>"; };
 		CE87A14729E7003800557926 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -560,6 +548,7 @@
 		BFD247612284B9A500981D42 = {
 			isa = PBXGroup;
 			children = (
+				CE4B74AF29E94FB600987862 /* Resources */,
 				CE87A43E29E7037100557926 /* MiniAppXPC */,
 				CE87A14429E7003800557926 /* MiniAppPlugin */,
 				BF1E315122A0616100370A3C /* Shared */,
@@ -649,15 +638,21 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		CE4B74AF29E94FB600987862 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE4B74B029E94FB600987862 /* MiniAppPlugin.zip */,
+			);
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
+		};
 		CE649C3529CDC33E009AD7E5 /* MiniAppBuilder */ = {
 			isa = PBXGroup;
 			children = (
-				CE649C9529D19B67009AD7E5 /* Resources */,
 				CE649C9029D19092009AD7E5 /* MiniAppBuilder.entitlements */,
 				CE649C6829CDC3A5009AD7E5 /* MiniAppBuilder-Bridging-Header.h */,
 				CE649C5729CDC3A4009AD7E5 /* AnisetteDataManager.swift */,
 				CE649C4D29CDC3A4009AD7E5 /* Categories */,
-				CE649C5B29CDC3A5009AD7E5 /* Connections */,
 				CE649C6929CDC3A5009AD7E5 /* DeveloperDiskManager.swift */,
 				CE649C5029CDC3A4009AD7E5 /* Devices */,
 				CE649C5429CDC3A4009AD7E5 /* Extensions */,
@@ -701,33 +696,6 @@
 				CE649C5A29CDC3A4009AD7E5 /* PluginManager.swift */,
 			);
 			path = Plugin;
-			sourceTree = "<group>";
-		};
-		CE649C5B29CDC3A5009AD7E5 /* Connections */ = {
-			isa = PBXGroup;
-			children = (
-				CE649C5C29CDC3A5009AD7E5 /* ALTWiredConnection.mm */,
-				CE649C5D29CDC3A5009AD7E5 /* ALTDebugConnection+Private.h */,
-				CE649C5E29CDC3A5009AD7E5 /* ALTNotificationConnection.mm */,
-				CE649C5F29CDC3A5009AD7E5 /* ALTWiredConnection+Private.h */,
-				CE649C6029CDC3A5009AD7E5 /* WirelessConnectionHandler.swift */,
-				CE649C6129CDC3A5009AD7E5 /* ALTNotificationConnection+Private.h */,
-				CE649C6229CDC3A5009AD7E5 /* ALTDebugConnection.h */,
-				CE649C6329CDC3A5009AD7E5 /* RequestHandler.swift */,
-				CE649C6429CDC3A5009AD7E5 /* ALTWiredConnection.h */,
-				CE649C6529CDC3A5009AD7E5 /* ALTNotificationConnection.h */,
-				CE649C6629CDC3A5009AD7E5 /* ALTDebugConnection.mm */,
-				CE649C6729CDC3A5009AD7E5 /* WiredConnectionHandler.swift */,
-			);
-			path = Connections;
-			sourceTree = "<group>";
-		};
-		CE649C9529D19B67009AD7E5 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				CE649C9229D19B26009AD7E5 /* MiniAppPlugin.zip */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		CE87A14429E7003800557926 /* MiniAppPlugin */ = {

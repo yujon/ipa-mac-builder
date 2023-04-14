@@ -40,7 +40,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "44452703-6943-4797-AFA7-83EBE091EFF5"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MiniAppBuilder/Plugin/PluginManager.swift"
@@ -56,7 +56,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "086A3211-F018-4E87-9A98-7E6DEF4A5E4D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MiniAppBuilder/Plugin/PluginManager.swift"
@@ -72,7 +72,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4E457EB7-8967-4DCF-B9B6-E94EFF93E6E4"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MiniAppBuilder/Plugin/PluginManager.swift"
@@ -81,6 +81,149 @@
             startingLineNumber = "162"
             endingLineNumber = "162"
             landmarkName = "_run(_:arguments:authorization:freeAuthorization:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BD4D4B56-EB7A-408B-851A-B47B12256592"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/AnisetteDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "requestAnisetteDataFromPlugin(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "12F74BE0-CF78-4BAF-A9D6-043266F055E4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/AnisetteDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "handleAnisetteDataResponse(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "12F74BE0-CF78-4BAF-A9D6-043266F055E4 - d54f3ff38761618f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MiniAppBuilder.AnisetteDataManager.handleAnisetteDataResponse(Foundation.Notification) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-ios-builder/MiniAppBuilder/AnisetteDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "177">
+               </Location>
+               <Location
+                  uuid = "12F74BE0-CF78-4BAF-A9D6-043266F055E4 - d54f3ff38761618f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MiniAppBuilder.AnisetteDataManager.handleAnisetteDataResponse(Foundation.Notification) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-ios-builder/MiniAppBuilder/AnisetteDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "238">
+               </Location>
+               <Location
+                  uuid = "12F74BE0-CF78-4BAF-A9D6-043266F055E4 - d54f3ff38761618f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MiniAppBuilder.AnisetteDataManager.handleAnisetteDataResponse(Foundation.Notification) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-ios-builder/MiniAppBuilder/AnisetteDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "641">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F21ECC2-4BB9-4F52-8126-97BFBA8EB970"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/AnisetteDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "finishRequest(forUUID:result:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9F21ECC2-4BB9-4F52-8126-97BFBA8EB970 - 7f22515b7905a375"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MiniAppBuilder.AnisetteDataManager.finishRequest(forUUID: Swift.String, result: Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-ios-builder/MiniAppBuilder/AnisetteDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  uuid = "9F21ECC2-4BB9-4F52-8126-97BFBA8EB970 - 7f22515b7905a375"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MiniAppBuilder.AnisetteDataManager.finishRequest(forUUID: Swift.String, result: Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-ios-builder/MiniAppBuilder/AnisetteDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "389">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "13E338FA-19C6-47CD-BFA2-8E4B2C704BD4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/AnisetteDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "finishRequest(forUUID:result:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
