@@ -182,12 +182,11 @@ std::string CertificatesContent(ALTCertificate *altCertificate)
     OpenSSL_add_all_algorithms();
 }
 
-- (instancetype)initWithTeam:(ALTTeam *)team certificate:(ALTCertificate *)certificate
+- (instancetype)initWithCertificate:(ALTCertificate *)certificate
 {
     self = [super init];
     if (self)
     {
-        _team = team;
         _certificate = certificate;
     }
     

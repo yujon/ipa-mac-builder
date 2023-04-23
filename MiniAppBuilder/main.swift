@@ -69,17 +69,7 @@ private extension Application
                     continuation.resume(throwing: error)
                 }
             }
-            
-
-    //        AnisetteDataManager.shared.isXPCAvailable { isAvailable in
-    //            if isAvailable
-    //            {
-    //                // XPC service is available, so we don't need to install/update Mail plug-in.
-    //                // Users can still manually do so from the AltServer menu.
-    //                ALTDeviceManager.shared.installApplication(at: fileURL, to: device, appleID: appleID, password: password, completion: finish(_:))
-    //            }
-    //            else
-    //            {
+        
             if !self.pluginManager.isMailPluginInstalled
             {
                 self.pluginManager.installMailPlugin { (result) in
@@ -99,8 +89,6 @@ private extension Application
             {
                 ALTDeviceManager.shared.installApplication(at: fileURL, to: device, appleID: appleID, password: password, completion: finish(_:))
             }
-    //            }
-    //        }
         }
     }
 }

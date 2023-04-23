@@ -53,15 +53,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "934385625@qq.com"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
             argument = ""
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "/Users/jonnyyu/Desktop/MiniappAssistant.ipa"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

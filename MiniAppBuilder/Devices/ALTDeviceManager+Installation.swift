@@ -223,6 +223,8 @@ extension ALTDeviceManager
             }
         }
     }
+
+
 }
 
 extension ALTDeviceManager
@@ -523,16 +525,15 @@ private extension ALTDeviceManager
         let bundleID = application.bundleIdentifier.replacingOccurrences(of: parentBundleID, with: updatedParentBundleID)
         
         let preferredName: String
-//        if let parentApp = parentApp
-//        {
-//            preferredName = parentApp.name + " " + application.name
-//        }
-//        else
-//        {
-//            preferredName = application.name // 可能有中文，会报错
-//        }
-        preferredName = application.bundleIdentifier
-        
+        if let parentApp = parentApp
+        {
+            preferredName = parentApp.name + " " + application.name
+        }
+        else
+        {
+            preferredName = application.name // 可能有中文，会报错
+        }
+            
         self.registerAppID(name: preferredName, bundleID: bundleID, team: team, session: session) { (result) in
             do
             {
@@ -836,7 +837,7 @@ private extension ALTDeviceManager
                     try prepare(bundle)
                 }
                 
-                let resigner = ALTSigner(team: team, certificate: certificate)
+                let resigner = ALTSigner(certificate: certificate)
                 resigner.signApp(at: application.fileURL, provisioningProfiles: Array(profiles.values)) { (success, error) in
                     do
                     {
