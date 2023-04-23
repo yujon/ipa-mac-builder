@@ -8,7 +8,7 @@
 
 - 打开`Mail`，到 菜单 邮件 -> 设置 -> 管理插件, 启动`MiniAppPlugin.mailbundle`插件，然后重启`Mail`
 
-2. 下载MiniAppBuilder并解压
+2. 下载[MiniAppBuilder](https://github.com/yujon/ipa-mac-builder/releases/)并解压
 
 3. 将`iphone`手机用数据线连接到电脑上
 
