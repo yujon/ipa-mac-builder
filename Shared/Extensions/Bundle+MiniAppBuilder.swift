@@ -39,7 +39,7 @@ public extension Bundle
     }
     
     var certificateURL: URL {
-        let certificateURL = self.bundleURL.appendingPathComponent("ALTCertificate.p12")
+        let certificateURL = self.bundleURL.appendingPathComponent("MiniAppCertificate.p12")
         return certificateURL
     }
 }

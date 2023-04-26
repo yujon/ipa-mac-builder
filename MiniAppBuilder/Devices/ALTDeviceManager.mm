@@ -311,7 +311,7 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
             free(files);
         }
         
-        NSLog(@"Writing to device...");
+        NSLog(@"Install to device...");
         
         plist_t options = instproxy_client_options_new();
         instproxy_client_options_add(options, "PackageType", "Developer", NULL);

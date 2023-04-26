@@ -86,38 +86,41 @@ private extension ALTDeviceManager
 
 extension ALTDeviceManager
 {
-    func installApplication(at ipaFileURL: URL, to altDevice: ALTDevice, appleID: String, password: String, completion: @escaping (Result<ALTApplication, Error>) -> Void)
+    func installApplication(at ipaFileURL: URL, to device: ALTDevice,  profiles: Set<String>, completion: @escaping (Result<Void, Error>) -> Void)
     {
+        ALTDeviceManager.shared.installApp(at: ipaFileURL, toDeviceWithUDID: device.identifier, activeProvisioningProfiles: profiles) { (success, error) in
+            completion(Result(success, error))
+        }
+    }
+    
+    func signWithAppleID(at ipaFileURL: URL, to altDevice: ALTDevice, appleID: String, password: String, bundleId: String?, completion: @escaping (Result<(ALTApplication, Set<String>), Error>) -> Void)
+    {
+
         let destinationDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
-        
         var appName = ipaFileURL.deletingPathExtension().lastPathComponent
         
-        func finish(_ result: Result<ALTApplication, Error>, failure: String? = nil)
+        func finish(_ result: Result<(ALTApplication,Set<String>), Error>, failure: String? = nil)
         {
             DispatchQueue.main.async {
                 switch result
                 {
-                case .success(let app): completion(.success(app))
+                case .success(let result): completion(.success(result))
                 case .failure(var error as NSError):
-                    error = error.withLocalizedTitle(String(format: NSLocalizedString("%@ could not be installed onto %@.", comment: ""), appName, altDevice.name))
-                    
+                    error = error.withLocalizedTitle(String(format: NSLocalizedString("%@ could not sign %@.", comment: ""), appName, altDevice.name))
                     if let failure, error.localizedFailure == nil
                     {
                         error = error.withLocalizedFailure(failure)
                     }
-                    
                     completion(.failure(error))
                 }
             }
-            
-            try? FileManager.default.removeItem(at: destinationDirectoryURL)
+            // try? FileManager.default.removeItem(at: destinationDirectoryURL)
         }
         
         AnisetteDataManager.shared.requestAnisetteData { (result) in
             do
             {
                 let anisetteData = try result.get()
-                
                 self.authenticate(appleID: appleID, password: password, anisetteData: anisetteData) { (result) in
                     do
                     {
@@ -151,7 +154,7 @@ extension ALTDeviceManager
                                                             let fileURL = ipaFileURL
                                                             
                                                             try FileManager.default.createDirectory(at: destinationDirectoryURL, withIntermediateDirectories: true, attributes: nil)
-                                                            
+                                                            // 解压ipa
                                                             let appBundleURL = try FileManager.default.unzipAppBundle(at: fileURL, toDirectory: destinationDirectoryURL)
                                                             guard let application = ALTApplication(fileURL: appBundleURL) else { throw ALTError(.invalidApp) }
                                                             
@@ -164,18 +167,25 @@ extension ALTDeviceManager
                                                                     let anisetteData = try result.get()
                                                                     session.anisetteData = anisetteData
                                                                     
-                                                                    self.prepareAllProvisioningProfiles(for: application, device: device, team: team, session: session) { (result) in
+                                                                    self.prepareAllProvisioningProfiles(for: application, device: device, team: team, bundleId: bundleId, session: session) { (result) in
                                                                         do
                                                                         {
                                                                             let profiles = try result.get()
-                                                                            
-                                                                            self.install(application, to: device, team: team, certificate: certificate, profiles: profiles) { (result) in
-                                                                                finish(result.map { application })
+                                                                            self.signCore(application, certificate: certificate, profiles: profiles) { (result) in
+                                                                                do
+                                                                                {
+                                                                                    let activeProfiles = try result.get()
+                                                                                    finish(.success((application, activeProfiles)))
+                                                                                }
+                                                                                catch
+                                                                                {
+                                                                                    finish(.failure(error))
+                                                                                }
                                                                             }
                                                                         }
                                                                         catch
                                                                         {
-                                                                            finish(.failure(error), failure: NSLocalizedString("AltServer could not fetch new provisioning profiles.", comment: ""))
+                                                                            finish(.failure(error), failure: NSLocalizedString("MIniAppBuilder could not fetch new provisioning profiles.", comment: ""))
                                                                         }
                                                                     }
                                                                 }
@@ -221,6 +231,72 @@ extension ALTDeviceManager
             {
                 finish(.failure(error))
             }
+        }
+    }
+
+    func signWithCertificate(at ipaFileURL: URL, certificatePath: String, certificatePassword: String?, profilePath: String, completion: @escaping (Result<(ALTApplication, Set<String>), Error>) -> Void)
+    {
+
+        let destinationDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        var appName = ipaFileURL.deletingPathExtension().lastPathComponent
+
+        func finish(_ result: Result<(ALTApplication,Set<String>), Error>, failure: String? = nil)
+        {
+            DispatchQueue.main.async {
+                switch result
+                {
+                case .success(let result): completion(.success(result))
+                case .failure(var error as NSError):
+                    error = error.withLocalizedTitle(String(format: NSLocalizedString("%@ could not sign %@.", comment: ""), appName))
+                    if let failure, error.localizedFailure == nil
+                    {
+                        error = error.withLocalizedFailure(failure)
+                    }
+                    completion(.failure(error))
+                }
+            }
+            // try? FileManager.default.removeItem(at: destinationDirectoryURL)
+        }
+        
+        do
+        {
+           try FileManager.default.createDirectory(at: destinationDirectoryURL, withIntermediateDirectories: true, attributes: nil)
+           // 解压ipa
+           let appBundleURL = try FileManager.default.unzipAppBundle(at: ipaFileURL, toDirectory: destinationDirectoryURL)
+           guard let application = ALTApplication(fileURL: appBundleURL) else { throw ALTError(.invalidApp) }
+
+            guard FileManager.default.fileExists(atPath: certificatePath) else { throw ALTError(.missingCertificate) }
+
+            let certificateFileURL = URL(fileURLWithPath: certificatePath)
+            let profileFileURL = URL(fileURLWithPath: profilePath)
+            if let data = try? Data(contentsOf: certificateFileURL),
+               let certificate = ALTCertificate(p12Data: data, password: certificatePassword)
+            {
+                // Manually set machineIdentifier so we can encrypt + embed certificate if needed.
+                certificate.machineIdentifier = certificatePassword
+
+                let provisioningProfile: ALTProvisioningProfile = try ALTProvisioningProfile(url: profileFileURL)
+                let profiles = [application.bundleIdentifier:provisioningProfile]
+
+                self.signCore(application, certificate: certificate, profiles: profiles) { (result) in
+                    do
+                    {
+                        let activeProfiles = try result.get()
+                        finish(.success((application, activeProfiles)))
+                    }
+                    catch
+                    {
+                        finish(.failure(error))
+                    }
+                }
+            } else {
+                printStdErr("parse certificate fail")
+                // finish(.failure(error))
+            }
+        }
+        catch
+        {
+            finish(.failure(error))
         }
     }
 
@@ -418,35 +494,8 @@ private extension ALTDeviceManager
                 }
                 
                 // 已安装的话先撤销再重新安装
-                if let certificate = miniappCertificate ?? certificates.first
+                if let certificate = miniappCertificate
                 {
-                    // 收费账号，给个提醒
-                    if team.type != .free
-                    {
-                        DispatchQueue.main.sync {
-                            let alert = NSAlert()
-                            alert.messageText = NSLocalizedString("Installing this app will revoke your iOS development certificate.", comment: "")
-                            alert.informativeText = NSLocalizedString("""
-    This will not affect apps you've submitted to the App Store, but may cause apps you've installed to your devices with Xcode to stop working until you reinstall them.
-
-    To prevent this from happening, feel free to try again with another Apple ID.
-    """, comment: "")
-                            
-                            alert.addButton(withTitle: NSLocalizedString("Continue", comment: ""))
-                            alert.addButton(withTitle: NSLocalizedString("Cancel", comment: ""))
-                            
-                            NSRunningApplication.current.activate(options: .activateIgnoringOtherApps)
-                            
-                            let buttonIndex = alert.runModal()
-                            if buttonIndex == NSApplication.ModalResponse.alertSecondButtonReturn
-                            {
-                                isCancelled = true
-                            }
-                        }
-                        
-                        guard !isCancelled else { return completionHandler(.failure(OperationError(.cancelled))) }
-                    }
-                
                     ALTAppleAPI.shared.revoke(certificate, for: team, session: session) { (success, error) in
                         do
                         {
@@ -471,10 +520,10 @@ private extension ALTDeviceManager
         }
     }
     
-    func prepareAllProvisioningProfiles(for application: ALTApplication, device: ALTDevice, team: ALTTeam, session: ALTAppleAPISession,
+    func prepareAllProvisioningProfiles(for application: ALTApplication, device: ALTDevice, team: ALTTeam, bundleId: String?, session: ALTAppleAPISession,
                                         completion: @escaping (Result<[String: ALTProvisioningProfile], Error>) -> Void)
     {
-        self.prepareProvisioningProfile(for: application, parentApp: nil, device: device, team: team, session: session) { (result) in
+        self.prepareProvisioningProfile(for: application, parentApp: nil, device: device, team: team, bundleId: bundleId, session: session) { (result) in
             do
             {
                 let profile = try result.get()
@@ -488,13 +537,12 @@ private extension ALTDeviceManager
                 {
                     dispatchGroup.enter()
                     
-                    self.prepareProvisioningProfile(for: appExtension, parentApp: application, device: device, team: team, session: session) { (result) in
+                    self.prepareProvisioningProfile(for: appExtension, parentApp: application, device: device, team: team,  bundleId: bundleId, session: session) { (result) in
                         switch result
                         {
                         case .failure(let e): error = e
                         case .success(let profile): profiles[appExtension.bundleIdentifier] = profile
                         }
-                        
                         dispatchGroup.leave()
                     }
                 }
@@ -517,22 +565,29 @@ private extension ALTDeviceManager
         }
     }
     
-    func prepareProvisioningProfile(for application: ALTApplication, parentApp: ALTApplication?, device: ALTDevice, team: ALTTeam, session: ALTAppleAPISession, completionHandler: @escaping (Result<ALTProvisioningProfile, Error>) -> Void)
+    func prepareProvisioningProfile(for application: ALTApplication, parentApp: ALTApplication?, device: ALTDevice, team: ALTTeam, bundleId: String?, session: ALTAppleAPISession, completionHandler: @escaping (Result<ALTProvisioningProfile, Error>) -> Void)
     {
         let parentBundleID = parentApp?.bundleIdentifier ?? application.bundleIdentifier
-        let updatedParentBundleID: String = parentBundleID + "." + team.identifier // Append just team identifier to make it harder to track.
+        var bundleID = bundleId ?? "same"
+        if bundleId == "same" {
+            bundleID = parentBundleID
+        } else if  bundleId == "auto" {
+            bundleID = parentBundleID + "." + team.identifier
+        } else {
+            bundleID = bundleId!
+        }
         
-        let bundleID = application.bundleIdentifier.replacingOccurrences(of: parentBundleID, with: updatedParentBundleID)
-        
-        let preferredName: String
+        var preferredName: String
         if let parentApp = parentApp
         {
             preferredName = parentApp.name + " " + application.name
         }
         else
         {
-            preferredName = application.name // 可能有中文，会报错
+            preferredName = application.name 
         }
+        // 可能有中文，编码下
+        preferredName = preferredName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             
         self.registerAppID(name: preferredName, bundleID: bundleID, team: team, session: session) { (result) in
             do
@@ -666,7 +721,6 @@ private extension ALTDeviceManager
         
         // Dispatch onto global queue to prevent appGroupsSemaphore deadlock.
         DispatchQueue.global().async {
-            
             // Ensure we're not concurrently fetching and updating app groups,
             // which can lead to race conditions such as adding an app group twice.
             appGroupsSemaphore.wait()
@@ -764,73 +818,37 @@ private extension ALTDeviceManager
         }
     }
     
-    func install(_ application: ALTApplication, to device: ALTDevice, team: ALTTeam, certificate: ALTCertificate, profiles: [String: ALTProvisioningProfile], completionHandler: @escaping (Result<Void, Error>) -> Void)
+    func signCore(_ application: ALTApplication, certificate: ALTCertificate, profiles: [String: ALTProvisioningProfile], completionHandler: @escaping (Result<Set<String>, Error>) -> Void)
     {
+
         func prepare(_ bundle: Bundle, additionalInfoDictionaryValues: [String: Any] = [:]) throws
         {
             guard let identifier = bundle.bundleIdentifier else { throw ALTError(.missingAppBundle) }
             guard let profile = profiles[identifier] else { throw ALTError(.missingProvisioningProfile) }
             guard var infoDictionary = bundle.completeInfoDictionary else { throw ALTError(.missingInfoPlist) }
-            
-            
             infoDictionary[kCFBundleIdentifierKey as String] = profile.bundleIdentifier
-            infoDictionary[Bundle.Info.altBundleID] = identifier
-            
-            if (infoDictionary.keys.contains(Bundle.Info.deviceID)) {
-                infoDictionary[Bundle.Info.deviceID] = device.identifier
-            }
-
             for (key, value) in additionalInfoDictionaryValues
             {
                 infoDictionary[key] = value
             }
-            
             if let appGroups = profile.entitlements[.appGroups] as? [String]
             {
                 infoDictionary[Bundle.Info.appGroups] = appGroups
             }
-            
             try (infoDictionary as NSDictionary).write(to: bundle.infoPlistURL)
         }
         
         DispatchQueue.global().async {
             do
             {
+                print("Signing the app...");
                 guard let appBundle = Bundle(url: application.fileURL) else { throw ALTError(.missingAppBundle) }
                 guard let infoDictionary = appBundle.completeInfoDictionary else { throw ALTError(.missingInfoPlist) }
                 
-                let openAppURL = URL(string: "miniappBuilder-" + application.bundleIdentifier + "://")!
-                
                 var allURLSchemes = infoDictionary[Bundle.Info.urlTypes] as? [[String: Any]] ?? []
-                
-                // Embed open URL so AltBackup can return to MiniAppBuilder.
-                let miniappBuilderURLScheme = ["CFBundleTypeRole": "Editor",
-                                         "CFBundleURLName": application.bundleIdentifier,
-                                         "CFBundleURLSchemes": [openAppURL.scheme!]] as [String : Any]
-                allURLSchemes.append(miniappBuilderURLScheme)
-                
                 var additionalValues: [String: Any] = [Bundle.Info.urlTypes: allURLSchemes]
-                additionalValues[Bundle.Info.deviceID] = device.identifier
-                additionalValues[Bundle.Info.serverID] = UserDefaults.standard.serverID
-                
-                if
-                    let machineIdentifier = certificate.machineIdentifier,
-                    let encryptedData = certificate.encryptedP12Data(withPassword: machineIdentifier)
-                {
-                    additionalValues[Bundle.Info.certificateID] = certificate.serialNumber
-                    
-                    let certificateURL = application.fileURL.appendingPathComponent("ALTCertificate.p12")
-                    try encryptedData.write(to: certificateURL, options: .atomic)
-                }
-                else if infoDictionary.keys.contains(Bundle.Info.deviceID)
-                {
-                    // There is an ALTDeviceID entry, so assume the app is using AltKit and replace it with the device's UDID.
-                    additionalValues[Bundle.Info.deviceID] = device.identifier
-                    additionalValues[Bundle.Info.serverID] = UserDefaults.standard.serverID
-                }
                 
                 try prepare(appBundle, additionalInfoDictionaryValues: additionalValues)
-                
                 for appExtension in application.appExtensions
                 {
                     guard let bundle = Bundle(url: appExtension.fileURL) else { throw ALTError(.missingAppBundle) }
@@ -842,12 +860,8 @@ private extension ALTDeviceManager
                     do
                     {
                         try Result(success, error).get()
-                        
-                        let activeProfiles: Set<String>? = (team.type == .free) ? Set(profiles.values.map(\.bundleIdentifier)) : nil
-                        
-                        ALTDeviceManager.shared.installApp(at: application.fileURL, toDeviceWithUDID: device.identifier, activeProvisioningProfiles: activeProfiles) { (success, error) in
-                            completionHandler(Result(success, error))
-                        }
+                        let activeProfiles: Set<String>? = Set(profiles.values.map(\.bundleIdentifier))
+                        completionHandler(Result(activeProfiles, error))
                     }
                     catch
                     {
@@ -863,6 +877,8 @@ private extension ALTDeviceManager
             }
         }
     }
+
+
     
 }
 

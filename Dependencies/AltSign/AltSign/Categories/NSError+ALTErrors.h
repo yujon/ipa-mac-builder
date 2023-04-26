@@ -20,6 +20,7 @@ typedef NS_ERROR_ENUM(AltSignErrorDomain, ALTError)
     ALTErrorMissingAppBundle,
     ALTErrorMissingInfoPlist,
     ALTErrorMissingProvisioningProfile,
+    ALTErrorMissingCertificate,
 };
 
 typedef NS_ERROR_ENUM(ALTAppleAPIErrorDomain, ALTAppleAPIError)

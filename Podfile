@@ -5,6 +5,7 @@ target 'MiniAppBuilder' do
 
   use_frameworks!
   pod 'STPrivilegedTask', :git => 'https://github.com/rileytestut/STPrivilegedTask.git'
+  pod 'ArgumentParserKit'
   # pod 'Sparkle'
 
 end

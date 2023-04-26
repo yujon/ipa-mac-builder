@@ -320,11 +320,6 @@
 		CE87A14729E7003800557926 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE87A43929E701C800557926 /* ALTAnisetteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALTAnisetteData.m; path = "Dependencies/AltSign/AltSign/Model/Apple API/ALTAnisetteData.m"; sourceTree = SOURCE_ROOT; };
 		CE87A43A29E701C800557926 /* ALTAnisetteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALTAnisetteData.h; path = "Dependencies/AltSign/AltSign/Model/Apple API/ALTAnisetteData.h"; sourceTree = SOURCE_ROOT; };
-		CE87A43F29E7037100557926 /* MiniAppXPC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MiniAppXPC-Bridging-Header.h"; sourceTree = "<group>"; };
-		CE87A44029E7037100557926 /* MiniAppXPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppXPC.swift; sourceTree = "<group>"; };
-		CE87A44129E7037100557926 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		CE87A44229E7037100557926 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE87A44329E7037100557926 /* MiniAppXPC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MiniAppXPC.entitlements; sourceTree = "<group>"; };
 		D51AD27C29356B7B00967AAA /* ALTWrappedError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTWrappedError.h; sourceTree = "<group>"; };
 		D51AD27D29356B7B00967AAA /* ALTWrappedError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALTWrappedError.m; sourceTree = "<group>"; };
 		D533E8B62727841800A9B5DD /* libAppleArchive.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libAppleArchive.tbd; path = usr/lib/libAppleArchive.tbd; sourceTree = SDKROOT; };
@@ -549,7 +544,6 @@
 			isa = PBXGroup;
 			children = (
 				CE4B74AF29E94FB600987862 /* Resources */,
-				CE87A43E29E7037100557926 /* MiniAppXPC */,
 				CE87A14429E7003800557926 /* MiniAppPlugin */,
 				BF1E315122A0616100370A3C /* Shared */,
 				BF45872C2298D31600BD7491 /* libimobiledevice */,
@@ -708,18 +702,6 @@
 				CE87A14729E7003800557926 /* Info.plist */,
 			);
 			path = MiniAppPlugin;
-			sourceTree = "<group>";
-		};
-		CE87A43E29E7037100557926 /* MiniAppXPC */ = {
-			isa = PBXGroup;
-			children = (
-				CE87A43F29E7037100557926 /* MiniAppXPC-Bridging-Header.h */,
-				CE87A44029E7037100557926 /* MiniAppXPC.swift */,
-				CE87A44129E7037100557926 /* main.swift */,
-				CE87A44229E7037100557926 /* Info.plist */,
-				CE87A44329E7037100557926 /* MiniAppXPC.entitlements */,
-			);
-			path = MiniAppXPC;
 			sourceTree = "<group>";
 		};
 		D5DB145728F9DC0300A8F606 /* Errors */ = {
@@ -1413,10 +1395,11 @@
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ArgumentParserKit\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/STPrivilegedTask\"",
-					"\"${PODS_ROOT}/Sparkle\"",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 					"\"${PODS_ROOT}/STPrivilegedTask\"",
+					"\"${PODS_ROOT}/ArgumentParserKit\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/ldid/libplist/include\"",
@@ -1435,7 +1418,7 @@
 					"'@loader_path/Frameworks'",
 					"@loader_path/../Frameworks",
 					"'@executable_path/STPrivilegedTask'",
-					"'@executable_path/Sparkle'",
+					"'@executable_path/ArgumentParserKit'",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.miniappBuilder;
@@ -1465,10 +1448,12 @@
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ArgumentParserKit\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/STPrivilegedTask\"",
 					"\"${PODS_ROOT}/Sparkle\"",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 					"\"${PODS_ROOT}/STPrivilegedTask\"",
+					"\"${PODS_ROOT}/ArgumentParserKit\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/Dependencies/AltSign/Dependencies/ldid/libplist/include\"",
@@ -1487,6 +1472,7 @@
 					"'@loader_path/Frameworks'",
 					"@loader_path/../Frameworks",
 					"'@executable_path/STPrivilegedTask'",
+					"'@executable_path/ArgumentParserKit'",
 					"'@executable_path/Sparkle'",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.1;

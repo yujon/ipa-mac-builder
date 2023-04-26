@@ -1,8 +1,14 @@
 PODS:
+  - ArgumentParserKit (1.0.0)
   - STPrivilegedTask (1.0.7)
 
 DEPENDENCIES:
+  - ArgumentParserKit
   - STPrivilegedTask (from `https://github.com/rileytestut/STPrivilegedTask.git`)
+
+SPEC REPOS:
+  trunk:
+    - ArgumentParserKit
 
 EXTERNAL SOURCES:
   STPrivilegedTask:
@@ -14,8 +20,9 @@ CHECKOUT OPTIONS:
     :git: https://github.com/rileytestut/STPrivilegedTask.git
 
 SPEC CHECKSUMS:
+  ArgumentParserKit: 99ceb746098d9f478a6cb9b01b38ce9ecab3122d
   STPrivilegedTask: 56c3397238a1ec07720fb877a044898373cd2c68
 
-PODFILE CHECKSUM: e3afea15bd9805ad60a26faf67e372de6f5acb58
+PODFILE CHECKSUM: 4bf378c885e2583f8df9b570d583b8e6b6262de0
 
 COCOAPODS: 1.12.0
