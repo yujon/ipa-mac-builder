@@ -196,24 +196,24 @@ private extension Application
                 }
             }
         
-            if !self.pluginManager.isMailPluginInstalled
-            {
-                self.pluginManager.installMailPlugin { (result) in
-                    DispatchQueue.main.async {
-                        switch result
-                        {
-                        case .failure(let error):
-                            printStdErr("Failed to Install Mail Plug-in", error.localizedDescription)
-                            finish(.failure(error))
-                        case .success:
-                            finish(.failure(PluginError.taskError(output: "Mail Plug-in had Installed, Please restart Mail and enable MiniAppPlugin in Mail's Preferences. Mail must be running when signing and installing apps")))
-                        }
-                    }
-                }
-                return
-            }
             if signType == "appleID"
             {
+                if !self.pluginManager.isMailPluginInstalled
+                {
+                    self.pluginManager.installMailPlugin { (result) in
+                        DispatchQueue.main.async {
+                            switch result
+                            {
+                            case .failure(let error):
+                                printStdErr("Failed to Install Mail Plug-in", error.localizedDescription)
+                                finish(.failure(error))
+                            case .success:
+                                finish(.failure(PluginError.taskError(output: "Mail Plug-in had Installed, Please restart Mail and enable MiniAppPlugin in Mail's Preferences. Mail must be running when signing and installing apps")))
+                            }
+                        }
+                    }
+                    return
+                }
                 ALTDeviceManager.shared.signWithAppleID(at: fileURL, to: device!, appleID: username!, password: password!, bundleId: bundleId, completion: signFinish)
             } else {
                 ALTDeviceManager.shared.signWithCertificate(at: fileURL, certificatePath: certificatePath!, certificatePassword: certificatePassword, profilePath: profilePath!, completion: signFinish)
