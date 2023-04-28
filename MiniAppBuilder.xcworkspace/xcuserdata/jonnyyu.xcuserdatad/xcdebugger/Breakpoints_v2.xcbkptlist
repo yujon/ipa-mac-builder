@@ -205,8 +205,8 @@
             filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "launch()"
             landmarkType = "7">
          </BreakpointContent>
@@ -221,8 +221,8 @@
             filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "launch()"
             landmarkType = "7">
          </BreakpointContent>
@@ -237,8 +237,8 @@
             filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "844"
-            endingLineNumber = "844"
+            startingLineNumber = "847"
+            endingLineNumber = "847"
             landmarkName = "signCore(_:certificate:profiles:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -285,8 +285,8 @@
             filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "launch()"
             landmarkType = "7">
          </BreakpointContent>
@@ -301,8 +301,8 @@
             filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "launch()"
             landmarkType = "7">
          </BreakpointContent>
@@ -319,8 +319,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
             endingLineNumber = "98"
-            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
-            landmarkType = "7">
+            landmarkName = "ALTDeviceManager"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -333,8 +333,8 @@
             filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -349,8 +349,8 @@
             filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -365,8 +365,8 @@
             filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
             landmarkType = "7">
             <Locations>
@@ -413,8 +413,8 @@
             filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "signFinish(_:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -429,10 +429,56 @@
             filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "296"
+            endingLineNumber = "296">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "13586E52-5954-460A-A9E5-F787B528F031"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/main.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "launch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "896AFFCF-D64B-4D3B-B8D7-E1C75B69F84C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/main.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "signFinish(_:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7536A7A4-7237-4D22-9638-CBFB3CC365E5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/main.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "launch()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -9,7 +9,6 @@ import Cocoa
 import AltSign
 import ArgumentParserKit
 
-
 extension ALTDevice {}
 
 enum ArgValidateError: Error {
@@ -30,11 +29,12 @@ class Application: NSObject {
 
     func launch() async throws
     {
+
         let arguments = Array(CommandLine.arguments.dropFirst())
         let parser = ArgumentParser(usage: "<options>", overview: "A description")
         let ipaOption = parser.add(option: "--ipa", shortName: "-ipa", kind: String.self, usage: "ipa path")
         let typeOption = parser.add(option: "--type", shortName: "-t", kind: String.self, usage: "apple sign type: appleId or certificate")
-        
+
         let usernameOption = parser.add(option: "--appleId", shortName: "-a", kind: String.self, usage: "apple ID")
         let passwordOption = parser.add(option: "--password", shortName: "-p", kind: String.self, usage: "apple password")
         let deviceIdOption = parser.add(option: "--deviceId", shortName: "-di", kind: String.self, usage: "device udid。 required when")
@@ -45,7 +45,7 @@ class Application: NSObject {
         let profilePathOption = parser.add(option: "--profile", shortName: "-pf", kind: String.self, usage: "profile path")
 
         let outputDirOption = parser.add(option: "--output", shortName: "-o", kind: String.self, usage: "output dir")
-        let installOption = parser.add(option: "--install", shortName: "-i", kind: String.self, usage: "install instantly to device")
+        let installOption = parser.add(option: "--install", shortName: "-i", kind: Bool.self, usage: "install instantly to device")
         let bundleIdOption = parser.add(option: "--bundleId", shortName: "-bi", kind: String.self, usage: "the bundleId, same|auto|xx.xx.xx(specified bundleId)")
         let parsedArguments = try parser.parse(arguments)
 
@@ -61,10 +61,10 @@ class Application: NSObject {
         let certificatePassword = parsedArguments.get(certificatePasswordOption)
         let profilePath = parsedArguments.get(profilePathOption)
 
-        let install = parsedArguments.get(installOption)
+        let install = parsedArguments.get(installOption) ?? false
         let outputDir = parsedArguments.get(outputDirOption)
         let bundleId = parsedArguments.get(bundleIdOption) ?? "same"
-        
+
 
         if ipaPath == nil {
            printStdErr("the ipa path not found")
@@ -75,8 +75,21 @@ class Application: NSObject {
 
        if signType == "appleID" {
            if username == nil || password == nil {
-                printStdErr("appleID or password is undefined")
-                throw ArgValidateError.appleIDOrPassswordUndefined
+               let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
+               let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("./appleAccount.sh").path
+               let inputOutput = executeCommand(inputCommand)
+               if let input = inputOutput {
+                   let inputLines = input.split(separator: "\n")
+                   if inputLines.count < 2  {
+                       printStdErr("appleID or password is undefined")
+                       throw ArgValidateError.appleIDOrPassswordUndefined
+                   }
+                   username = String(inputLines[0])
+                   password = String(inputLines[1])
+               } else {
+                   printStdErr("appleID or password is undefined")
+                   throw ArgValidateError.appleIDOrPassswordUndefined
+               }
            }
        } else {
             if certificatePath == nil || profilePath == nil {
@@ -94,14 +107,14 @@ class Application: NSObject {
        }
 
         // output或install至少一种
-        if outputDir == nil && install  == nil{
+        if outputDir == nil && install {
             printStdErr("not output Dir or install instantly")
             throw ArgValidateError.notOutputOrInstall
         }
-        
+
         // 采用appleId方式，或者开启install需要有deviceId
         var device: ALTDevice? = nil
-        if signType == "appleID" || install != nil {
+        if signType == "appleID" || install {
             if deviceId == nil {
                 ALTDeviceManager.shared.start()
                 if ALTDeviceManager.shared.availableDevices.count == 0 {
@@ -116,7 +129,7 @@ class Application: NSObject {
         }
 
         UserDefaults.standard.registerDefaults()
-        
+
         try await self.doAction(
             at: fileURL,
             signType: signType,
@@ -126,7 +139,7 @@ class Application: NSObject {
             certificatePassword: certificatePassword,
             profilePath: profilePath,
             to: device,
-            outputDir: outputDir, 
+            outputDir: outputDir,
             install: install,
             bundleId: bundleId
         )
@@ -147,7 +160,7 @@ private extension Application
         profilePath: String?,
         to device: ALTDevice?,
         outputDir: String?,
-        install: String?,
+        install: Bool,
         bundleId: String?
     ) async throws
     {
@@ -182,9 +195,9 @@ private extension Application
                             try FileManager.default.removeItem(at: distIPAURL)
                         }
                         try FileManager.default.moveItem(at: resignedIPAURL, to: distIPAURL)
-                        print("the ipa export successfullly")
+                        print("Export the ipa successfullly")
                     }
-                    if install != nil {
+                    if install {
                         ALTDeviceManager.shared.installApplication(at: application.fileURL, to: device!, profiles: profiles,  completion: finish(_:))
                     } else {
                         finish(.success(()))
@@ -220,55 +233,6 @@ private extension Application
             }
         }
    }
-}
-
-private var authenticationAlertKey = 0
-private var authenticationAppleIDTextFieldKey = 0
-private var authenticationPasswordTextFieldKey = 0
-
-extension Application: NSTextFieldDelegate
-{
-    private weak var authenticationAlert: NSAlert? {
-        get { return objc_getAssociatedObject(self, &authenticationAlertKey) as? NSAlert }
-        set { objc_setAssociatedObject(self, &authenticationAlertKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
-    }
-    private weak var authenticationAppleIDTextField:NSTextField? {
-        get { return objc_getAssociatedObject(self, &authenticationAppleIDTextFieldKey) as? NSTextField }
-        set { objc_setAssociatedObject(self, &authenticationAppleIDTextFieldKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
-    }
-    private weak var authenticationPasswordTextField: NSSecureTextField? {
-        get { return objc_getAssociatedObject(self, &authenticationPasswordTextFieldKey) as? NSSecureTextField }
-        set { objc_setAssociatedObject(self, &authenticationPasswordTextFieldKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
-    }
-
-    func controlTextDidChange(_ obj: Notification)
-    {
-        self.validate()
-    }
-    
-    func controlTextDidEndEditing(_ obj: Notification)
-    {
-        self.validate()
-    }
-    
-    private func validate()
-    {
-        guard
-            let appleID = self.authenticationAppleIDTextField?.stringValue.trimmingCharacters(in: .whitespacesAndNewlines),
-            let password = self.authenticationPasswordTextField?.stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
-        else { return }
-        
-        if appleID.isEmpty || password.isEmpty
-        {
-            self.authenticationAlert?.buttons.first?.isEnabled = false
-        }
-        else
-        {
-            self.authenticationAlert?.buttons.first?.isEnabled = true
-        }
-        
-        self.authenticationAlert?.layout()
-    }
 }
 
 do {

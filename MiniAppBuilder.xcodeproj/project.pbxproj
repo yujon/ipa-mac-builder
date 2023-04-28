@@ -131,6 +131,8 @@
 		CE87A43B29E701C900557926 /* ALTAnisetteData.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87A43929E701C800557926 /* ALTAnisetteData.m */; };
 		CE94633929DBCDEB0044F4E1 /* AltSign-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CE94633829DBCDEB0044F4E1 /* AltSign-Dynamic */; };
 		CE94633A29DBCDEB0044F4E1 /* AltSign-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = CE94633829DBCDEB0044F4E1 /* AltSign-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CEE0C8C329FADB3400C00BD7 /* appleAccount.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEE0C8C229FADB2600C00BD7 /* appleAccount.sh */; };
+		CEE0C8C529FAE1B500C00BD7 /* appleVerificationCode.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = CEE0C8C429FAE1A100C00BD7 /* appleVerificationCode.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +161,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				CEE0C8C529FAE1B500C00BD7 /* appleVerificationCode.sh in CopyFiles */,
+				CEE0C8C329FADB3400C00BD7 /* appleAccount.sh in CopyFiles */,
 				CE4B74B129E94FEC00987862 /* MiniAppPlugin.zip in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +324,8 @@
 		CE87A14729E7003800557926 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE87A43929E701C800557926 /* ALTAnisetteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALTAnisetteData.m; path = "Dependencies/AltSign/AltSign/Model/Apple API/ALTAnisetteData.m"; sourceTree = SOURCE_ROOT; };
 		CE87A43A29E701C800557926 /* ALTAnisetteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALTAnisetteData.h; path = "Dependencies/AltSign/AltSign/Model/Apple API/ALTAnisetteData.h"; sourceTree = SOURCE_ROOT; };
+		CEE0C8C229FADB2600C00BD7 /* appleAccount.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = appleAccount.sh; sourceTree = "<group>"; };
+		CEE0C8C429FAE1A100C00BD7 /* appleVerificationCode.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = appleVerificationCode.sh; path = MiniAppBuilder/appleVerificationCode.sh; sourceTree = SOURCE_ROOT; };
 		D51AD27C29356B7B00967AAA /* ALTWrappedError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTWrappedError.h; sourceTree = "<group>"; };
 		D51AD27D29356B7B00967AAA /* ALTWrappedError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALTWrappedError.m; sourceTree = "<group>"; };
 		D533E8B62727841800A9B5DD /* libAppleArchive.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libAppleArchive.tbd; path = usr/lib/libAppleArchive.tbd; sourceTree = SDKROOT; };
@@ -645,6 +651,8 @@
 			children = (
 				CE649C9029D19092009AD7E5 /* MiniAppBuilder.entitlements */,
 				CE649C6829CDC3A5009AD7E5 /* MiniAppBuilder-Bridging-Header.h */,
+				CEE0C8C429FAE1A100C00BD7 /* appleVerificationCode.sh */,
+				CEE0C8C229FADB2600C00BD7 /* appleAccount.sh */,
 				CE649C5729CDC3A4009AD7E5 /* AnisetteDataManager.swift */,
 				CE649C4D29CDC3A4009AD7E5 /* Categories */,
 				CE649C6929CDC3A5009AD7E5 /* DeveloperDiskManager.swift */,

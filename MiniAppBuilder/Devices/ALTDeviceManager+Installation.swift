@@ -54,6 +54,19 @@ struct OperationError: ALTLocalizedError
     }
 }
 
+
+func executeCommand(_ command: String) -> String? {
+    let process = Process()
+    process.launchPath = "/bin/bash"
+    process.arguments = ["-c", command]
+    let outputPipe = Pipe()
+    process.standardOutput = outputPipe
+    process.launch()
+    let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
+    let outputString = String(data: outputData, encoding: .utf8)
+    return outputString
+}
+
 private extension ALTDeviceManager
 {
     struct Source: Decodable
@@ -104,7 +117,9 @@ extension ALTDeviceManager
             DispatchQueue.main.async {
                 switch result
                 {
-                case .success(let result): completion(.success(result))
+                case .success(let result):
+                    print("Install the app successfully")
+                    completion(.success(result))
                 case .failure(var error as NSError):
                     error = error.withLocalizedTitle(String(format: NSLocalizedString("%@ could not sign %@.", comment: ""), appName, altDevice.name))
                     if let failure, error.localizedFailure == nil
@@ -117,6 +132,7 @@ extension ALTDeviceManager
             // try? FileManager.default.removeItem(at: destinationDirectoryURL)
         }
         
+        print("Init the sign environment...");
         AnisetteDataManager.shared.requestAnisetteData { (result) in
             do
             {
@@ -348,37 +364,20 @@ private extension ALTDeviceManager
     {
         func handleVerificationCode(_ completionHandler: @escaping (String?) -> Void)
         {
-            DispatchQueue.main.async {
-                let alert = NSAlert()
-                alert.messageText = NSLocalizedString("Two-Factor Authentication Enabled", comment: "")
-                alert.informativeText = NSLocalizedString("Please enter the 6-digit verification code that was sent to your Apple devices.", comment: "")
-                
-                let textField = NSTextField(frame: NSRect(x: 0, y: 0, width: 300, height: 22))
-                textField.delegate = self
-                textField.translatesAutoresizingMaskIntoConstraints = false
-                textField.placeholderString = NSLocalizedString("123456", comment: "")
-                alert.accessoryView = textField
-                alert.window.initialFirstResponder = textField
-                
-                alert.addButton(withTitle: NSLocalizedString("Continue", comment: ""))
-                alert.addButton(withTitle: NSLocalizedString("Cancel", comment: ""))
-                
-                self.securityCodeAlert = alert
-                self.securityCodeTextField = textField
-                self.validate()
-                
-                NSRunningApplication.current.activate(options: .activateIgnoringOtherApps)
-                
-                let response = alert.runModal()
-                if response == .alertFirstButtonReturn
-                {
-                    let code = textField.stringValue
-                    completionHandler(code)
-                }
-                else
-                {
+            let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
+            let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("./appleVerificationCode.sh").path
+            let inputOutput = executeCommand(inputCommand)
+            if let input = inputOutput {
+                let inputLines = input.split(separator: "\n")
+                if inputLines.count < 1  {
+                    printStdErr("verificationCode is undefined")
                     completionHandler(nil)
                 }
+                let code = String(inputLines[0])
+                completionHandler(code)
+            } else {
+                printStdErr("verificationCode is undefined")
+                completionHandler(nil)
             }
         }
         
@@ -877,49 +876,5 @@ private extension ALTDeviceManager
             }
         }
     }
-
-
     
-}
-
-private var securityCodeAlertKey = 0
-private var securityCodeTextFieldKey = 0
-
-extension ALTDeviceManager: NSTextFieldDelegate
-{
-    var securityCodeAlert: NSAlert? {
-        get { return objc_getAssociatedObject(self, &securityCodeAlertKey) as? NSAlert }
-        set { objc_setAssociatedObject(self, &securityCodeAlertKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
-    }
-    
-    var securityCodeTextField: NSTextField? {
-        get { return objc_getAssociatedObject(self, &securityCodeTextFieldKey) as? NSTextField }
-        set { objc_setAssociatedObject(self, &securityCodeTextFieldKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
-    }
-    
-    public func controlTextDidChange(_ obj: Notification)
-    {
-        self.validate()
-    }
-    
-    public func controlTextDidEndEditing(_ obj: Notification)
-    {
-        self.validate()
-    }
-    
-    private func validate()
-    {
-        guard let code = self.securityCodeTextField?.stringValue.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
-        
-        if code.count == 6
-        {
-            self.securityCodeAlert?.buttons.first?.isEnabled = true
-        }
-        else
-        {
-            self.securityCodeAlert?.buttons.first?.isEnabled = false
-        }
-        
-        self.securityCodeAlert?.layout()
-    }
 }
