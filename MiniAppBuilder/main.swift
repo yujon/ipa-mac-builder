@@ -39,14 +39,14 @@ class Application: NSObject {
         let passwordOption = parser.add(option: "--password", shortName: "-p", kind: String.self, usage: "apple password")
         let deviceIdOption = parser.add(option: "--deviceId", shortName: "-di", kind: String.self, usage: "device udid。 required when")
         let deviceNameOption = parser.add(option: "--deviceName", shortName: "-dn", kind: String.self, usage: "device name")
+        let bundleIdOption = parser.add(option: "--bundleId", shortName: "-bi", kind: String.self, usage: "the bundleId, same|auto|xx.xx.xx(specified bundleId)")
 
         let certificatePathOption = parser.add(option: "--certificatePath", shortName: "-cpa", kind: String.self, usage: "certificate path")
         let certificatePasswordOption = parser.add(option: "--certificatePassword", shortName: "-cpw", kind: String.self, usage: "certificate password")
-        let profilePathOption = parser.add(option: "--profile", shortName: "-pf", kind: String.self, usage: "profile path")
+        let profilePathOption = parser.add(option: "--profilePath", shortName: "-pf", kind: String.self, usage: "profile path")
 
         let outputDirOption = parser.add(option: "--output", shortName: "-o", kind: String.self, usage: "output dir")
         let installOption = parser.add(option: "--install", shortName: "-i", kind: Bool.self, usage: "install instantly to device")
-        let bundleIdOption = parser.add(option: "--bundleId", shortName: "-bi", kind: String.self, usage: "the bundleId, same|auto|xx.xx.xx(specified bundleId)")
         let parsedArguments = try parser.parse(arguments)
 
         let signType = parsedArguments.get(typeOption) ?? "appleID"
@@ -209,24 +209,24 @@ private extension Application
                 }
             }
         
-            if !self.pluginManager.isMailPluginInstalled
-            {
-                self.pluginManager.installMailPlugin { (result) in
-                    DispatchQueue.main.async {
-                        switch result
-                        {
-                        case .failure(let error):
-                            printStdErr("Failed to Install Mail Plug-in", error.localizedDescription)
-                            finish(.failure(error))
-                        case .success:
-                            finish(.failure(PluginError.taskError(output: "Mail Plug-in had Installed, Please restart Mail and enable MiniAppPlugin in Mail's Preferences. Mail must be running when signing and installing apps")))
-                        }
-                    }
-                }
-                return
-            }
             if signType == "appleID"
             {
+                if !self.pluginManager.isMailPluginInstalled
+                {
+                    self.pluginManager.installMailPlugin { (result) in
+                        DispatchQueue.main.async {
+                            switch result
+                            {
+                            case .failure(let error):
+                                printStdErr("Failed to Install Mail Plug-in", error.localizedDescription)
+                                finish(.failure(error))
+                            case .success:
+                                finish(.failure(PluginError.taskError(output: "Mail Plug-in had Installed, Please restart Mail and enable MiniAppPlugin in Mail's Preferences. Mail must be running when signing and installing apps")))
+                            }
+                        }
+                    }
+                    return
+                }
                 ALTDeviceManager.shared.signWithAppleID(at: fileURL, to: device!, appleID: username!, password: password!, bundleId: bundleId, completion: signFinish)
             } else {
                 ALTDeviceManager.shared.signWithCertificate(at: fileURL, certificatePath: certificatePath!, certificatePassword: certificatePassword, profilePath: profilePath!, completion: signFinish)
