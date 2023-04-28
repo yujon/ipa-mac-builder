@@ -39,14 +39,14 @@ class Application: NSObject {
         let passwordOption = parser.add(option: "--password", shortName: "-p", kind: String.self, usage: "apple password")
         let deviceIdOption = parser.add(option: "--deviceId", shortName: "-di", kind: String.self, usage: "device udid。 required when")
         let deviceNameOption = parser.add(option: "--deviceName", shortName: "-dn", kind: String.self, usage: "device name")
+         let bundleIdOption = parser.add(option: "--bundleId", shortName: "-bi", kind: String.self, usage: "the bundleId, same|auto|xx.xx.xx(specified bundleId)")
 
         let certificatePathOption = parser.add(option: "--certificatePath", shortName: "-cpa", kind: String.self, usage: "certificate path")
         let certificatePasswordOption = parser.add(option: "--certificatePassword", shortName: "-cpw", kind: String.self, usage: "certificate password")
-        let profilePathOption = parser.add(option: "--profile", shortName: "-pf", kind: String.self, usage: "profile path")
+        let profilePathOption = parser.add(option: "--profilePath", shortName: "-pf", kind: String.self, usage: "profile path")
 
         let outputDirOption = parser.add(option: "--output", shortName: "-o", kind: String.self, usage: "output dir")
         let installOption = parser.add(option: "--install", shortName: "-i", kind: String.self, usage: "install instantly to device")
-        let bundleIdOption = parser.add(option: "--bundleId", shortName: "-bi", kind: String.self, usage: "the bundleId, same|auto|xx.xx.xx(specified bundleId)")
         let parsedArguments = try parser.parse(arguments)
 
         let signType = parsedArguments.get(typeOption) ?? "appleID"
