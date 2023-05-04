@@ -205,8 +205,8 @@
             filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "launch()"
             landmarkType = "7">
          </BreakpointContent>
@@ -237,8 +237,8 @@
             filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "847"
-            endingLineNumber = "847"
+            startingLineNumber = "830"
+            endingLineNumber = "830"
             landmarkName = "signCore(_:certificate:profiles:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -358,54 +358,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F724968D-0BDC-41CE-B41A-5BA93E2B35A0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F724968D-0BDC-41CE-B41A-5BA93E2B35A0 - f0ae69ed1eafe5e9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;(), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTCertificate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTDevice, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTTeam, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "MiniAppBuilder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "164"
-                  endingLineNumber = "164"
-                  offsetFromSymbolStart = "2553">
-               </Location>
-               <Location
-                  uuid = "F724968D-0BDC-41CE-B41A-5BA93E2B35A0 - 15aff67a2f00df83"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTCertificate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTDevice, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTTeam, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "MiniAppBuilder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "331">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "3785BA2B-900E-4B87-9D13-E60661C4DF44"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -436,22 +388,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "13586E52-5954-460A-A9E5-F787B528F031"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MiniAppBuilder/main.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "launch()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "896AFFCF-D64B-4D3B-B8D7-E1C75B69F84C"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -469,16 +405,592 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "7536A7A4-7237-4D22-9638-CBFB3CC365E5"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "launch()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4E403EFA-B644-4ED4-B72F-377DD9CF567B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4E403EFA-B644-4ED4-B72F-377DD9CF567B - 8cf123489202b99a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "1142">
+               </Location>
+               <Location
+                  uuid = "4E403EFA-B644-4ED4-B72F-377DD9CF567B - 832db6e0b60c18f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "428">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EDAFAFAF-16A7-4A3C-829C-ADD571EC1312"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EDAFAFAF-16A7-4A3C-829C-ADD571EC1312 - 7821dcf1b4d3aab6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.ALTTeam, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "150"
+                  endingLineNumber = "150"
+                  offsetFromSymbolStart = "1122">
+               </Location>
+               <Location
+                  uuid = "EDAFAFAF-16A7-4A3C-829C-ADD571EC1312 - 9c852508d5335639"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.ALTDevice, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTTeam, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "456">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B52B9DC7-9DD3-4715-A897-FBA0953CAE0D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B52B9DC7-9DD3-4715-A897-FBA0953CAE0D - 832db6e0b60c1c93"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
+                  offsetFromSymbolStart = "1151">
+               </Location>
+               <Location
+                  uuid = "B52B9DC7-9DD3-4715-A897-FBA0953CAE0D - 7821dcf1b4d3ae79"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.ALTTeam, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "430">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "93B5BCC9-AC47-46C5-ACF2-BB0F4FB8AF7D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CB794D20-71AB-418D-9DE8-3B1E700CEDC3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CB794D20-71AB-418D-9DE8-3B1E700CEDC3 - 69e594801e2064be"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.ALTCertificate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTDevice, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTTeam, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "161"
+                  endingLineNumber = "161"
+                  offsetFromSymbolStart = "1354">
+               </Location>
+               <Location
+                  uuid = "CB794D20-71AB-418D-9DE8-3B1E700CEDC3 - f0ae69ed1eafe314"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;(), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTCertificate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTDevice, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTTeam, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "592">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "462D4281-7A52-450B-9CDA-0F789C2F96A9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5FC1AD6F-036E-4D67-9B83-5F188F74EB2F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4A02600-3C76-4739-B3CD-34E1C7D27AB6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
+            landmarkName = "prepare(_:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A4A02600-3C76-4739-B3CD-34E1C7D27AB6 - bc9645f931cb1219"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.prepare(_: __C.ALTDevice, completionHandler: (Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "315"
+                  endingLineNumber = "315"
+                  offsetFromSymbolStart = "338">
+               </Location>
+               <Location
+                  uuid = "A4A02600-3C76-4739-B3CD-34E1C7D27AB6 - 2137ee0ee8d5f178"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;(Foundation.URL, Foundation.URL), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.prepare(_: __C.ALTDevice, completionHandler: (Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "316"
+                  endingLineNumber = "316"
+                  offsetFromSymbolStart = "351">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A540450C-E095-4425-92A1-82E521E80487"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
+            landmarkName = "prepare(_:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A540450C-E095-4425-92A1-82E521E80487 - 2137ee0ee8d5f40d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;(Foundation.URL, Foundation.URL), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.prepare(_: __C.ALTDevice, completionHandler: (Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "337"
+                  endingLineNumber = "337"
+                  offsetFromSymbolStart = "655">
+               </Location>
+               <Location
+                  uuid = "A540450C-E095-4425-92A1-82E521E80487 - fc75d9c735c65e04"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(Foundation.URL, Foundation.URL), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.prepare(_: __C.ALTDevice, completionHandler: (Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "338"
+                  endingLineNumber = "338"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C0B30ADE-DE92-4B80-88C2-CA61877F6E9A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "prepare(_:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C0B30ADE-DE92-4B80-88C2-CA61877F6E9A - 882c2134cde8d5aa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__C.ALTDeviceManager.prepare(_: __C.ALTDevice, completionHandler: (Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "309"
+                  endingLineNumber = "309"
+                  offsetFromSymbolStart = "62">
+               </Location>
+               <Location
+                  uuid = "C0B30ADE-DE92-4B80-88C2-CA61877F6E9A - bc9645f931cb13bc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.prepare(_: __C.ALTDevice, completionHandler: (Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "310"
+                  endingLineNumber = "310"
+                  offsetFromSymbolStart = "152">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0F6EB740-A8AE-4BFF-926F-52A7592E91A1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
+            landmarkName = "prepare(_:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4A811394-E6ED-4DA7-ABCF-B8F5FD38ADA7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4A811394-E6ED-4DA7-ABCF-B8F5FD38ADA7 - 15aff67a2f00aa95"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTCertificate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTDevice, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTTeam, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "669">
+               </Location>
+               <Location
+                  uuid = "4A811394-E6ED-4DA7-ABCF-B8F5FD38ADA7 - 2c31bcf0f57f49e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Dictionary&lt;Swift.String, __C.ALTProvisioningProfile&gt;, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTCertificate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTDevice, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTTeam, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "201">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7336BB2A-6431-4943-898B-D756C4F6D3DC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85FB615B-E4A2-4328-B7AD-653124608EF3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DFDFEAA6-7919-46F7-896A-EF4B21E3BDD0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
+            landmarkName = "prepare(_:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "42CFFF02-210B-4351-9A7E-45FE62FC197B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "42CFFF02-210B-4351-9A7E-45FE62FC197B - 2c31bcf0f57f43ff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Dictionary&lt;Swift.String, __C.ALTProvisioningProfile&gt;, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTCertificate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTDevice, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTTeam, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "190"
+                  endingLineNumber = "190"
+                  offsetFromSymbolStart = "452">
+               </Location>
+               <Location
+                  uuid = "42CFFF02-210B-4351-9A7E-45FE62FC197B - 862316b14d40cbd2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Set&lt;Swift.String&gt;, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;Swift.Dictionary&lt;Swift.String, __C.ALTProvisioningProfile&gt;, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTCertificate, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTDevice, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTTeam, Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;__C.ALTAnisetteData, Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.signWithAppleID(at: Foundation.URL, to: __C.ALTDevice, appleID: Swift.String, password: Swift.String, bundleId: Swift.Optional&lt;Swift.String&gt;, completion: (Swift.Result&lt;(__C.ALTApplication, Swift.Set&lt;Swift.String&gt;), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "155">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "507B1274-B8FF-47B5-A441-188795C3229F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/main.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "launch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "845A3F77-C1DE-4CBF-B94D-A97D70D24C65"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1502"
+            endingLineNumber = "1502"
+            landmarkName = "ALTDeviceManagerUpdateStatus(command, status, uuid)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -202,12 +202,7 @@ NSErrorUserInfoKey const ALTAppNameErrorKey = @"appName";
             return NSLocalizedString(@"Please make sure you entered both your Apple ID and password correctly and try again.", @"");
             
         case ALTAppleAPIErrorInvalidAnisetteData:
-#if TARGET_OS_OSX
-            return NSLocalizedString(@"Make sure this computer's date & time matches your iOS device and try again.", @"");
-#else
-            return NSLocalizedString(@"Make sure your computer's date & time matches your iOS device and try again. You may need to re-install AltStore with AltServer if the problem persists.", @"");
-#endif
-            
+        return NSLocalizedString(@"Make sure this computer's date & time matches your iOS device and try again.", @"");            
         default: break;
     }
     

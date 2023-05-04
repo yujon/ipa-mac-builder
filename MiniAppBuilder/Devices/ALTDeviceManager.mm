@@ -239,7 +239,7 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
         }
         
         /* Connect to Device */
-        if (lockdownd_client_new_with_handshake(device, &client, "altserver") != LOCKDOWN_E_SUCCESS)
+        if (lockdownd_client_new_with_handshake(device, &client, "miniapp-builder") != LOCKDOWN_E_SUCCESS)
         {
             return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
         }
@@ -577,7 +577,7 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
     }
     
     /* Connect to Device */
-    if (lockdownd_client_new_with_handshake(device, &client, "altserver") != LOCKDOWN_E_SUCCESS)
+    if (lockdownd_client_new_with_handshake(device, &client, "miniapp-builder") != LOCKDOWN_E_SUCCESS)
     {
         return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
     }
@@ -654,7 +654,7 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
         }
         
         /* Connect to Device */
-        if (lockdownd_client_new_with_handshake(device, &client, "altserver") != LOCKDOWN_E_SUCCESS)
+        if (lockdownd_client_new_with_handshake(device, &client, "miniapp-builder") != LOCKDOWN_E_SUCCESS)
         {
             return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
         }
@@ -742,7 +742,7 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
         }
         
         /* Connect to Device */
-        if (lockdownd_client_new_with_handshake(device, &client, "altserver") != LOCKDOWN_E_SUCCESS)
+        if (lockdownd_client_new_with_handshake(device, &client, "miniapp-builder") != LOCKDOWN_E_SUCCESS)
         {
             return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
         }
@@ -1051,7 +1051,7 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
         }
         
         /* Connect to Device */
-        if (lockdownd_client_new_with_handshake(device, &client, "altserver") != LOCKDOWN_E_SUCCESS)
+        if (lockdownd_client_new_with_handshake(device, &client, "miniapp-builder") != LOCKDOWN_E_SUCCESS)
         {
             return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
         }
@@ -1158,7 +1158,7 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
         }
         
         /* Connect to Device */
-        if (lockdownd_client_new_with_handshake(device, &client, "altserver") != LOCKDOWN_E_SUCCESS)
+        if (lockdownd_client_new_with_handshake(device, &client, "miniapp-builder") != LOCKDOWN_E_SUCCESS)
         {
             return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
         }
@@ -1365,7 +1365,7 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
             continue;
         }
         
-        int result = lockdownd_client_new(device, &client, "altserver");
+        int result = lockdownd_client_new(device, &client, "miniapp-builder");
         if (result != LOCKDOWN_E_SUCCESS)
         {
             fprintf(stderr, "ERROR: Connecting to device %s failed! (%d)\n", udid, result);

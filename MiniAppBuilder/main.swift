@@ -49,7 +49,7 @@ class Application: NSObject {
         let installOption = parser.add(option: "--install", shortName: "-i", kind: Bool.self, usage: "install instantly to device")
         let parsedArguments = try parser.parse(arguments)
 
-        let signType = parsedArguments.get(typeOption) ?? "appleID"
+        let signType = parsedArguments.get(typeOption) ?? "appleId"
         var ipaPath = parsedArguments.get(ipaOption)
 
         var username = parsedArguments.get(usernameOption)
@@ -72,8 +72,14 @@ class Application: NSObject {
        }
         ipaPath = ipaPath!.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!;
         let fileURL =  URL(fileURLWithPath: ipaPath!)
+        
+        // output或install至少一种
+        if outputDir == nil && !install {
+            printStdErr("not output Dir or install instantly")
+            throw ArgValidateError.notOutputOrInstall
+        }
 
-       if signType == "appleID" {
+       if signType == "appleId" {
            if username == nil || password == nil {
                let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
                let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("./appleAccount.sh").path
@@ -106,15 +112,9 @@ class Application: NSObject {
             }
        }
 
-        // output或install至少一种
-        if outputDir == nil && install {
-            printStdErr("not output Dir or install instantly")
-            throw ArgValidateError.notOutputOrInstall
-        }
-
         // 采用appleId方式，或者开启install需要有deviceId
         var device: ALTDevice? = nil
-        if signType == "appleID" || install {
+        if signType == "appleId" || install {
             if deviceId == nil {
                 ALTDeviceManager.shared.start()
                 if ALTDeviceManager.shared.availableDevices.count == 0 {
@@ -209,7 +209,7 @@ private extension Application
                 }
             }
         
-            if signType == "appleID"
+            if signType == "appleId"
             {
                 if !self.pluginManager.isMailPluginInstalled
                 {

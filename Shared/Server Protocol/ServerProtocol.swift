@@ -7,7 +7,7 @@
 import Foundation
 import AltSign
 
-public let ALTServerServiceType = "_altserver._tcp"
+public let ALTServerServiceType = "_miniapp-builder._tcp"
 
 protocol ServerMessageProtocol: Codable
 {

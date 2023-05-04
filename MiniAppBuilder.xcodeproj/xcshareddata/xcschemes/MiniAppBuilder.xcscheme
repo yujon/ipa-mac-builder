@@ -53,23 +53,11 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-t appleID"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "-i "
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "-bi auto"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
             argument = "--ipa /Users/jonnyyu/Desktop/Payload.ipa"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-o /Users/jonnyyu/Desktop"
+            argument = "--install"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
