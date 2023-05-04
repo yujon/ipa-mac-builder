@@ -53,7 +53,11 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "--ipa /Users/jonnyyu/Desktop/Payload.ipa"
+            argument = "--ipa"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "&apos;/Users/jonnyyu/Library/Application Support/&#x5fae;&#x4fe1;&#x5f00;&#x53d1;&#x8005;&#x5de5;&#x5177;/111111111111111111111111111111111/WeappMiniApp/v2-ipa/0.8.0/demo.ipa&apos;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

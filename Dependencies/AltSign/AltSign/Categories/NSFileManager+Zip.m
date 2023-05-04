@@ -31,7 +31,7 @@ char ALTDirectoryDeliminator = '/';
 
 - (BOOL)unzipArchiveAtURL:(NSURL *)archiveURL toDirectory:(NSURL *)directoryURL progress:(NSProgress *)progress error:(NSError **)error
 {
-    unzFile zipFile = unzOpen(archiveURL.fileSystemRepresentation);
+     unzFile zipFile = unzOpen(archiveURL.fileSystemRepresentation);
     if (zipFile == NULL)
     {
         *error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileNoSuchFileError userInfo:@{NSURLErrorKey: archiveURL}];

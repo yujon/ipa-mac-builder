@@ -68,10 +68,14 @@ class Application: NSObject {
 
         if ipaPath == nil {
            printStdErr("the ipa path not found")
-           throw ArgValidateError.notConnectedDevice
+           throw ArgValidateError.IpaPathNotFound
        }
-        ipaPath = ipaPath!.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!;
         let fileURL =  URL(fileURLWithPath: ipaPath!)
+        if !FileManager.default.fileExists(atPath: fileURL.path) {
+            print("File not exists")
+            printStdErr("the ipa path not found")
+            throw ArgValidateError.IpaPathNotFound
+        }
         
         // output或install至少一种
         if outputDir == nil && !install {
