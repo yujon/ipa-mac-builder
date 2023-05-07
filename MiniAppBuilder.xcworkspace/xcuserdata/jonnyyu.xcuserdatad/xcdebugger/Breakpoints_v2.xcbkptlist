@@ -549,7 +549,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "5FC1AD6F-036E-4D67-9B83-5F188F74EB2F"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
@@ -565,7 +565,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "A4A02600-3C76-4739-B3CD-34E1C7D27AB6"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
@@ -575,38 +575,6 @@
             endingLineNumber = "315"
             landmarkName = "unknown"
             landmarkType = "0">
-            <Locations>
-               <Location
-                  uuid = "A4A02600-3C76-4739-B3CD-34E1C7D27AB6 - bc9645f931cb1219"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.prepare(_: __C.ALTDevice, completionHandler: (Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "MiniAppBuilder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "315"
-                  endingLineNumber = "315"
-                  offsetFromSymbolStart = "338">
-               </Location>
-               <Location
-                  uuid = "A4A02600-3C76-4739-B3CD-34E1C7D27AB6 - 2137ee0ee8d5f178"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;(Foundation.URL, Foundation.URL), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.prepare(_: __C.ALTDevice, completionHandler: (Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "MiniAppBuilder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "316"
-                  endingLineNumber = "316"
-                  offsetFromSymbolStart = "351">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -661,7 +629,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C0B30ADE-DE92-4B80-88C2-CA61877F6E9A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
@@ -673,11 +641,11 @@
             landmarkType = "0">
             <Locations>
                <Location
-                  uuid = "C0B30ADE-DE92-4B80-88C2-CA61877F6E9A - 882c2134cde8d5aa"
+                  uuid = "C0B30ADE-DE92-4B80-88C2-CA61877F6E9A - 81efad658fdfd395"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__C.ALTDeviceManager.prepare(_: __C.ALTDevice, completionHandler: (Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "__C.ALTDeviceManager.authenticate(appleID: Swift.String, password: Swift.String, anisetteData: __C.ALTAnisetteData, completionHandler: (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "MiniAppBuilder"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
@@ -685,14 +653,14 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "309"
                   endingLineNumber = "309"
-                  offsetFromSymbolStart = "62">
+                  offsetFromSymbolStart = "127">
                </Location>
                <Location
-                  uuid = "C0B30ADE-DE92-4B80-88C2-CA61877F6E9A - bc9645f931cb13bc"
+                  uuid = "C0B30ADE-DE92-4B80-88C2-CA61877F6E9A - 8f06f27d049bd74f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.prepare(_: __C.ALTDevice, completionHandler: (Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.ALTAccount&gt;, Swift.Optional&lt;__C.ALTAppleAPISession&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.authenticate(appleID: Swift.String, password: Swift.String, anisetteData: __C.ALTAnisetteData, completionHandler: (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "MiniAppBuilder"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
@@ -700,7 +668,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "310"
                   endingLineNumber = "310"
-                  offsetFromSymbolStart = "152">
+                  offsetFromSymbolStart = "169">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -709,7 +677,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0F6EB740-A8AE-4BFF-926F-52A7592E91A1"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
@@ -719,6 +687,53 @@
             endingLineNumber = "310"
             landmarkName = "unknown"
             landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "0F6EB740-A8AE-4BFF-926F-52A7592E91A1 - 8f06f27d049bd74f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.ALTAccount&gt;, Swift.Optional&lt;__C.ALTAppleAPISession&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.authenticate(appleID: Swift.String, password: Swift.String, anisetteData: __C.ALTAnisetteData, completionHandler: (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "310"
+                  endingLineNumber = "310"
+                  offsetFromSymbolStart = "169">
+               </Location>
+               <Location
+                  uuid = "0F6EB740-A8AE-4BFF-926F-52A7592E91A1 - 8f06f27d049bd74f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.ALTAccount&gt;, Swift.Optional&lt;__C.ALTAppleAPISession&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.authenticate(appleID: Swift.String, password: Swift.String, anisetteData: __C.ALTAnisetteData, completionHandler: (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "310"
+                  endingLineNumber = "310"
+                  offsetFromSymbolStart = "198">
+               </Location>
+               <Location
+                  uuid = "0F6EB740-A8AE-4BFF-926F-52A7592E91A1 - 8f06f27d049bd74f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.ALTAccount&gt;, Swift.Optional&lt;__C.ALTAppleAPISession&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.ALTDeviceManager.authenticate(appleID: Swift.String, password: Swift.String, anisetteData: __C.ALTAnisetteData, completionHandler: (Swift.Result&lt;(__C.ALTAccount, __C.ALTAppleAPISession), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "310"
+                  endingLineNumber = "310"
+                  offsetFromSymbolStart = "261">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -757,7 +772,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "DFDFEAA6-7919-46F7-896A-EF4B21E3BDD0"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
@@ -795,8 +810,8 @@
             filePath = "MiniAppBuilder/Devices/ALTDeviceManager.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1502"
-            endingLineNumber = "1502"
+            startingLineNumber = "1490"
+            endingLineNumber = "1490"
             landmarkName = "ALTDeviceManagerUpdateStatus(command, status, uuid)"
             landmarkType = "9">
          </BreakpointContent>

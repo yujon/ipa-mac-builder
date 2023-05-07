@@ -157,50 +157,67 @@ extension ALTDeviceManager
                                             do
                                             {
                                                 let certificate = try result.get()
-                                                
-                                                let fileURL = ipaFileURL
-                                                
-                                                try FileManager.default.createDirectory(at: destinationDirectoryURL, withIntermediateDirectories: true, attributes: nil)
-                                                // 解压ipa
-                                                let appBundleURL = try FileManager.default.unzipAppBundle(at: fileURL, toDirectory: destinationDirectoryURL)
-                                                guard let application = ALTApplication(fileURL: appBundleURL) else { throw ALTError(.invalidApp) }
-                                                
-                                                appName = application.name
-                                                
-                                                // Refresh anisette data to prevent session timeouts.
-                                                AnisetteDataManager.shared.requestAnisetteData { (result) in
-                                                    do
-                                                    {
-                                                        let anisetteData = try result.get()
-                                                        session.anisetteData = anisetteData
-                                                        
-                                                        self.prepareAllProvisioningProfiles(for: application, device: device, team: team, bundleId: bundleId, session: session) { (result) in
-                                                            do
-                                                            {
-                                                                let profiles = try result.get()
-                                                                self.signCore(application, certificate: certificate, profiles: profiles) { (result) in
-                                                                    do
-                                                                    {
-                                                                        let activeProfiles = try result.get()
-                                                                        finish(.success((application, activeProfiles)))
-                                                                    }
-                                                                    catch
-                                                                    {
-                                                                        finish(.failure(error))
+
+                                                // self.prepare(device) { (result) in
+                                                //     switch result
+                                                //     {
+                                                //     case .failure(let error):
+                                                //         printStdErr("Failed to install DeveloperDiskImage.dmg to \(device).", error)
+                                                //         fallthrough // Continue installing app even if we couldn't install Developer disk image.
+                                                    
+                                                //     case .success:
+                                                //         do{
+                                                            let fileURL = ipaFileURL
+                                                            
+                                                            try FileManager.default.createDirectory(at: destinationDirectoryURL, withIntermediateDirectories: true, attributes: nil)
+                                                            // 解压ipa
+                                                            let appBundleURL = try FileManager.default.unzipAppBundle(at: fileURL, toDirectory: destinationDirectoryURL)
+                                                            guard let application = ALTApplication(fileURL: appBundleURL) else { throw ALTError(.invalidApp) }
+                                                            
+                                                            appName = application.name
+                                                            
+                                                            // Refresh anisette data to prevent session timeouts.
+                                                            AnisetteDataManager.shared.requestAnisetteData { (result) in
+                                                                do
+                                                                {
+                                                                    let anisetteData = try result.get()
+                                                                    session.anisetteData = anisetteData
+                                                                    
+                                                                    self.prepareAllProvisioningProfiles(for: application, device: device, team: team, bundleId: bundleId, session: session) { (result) in
+                                                                        do
+                                                                        {
+                                                                            let profiles = try result.get()
+                                                                            self.signCore(application, certificate: certificate, profiles: profiles) { (result) in
+                                                                                do
+                                                                                {
+                                                                                    let activeProfiles = try result.get()
+                                                                                    finish(.success((application, activeProfiles)))
+                                                                                }
+                                                                                catch
+                                                                                {
+                                                                                    finish(.failure(error))
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        catch
+                                                                        {
+                                                                            finish(.failure(error), failure: NSLocalizedString("MIniAppBuilder could not fetch new provisioning profiles.", comment: ""))
+                                                                        }
                                                                     }
                                                                 }
+                                                                catch
+                                                                {
+                                                                    finish(.failure(error))
+                                                                }
                                                             }
-                                                            catch
-                                                            {
-                                                                finish(.failure(error), failure: NSLocalizedString("MIniAppBuilder could not fetch new provisioning profiles.", comment: ""))
-                                                            }
-                                                        }
-                                                    }
-                                                    catch
-                                                    {
-                                                        finish(.failure(error))
-                                                    }
-                                                }
+                                                        // }
+                                                        // catch
+                                                        // {
+                                                        //     let failure = String(format: NSLocalizedString("%@ could not be downloaded.", comment: ""), appName)
+                                                        //     finish(.failure(error), failure: failure)
+                                                        // }
+                                                    // }
+                                                // }
                                             }
                                             catch
                                             {

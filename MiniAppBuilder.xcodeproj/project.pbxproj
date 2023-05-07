@@ -126,6 +126,7 @@
 		CE649C7E29CDC3CA009AD7E5 /* OpenSSL.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF088D322501A4FF008082D9 /* OpenSSL.xcframework */; };
 		CE649C8029CDC3F3009AD7E5 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE649C7F29CDC3F3009AD7E5 /* libxml2.tbd */; };
 		CE649C8529D13D02009AD7E5 /* libimobiledevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF45872B2298D31600BD7491 /* libimobiledevice.a */; };
+		CE769FE32A07A3BE00A2F9E7 /* ALTDebugConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE769FE22A07A39E00A2F9E7 /* ALTDebugConnection.mm */; };
 		CE87A14829E7003800557926 /* ALTPluginService.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87A14629E7003800557926 /* ALTPluginService.m */; };
 		CE87A14929E7003800557926 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE87A14729E7003800557926 /* Info.plist */; };
 		CE87A43B29E701C900557926 /* ALTAnisetteData.m in Sources */ = {isa = PBXBuildFile; fileRef = CE87A43929E701C800557926 /* ALTAnisetteData.m */; };
@@ -319,6 +320,9 @@
 		CE649C6929CDC3A5009AD7E5 /* DeveloperDiskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperDiskManager.swift; sourceTree = "<group>"; };
 		CE649C7F29CDC3F3009AD7E5 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		CE649C9029D19092009AD7E5 /* MiniAppBuilder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MiniAppBuilder.entitlements; sourceTree = "<group>"; };
+		CE769FE02A07A39E00A2F9E7 /* ALTDebugConnection+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ALTDebugConnection+Private.h"; sourceTree = "<group>"; };
+		CE769FE12A07A39E00A2F9E7 /* ALTDebugConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALTDebugConnection.h; sourceTree = "<group>"; };
+		CE769FE22A07A39E00A2F9E7 /* ALTDebugConnection.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ALTDebugConnection.mm; sourceTree = "<group>"; };
 		CE87A14529E7003800557926 /* ALTPluginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALTPluginService.h; sourceTree = "<group>"; };
 		CE87A14629E7003800557926 /* ALTPluginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALTPluginService.m; sourceTree = "<group>"; };
 		CE87A14729E7003800557926 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -650,6 +654,7 @@
 			isa = PBXGroup;
 			children = (
 				CE649C9029D19092009AD7E5 /* MiniAppBuilder.entitlements */,
+				CE769FDF2A07A39E00A2F9E7 /* Connections */,
 				CE649C6829CDC3A5009AD7E5 /* MiniAppBuilder-Bridging-Header.h */,
 				CEE0C8C429FAE1A100C00BD7 /* appleVerificationCode.sh */,
 				CEE0C8C229FADB2600C00BD7 /* appleAccount.sh */,
@@ -698,6 +703,16 @@
 				CE649C5A29CDC3A4009AD7E5 /* PluginManager.swift */,
 			);
 			path = Plugin;
+			sourceTree = "<group>";
+		};
+		CE769FDF2A07A39E00A2F9E7 /* Connections */ = {
+			isa = PBXGroup;
+			children = (
+				CE769FE02A07A39E00A2F9E7 /* ALTDebugConnection+Private.h */,
+				CE769FE12A07A39E00A2F9E7 /* ALTDebugConnection.h */,
+				CE769FE22A07A39E00A2F9E7 /* ALTDebugConnection.mm */,
+			);
+			path = Connections;
 			sourceTree = "<group>";
 		};
 		CE87A14429E7003800557926 /* MiniAppPlugin */ = {
@@ -1022,6 +1037,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE769FE32A07A3BE00A2F9E7 /* ALTDebugConnection.mm in Sources */,
 				CE649C3B29CDC388009AD7E5 /* ALTConstants.m in Sources */,
 				CE649C6E29CDC3A5009AD7E5 /* UserDefaults+MiniAppBuilder.swift in Sources */,
 				CE649C7829CDC3A5009AD7E5 /* DeveloperDiskManager.swift in Sources */,

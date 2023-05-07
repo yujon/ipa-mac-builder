@@ -6,6 +6,8 @@
 
 #import "ALTDeviceManager.h"
 
+#import "ALTDebugConnection+Private.h"
+
 #import "ALTConstants.h"
 #import "NSError+ALTServerError.h"
 #import "NSError+libimobiledevice.h"
@@ -297,17 +299,14 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
                 return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorDeviceWriteFailed userInfo:nil]);
             }
         }
-        
         if (files)
         {
             int i = 0;
-            
             while (files[i])
             {
                 free(files[i]);
                 i++;
             }
-            
             free(files);
         }
         
@@ -368,6 +367,15 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
             }];
         }
         
+
+        lockdownd_service_descriptor_t app_service = NULL;
+        lockdownd_error_t app_error = lockdownd_start_service(client, "com.tenent.devtoolsaaaademo.db", &app_service);
+        if (app_error != LOCKDOWN_E_SUCCESS) {
+            // 启动应用程序失败
+            NSLog(@"Failed to start app: %d\n", app_error);
+            return;
+        }
+
         lockdownd_client_free(client);
         client = NULL;
         
@@ -1264,19 +1272,19 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
         plist_free(result);
         
         // Verify that the developer disk has been successfully installed.
-        // ALTDebugConnection *testConnection = [[ALTDebugConnection alloc] initWithDevice:altDevice];
-        // [testConnection connectWithCompletionHandler:^(BOOL success, NSError * _Nullable error) {
-        //     [testConnection disconnect];
+        ALTDebugConnection *testConnection = [[ALTDebugConnection alloc] initWithDevice:altDevice];
+        [testConnection connectWithCompletionHandler:^(BOOL success, NSError * _Nullable error) {
+            [testConnection disconnect];
             
-        //     if (success)
-        //     {
-        //         finish(nil);
-        //     }
-        //     else
-        //     {
-        //         finish(error);
-        //     }
-        // }];
+            if (success)
+            {
+                finish(nil);
+            }
+            else
+            {
+                finish(error);
+            }
+        }];
     });
 }
 
@@ -1498,6 +1506,7 @@ void ALTDeviceManagerUpdateStatus(plist_t command, plist_t status, void *uuid)
             }
             else
             {
+
                 NSLog(@"Finished installing app!");
                 completionHandler(nil);
             }

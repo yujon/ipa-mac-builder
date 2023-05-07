@@ -57,7 +57,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "&apos;/Users/jonnyyu/Library/Application Support/&#x5fae;&#x4fe1;&#x5f00;&#x53d1;&#x8005;&#x5de5;&#x5177;/111111111111111111111111111111111/WeappMiniApp/v2-ipa/0.8.0/demo.ipa&apos;"
+            argument = "/Users/jonnyyu/Desktop/Payload.ipa"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
