@@ -18,6 +18,8 @@ NS_SWIFT_NAME(DebugConnection)
 - (void)enableUnsignedCodeExecutionForProcessWithName:(NSString *)processName completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler;
 - (void)enableUnsignedCodeExecutionForProcessWithID:(NSInteger)pid completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler;
 
+- (BOOL)sendCommand:(NSString *)command arguments:(nullable NSArray<NSString *> *)arguments error:(NSError **)error;
+
 - (void)disconnect;
 
 @end

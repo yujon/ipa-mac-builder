@@ -5,7 +5,7 @@
 //
 
 #import "ALTDeviceManager.h"
-
+#import "ALTAnisetteData.h"
 #import "ALTDebugConnection+Private.h"
 
 #import "ALTConstants.h"
@@ -23,6 +23,7 @@
 #include <libimobiledevice/afc.h>
 #include <libimobiledevice/misagent.h>
 #include <libimobiledevice/mobile_image_mounter.h>
+
 
 void ALTDeviceManagerUpdateStatus(plist_t command, plist_t status, void *udid);
 void ALTDeviceManagerUpdateAppDeletionStatus(plist_t command, plist_t status, void *uuid);
@@ -85,11 +86,13 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
 
 #pragma mark - App Installation -p % security cms -D -i
 
-- (NSProgress *)installAppAtURL:(NSURL *)fileURL toDeviceWithUDID:(NSString *)udid activeProvisioningProfiles:(nullable NSSet<NSString *> *)activeProvisioningProfiles completionHandler:(void (^)(BOOL, NSError * _Nullable))completionHandler
+- (NSProgress *)installAppAtURL:(NSURL *)fileURL toDevice:(ALTDevice *)altDevice activeProvisioningProfiles:(nullable NSSet<NSString *> *)activeProvisioningProfiles completionHandler:(void (^)(BOOL, NSError * _Nullable))completionHandler
 {
+    
     NSProgress *progress = [NSProgress discreteProgressWithTotalUnitCount:4];
     
     dispatch_async(self.installationQueue, ^{
+        NSString *udid = altDevice.identifier;
         NSUUID *UUID = [NSUUID UUID];
         __block char *uuidString = (char *)malloc(UUID.UUIDString.length + 1);
         strncpy(uuidString, (const char *)UUID.UUIDString.UTF8String, UUID.UUIDString.length);
@@ -101,7 +104,7 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
         __block afc_client_t afc = NULL;
         __block misagent_client_t mis = NULL;
         __block lockdownd_service_descriptor_t service = NULL;
-        
+
         NSMutableDictionary<NSString *, ALTProvisioningProfile *> *cachedProfiles = [NSMutableDictionary dictionary];
         NSMutableSet<ALTProvisioningProfile *> *installedProfiles = [NSMutableSet set];
         
@@ -256,7 +259,7 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
         {
             return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
         }
-        
+
         if (service)
         {
             lockdownd_service_descriptor_free(service);
@@ -365,15 +368,6 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
                     cachedProfiles[bundleID] = profile;
                 }
             }];
-        }
-        
-
-        lockdownd_service_descriptor_t app_service = NULL;
-        lockdownd_error_t app_error = lockdownd_start_service(client, "com.tenent.devtoolsaaaademo.db", &app_service);
-        if (app_error != LOCKDOWN_E_SUCCESS) {
-            // 启动应用程序失败
-            NSLog(@"Failed to start app: %d\n", app_error);
-            return;
         }
 
         lockdownd_client_free(client);
@@ -553,8 +547,9 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
     return success;
 }
 
-- (void)removeAppForBundleIdentifier:(NSString *)bundleIdentifier fromDeviceWithUDID:(NSString *)udid completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler
+- (void)removeAppForBundleIdentifier:(NSString *)bundleIdentifier toDevice:(ALTDevice *)altDevice completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler
 {
+    NSString *udid = altDevice.identifier;
     __block idevice_t device = NULL;
     __block lockdownd_client_t client = NULL;
     __block instproxy_client_t ipc = NULL;
@@ -634,9 +629,112 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
     instproxy_uninstall(ipc, bundleIdentifier.UTF8String, NULL, ALTDeviceManagerUpdateAppDeletionStatus, uuidString);
 }
 
+- (void)launchAppForBundleIdentifier:(NSString *)bundleIdentifier toDevice:(ALTDevice *)altDevice completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler
+{
+    __block NSString *udid = altDevice.identifier;
+    __block idevice_t device = NULL;
+    __block lockdownd_client_t client = NULL;
+    __block instproxy_client_t ipc = NULL;
+    __block lockdownd_service_descriptor_t service = NULL;
+    
+    void (^finish)(NSError *error) = ^(NSError *e) {
+        __block NSError *error = e;
+        
+        lockdownd_service_descriptor_free(service);
+        instproxy_client_free(ipc);
+        lockdownd_client_free(client);
+        idevice_free(device);
+        
+        if (error != nil)
+        {
+            completionHandler(NO, error);
+        }
+        else
+        {
+            completionHandler(YES, nil);
+        }
+    };
+    
+    /* Find Device */
+    if (idevice_new_with_options(&device, udid.UTF8String, (enum idevice_options)((int)IDEVICE_LOOKUP_NETWORK | (int)IDEVICE_LOOKUP_USBMUX)) != IDEVICE_E_SUCCESS)
+    {
+        return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorDeviceNotFound userInfo:nil]);
+    }
+    
+    /* Connect to Device */
+    if (lockdownd_client_new_with_handshake(device, &client, "miniapp-builder") != LOCKDOWN_E_SUCCESS)
+    {
+        return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
+    }
+    
+    /* Connect to Installation Proxy */
+    if ((lockdownd_start_service(client, "com.apple.mobile.installation_proxy", &service) != LOCKDOWN_E_SUCCESS) || service == NULL)
+    {
+        return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
+    }
+    
+    if (instproxy_client_new(device, service, &ipc) != INSTPROXY_E_SUCCESS)
+    {
+        return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
+    }
+    
+    if (service)
+    {
+        lockdownd_service_descriptor_free(service);
+        service = NULL;
+    }
+
+    plist_t result = NULL;
+    if (instproxy_browse(ipc, NULL, &result) != INSTPROXY_E_SUCCESS) {
+        fprintf(stderr, "Failed to get application path for bundle ID %s\n", bundleIdentifier);
+        
+    }
+
+    plist_t app_dict = NULL;
+    uint32_t i;
+    for (i = 0; i < plist_array_get_size(result); i++) {
+        plist_t dict = plist_array_get_item(result, i);
+        plist_t bundle_id_value = plist_dict_get_item(dict, "CFBundleIdentifier");
+        char *bundle_id_str = NULL;
+        plist_get_string_val(bundle_id_value, &bundle_id_str);
+        if (strcmp(bundle_id_str, bundleIdentifier.UTF8String) == 0) {
+            app_dict = dict;
+            break;
+        }
+    }
+    if (!app_dict) {
+        fprintf(stderr, "Application with bundle ID %s not found\n", bundleIdentifier);
+        return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
+    }
+    plist_t path_value = plist_dict_get_item(app_dict, "Path");
+    char *app_path = NULL;
+    plist_get_string_val(path_value, &app_path);
+    NSString *appPath = [NSString stringWithUTF8String:app_path];
+    
+    plist_t executable_value = plist_dict_get_item(app_dict, "CFBundleExecutable");
+    char *executable_name = NULL;
+    plist_get_string_val(executable_value, &executable_name);
+    NSString *executableName = [NSString stringWithUTF8String:executable_name];
+    
+    NSString *executable_path = [NSString stringWithFormat:@"%@/%@", appPath, executableName];
+
+    NSString *debugserver_cmd = [@"debugserver *:1234 --attach=" stringByAppendingString: appPath];
+    ALTDebugConnection *debugConnection = [[ALTDebugConnection alloc] initWithDevice:altDevice];
+    [debugConnection connectWithCompletionHandler:^(BOOL success, NSError * _Nullable error) {
+        if (![debugConnection sendCommand:debugserver_cmd arguments:nil error:&error]) {
+            NSLog(@"Launch the app failed\n");
+        } else {
+            NSLog(@"Launch the app successfully");
+        }
+        [debugConnection disconnect];
+        finish(error);
+    }];
+
+}
+
 #pragma mark - Provisioning Profiles -
 
-- (void)installProvisioningProfiles:(NSSet<ALTProvisioningProfile *> *)provisioningProfiles toDeviceWithUDID:(NSString *)udid activeProvisioningProfiles:(nullable NSSet<NSString *> *)activeProvisioningProfiles completionHandler:(void (^)(BOOL success, NSError *error))completionHandler
+- (void)installProvisioningProfiles:(NSSet<ALTProvisioningProfile *> *)provisioningProfiles  toDevice:(ALTDevice *)altDevice activeProvisioningProfiles:(nullable NSSet<NSString *> *)activeProvisioningProfiles completionHandler:(void (^)(BOOL success, NSError *error))completionHandler
 {
     dispatch_async(self.installationQueue, ^{
         __block idevice_t device = NULL;
@@ -644,6 +742,7 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
         __block afc_client_t afc = NULL;
         __block misagent_client_t mis = NULL;
         __block lockdownd_service_descriptor_t service = NULL;
+        NSString *udid = altDevice.identifier;
         
         void (^finish)(NSError *_Nullable) = ^(NSError *error) {
             lockdownd_service_descriptor_free(service);
@@ -724,9 +823,10 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
     });
 }
 
-- (void)removeProvisioningProfilesForBundleIdentifiers:(NSSet<NSString *> *)bundleIdentifiers fromDeviceWithUDID:(NSString *)udid completionHandler:(void (^)(BOOL success, NSError *error))completionHandler
+- (void)removeProvisioningProfilesForBundleIdentifiers:(NSSet<NSString *> *)bundleIdentifiers toDevice:(ALTDevice *)altDevice completionHandler:(void (^)(BOOL success, NSError *error))completionHandler
 {
     dispatch_async(self.installationQueue, ^{
+        NSString *udid = altDevice.identifier;
         __block idevice_t device = NULL;
         __block lockdownd_client_t client = NULL;
         __block afc_client_t afc = NULL;
@@ -1507,7 +1607,7 @@ void ALTDeviceManagerUpdateStatus(plist_t command, plist_t status, void *uuid)
             else
             {
 
-                NSLog(@"Finished installing app!");
+                NSLog(@"Finished install app!");
                 completionHandler(nil);
             }
             

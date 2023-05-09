@@ -28,12 +28,13 @@ extern NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification 
 - (void)start;
 
 /* App Installation */
-- (NSProgress *)installAppAtURL:(NSURL *)fileURL toDeviceWithUDID:(NSString *)udid activeProvisioningProfiles:(nullable NSSet<NSString *> *)activeProvisioningProfiles completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler;
-- (void)removeAppForBundleIdentifier:(NSString *)bundleIdentifier fromDeviceWithUDID:(NSString *)udid completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler;
+- (NSProgress *)installAppAtURL:(NSURL *)fileURL toDevice:(ALTDevice *)altDevice activeProvisioningProfiles:(nullable NSSet<NSString *> *)activeProvisioningProfiles completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler;
+- (void)removeAppForBundleIdentifier:(NSString *)bundleIdentifier toDevice:(ALTDevice *)altDevice completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler;
+- (void)launchAppForBundleIdentifier:(NSString *)bundleIdentifier toDevice:(ALTDevice *)altDevice completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler;
 
 /* Provisioning Profiles */
-- (void)installProvisioningProfiles:(NSSet<ALTProvisioningProfile *> *)provisioningProfiles toDeviceWithUDID:(NSString *)udid activeProvisioningProfiles:(nullable NSSet<NSString *> *)activeProvisioningProfiles completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler;
-- (void)removeProvisioningProfilesForBundleIdentifiers:(NSSet<NSString *> *)bundleIdentifiers fromDeviceWithUDID:(NSString *)udid completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler;
+- (void)installProvisioningProfiles:(NSSet<ALTProvisioningProfile *> *)provisioningProfiles toDevice:(ALTDevice *)altDevice activeProvisioningProfiles:(nullable NSSet<NSString *> *)activeProvisioningProfiles completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler;
+- (void)removeProvisioningProfilesForBundleIdentifiers:(NSSet<NSString *> *)bundleIdentifiers toDevice:(ALTDevice *)altDevice completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler;
 
 /* Developer Disk Image */
 - (void)isDeveloperDiskImageMountedForDevice:(ALTDevice *)device

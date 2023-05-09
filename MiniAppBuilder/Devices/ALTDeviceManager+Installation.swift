@@ -6,9 +6,10 @@
 import Cocoa
 import UserNotifications
 import ObjectiveC
+import Security
 
 private let appGroupsSemaphore = DispatchSemaphore(value: 1)
-// private let developerDiskManager = DeveloperDiskManager()
+private let developerDiskManager = DeveloperDiskManager()
 
 private let session: URLSession = {
     let configuration = URLSessionConfiguration.default
@@ -99,10 +100,34 @@ private extension ALTDeviceManager
 
 extension ALTDeviceManager
 {
-    func installApplication(at ipaFileURL: URL, to device: ALTDevice,  profiles: Set<String>, completion: @escaping (Result<Void, Error>) -> Void)
+    func installApplication(at ipaFileURL: URL, for bundleIdentifier: String, to device: ALTDevice,  profiles: Set<String>, completion: @escaping (Result<Void, Error>) -> Void)
     {
-        ALTDeviceManager.shared.installApp(at: ipaFileURL, toDeviceWithUDID: device.identifier, activeProvisioningProfiles: profiles) { (success, error) in
-            completion(Result(success, error))
+        var appName = ipaFileURL.deletingPathExtension().lastPathComponent
+        self.prepareDevice(device) { (result) in
+            switch result
+            {
+            case .failure(let error):
+                printStdErr("Failed to install DeveloperDiskImage.dmg to \(device).", error)
+                fallthrough // Continue installing app even if we couldn't install Developer disk image.
+            
+            case .success:
+                do{
+                    ALTDeviceManager.shared.installApp(at: ipaFileURL, to: device, activeProvisioningProfiles: profiles) { (success, error) in
+                        if(error != nil) {
+                            completion(Result(success, error))
+                            return
+                        }
+                        ALTDeviceManager.shared.launchApp(forBundleIdentifier: bundleIdentifier, to: device) { (success, error) in
+                            completion(Result(success, error))
+                        }
+                    }
+                }
+                catch
+                {
+                    let failure = String(format: NSLocalizedString("%@ could not be downloaded.", comment: ""), appName)
+                    completion(.failure(failure as! Error))
+                }
+            }
         }
     }
     
@@ -131,7 +156,7 @@ extension ALTDeviceManager
             }
             // try? FileManager.default.removeItem(at: destinationDirectoryURL)
         }
-        
+
         print("Init the sign environment...");
         AnisetteDataManager.shared.requestAnisetteData { (result) in
             do
@@ -158,66 +183,49 @@ extension ALTDeviceManager
                                             {
                                                 let certificate = try result.get()
 
-                                                // self.prepare(device) { (result) in
-                                                //     switch result
-                                                //     {
-                                                //     case .failure(let error):
-                                                //         printStdErr("Failed to install DeveloperDiskImage.dmg to \(device).", error)
-                                                //         fallthrough // Continue installing app even if we couldn't install Developer disk image.
-                                                    
-                                                //     case .success:
-                                                //         do{
-                                                            let fileURL = ipaFileURL
-                                                            
-                                                            try FileManager.default.createDirectory(at: destinationDirectoryURL, withIntermediateDirectories: true, attributes: nil)
-                                                            // 解压ipa
-                                                            let appBundleURL = try FileManager.default.unzipAppBundle(at: fileURL, toDirectory: destinationDirectoryURL)
-                                                            guard let application = ALTApplication(fileURL: appBundleURL) else { throw ALTError(.invalidApp) }
-                                                            
-                                                            appName = application.name
-                                                            
-                                                            // Refresh anisette data to prevent session timeouts.
-                                                            AnisetteDataManager.shared.requestAnisetteData { (result) in
-                                                                do
-                                                                {
-                                                                    let anisetteData = try result.get()
-                                                                    session.anisetteData = anisetteData
-                                                                    
-                                                                    self.prepareAllProvisioningProfiles(for: application, device: device, team: team, bundleId: bundleId, session: session) { (result) in
-                                                                        do
-                                                                        {
-                                                                            let profiles = try result.get()
-                                                                            self.signCore(application, certificate: certificate, profiles: profiles) { (result) in
-                                                                                do
-                                                                                {
-                                                                                    let activeProfiles = try result.get()
-                                                                                    finish(.success((application, activeProfiles)))
-                                                                                }
-                                                                                catch
-                                                                                {
-                                                                                    finish(.failure(error))
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                        catch
-                                                                        {
-                                                                            finish(.failure(error), failure: NSLocalizedString("MIniAppBuilder could not fetch new provisioning profiles.", comment: ""))
-                                                                        }
+                                                let fileURL = ipaFileURL
+                                                
+                                                try FileManager.default.createDirectory(at: destinationDirectoryURL, withIntermediateDirectories: true, attributes: nil)
+                                                // 解压ipa
+                                                let appBundleURL = try FileManager.default.unzipAppBundle(at: fileURL, toDirectory: destinationDirectoryURL)
+                                                guard let application = ALTApplication(fileURL: appBundleURL) else { throw ALTError(.invalidApp) }
+                                                
+                                                appName = application.name
+                                                
+                                                // Refresh anisette data to prevent session timeouts.
+                                                AnisetteDataManager.shared.requestAnisetteData { (result) in
+                                                    do
+                                                    {
+                                                        let anisetteData = try result.get()
+                                                        session.anisetteData = anisetteData
+                                                        
+                                                        self.prepareAllProvisioningProfiles(for: application, device: device, team: team, bundleId: bundleId, session: session) { (result) in
+                                                            do
+                                                            {
+                                                                let profiles = try result.get()
+                                                                self.signCore(application, certificate: certificate, profiles: profiles) { (result) in
+                                                                    do
+                                                                    {
+                                                                        let activeProfiles = try result.get()
+                                                                        finish(.success((application, activeProfiles)))
+                                                                    }
+                                                                    catch
+                                                                    {
+                                                                        finish(.failure(error))
                                                                     }
                                                                 }
-                                                                catch
-                                                                {
-                                                                    finish(.failure(error))
-                                                                }
                                                             }
-                                                        // }
-                                                        // catch
-                                                        // {
-                                                        //     let failure = String(format: NSLocalizedString("%@ could not be downloaded.", comment: ""), appName)
-                                                        //     finish(.failure(error), failure: failure)
-                                                        // }
-                                                    // }
-                                                // }
+                                                            catch
+                                                            {
+                                                                finish(.failure(error), failure: NSLocalizedString("MIniAppBuilder could not fetch new provisioning profiles.", comment: ""))
+                                                            }
+                                                        }
+                                                    }
+                                                    catch
+                                                    {
+                                                        finish(.failure(error))
+                                                    }
+                                                }
                                             }
                                             catch
                                             {
@@ -319,43 +327,43 @@ extension ALTDeviceManager
 
 }
 
-// extension ALTDeviceManager
-// {
-//     func prepare(_ device: ALTDevice, completionHandler: @escaping (Result<Void, Error>) -> Void)
-//     {        
-//         ALTDeviceManager.shared.isDeveloperDiskImageMounted(for: device) { (isMounted, error) in
-//             switch (isMounted, error)
-//             {
-//             case (_, let error?): return completionHandler(.failure(error))
-//             case (true, _): return completionHandler(.success(()))
-//             case (false, _):
-//                 developerDiskManager.downloadDeveloperDisk(for: device) { (result) in
-//                     switch result
-//                     {
-//                     case .failure(let error): completionHandler(.failure(error))
-//                     case .success((let diskFileURL, let signatureFileURL)):
-//                         ALTDeviceManager.shared.installDeveloperDiskImage(at: diskFileURL, signatureURL: signatureFileURL, to: device) { (success, error) in
-//                             switch Result(success, error)
-//                             {
-//                             case .failure(let error as ALTServerError) where error.code == .incompatibleDeveloperDisk:
-//                                 developerDiskManager.setDeveloperDiskCompatible(false, with: device)
-//                                 completionHandler(.failure(error))
+extension ALTDeviceManager
+{
+    func prepareDevice(_ device: ALTDevice, completionHandler: @escaping (Result<Void, Error>) -> Void)
+    {        
+        ALTDeviceManager.shared.isDeveloperDiskImageMounted(for: device) { (isMounted, error) in
+            switch (isMounted, error)
+            {
+            case (_, let error?): return completionHandler(.failure(error))
+            case (true, _): return completionHandler(.success(()))
+            case (false, _):
+                developerDiskManager.downloadDeveloperDisk(for: device) { (result) in
+                    switch result
+                    {
+                    case .failure(let error): completionHandler(.failure(error))
+                    case .success((let diskFileURL, let signatureFileURL)):
+                        ALTDeviceManager.shared.installDeveloperDiskImage(at: diskFileURL, signatureURL: signatureFileURL, to: device) { (success, error) in
+                            switch Result(success, error)
+                            {
+                            case .failure(let error as ALTServerError) where error.code == .incompatibleDeveloperDisk:
+                                developerDiskManager.setDeveloperDiskCompatible(false, with: device)
+                                completionHandler(.failure(error))
                                 
-//                             case .failure(let error):
-//                                 // Don't mark developer disk as incompatible because it probably failed for a different reason.
-//                                 completionHandler(.failure(error))
+                            case .failure(let error):
+                                // Don't mark developer disk as incompatible because it probably failed for a different reason.
+                                completionHandler(.failure(error))
                                 
-//                             case .success:
-//                                 developerDiskManager.setDeveloperDiskCompatible(true, with: device)
-//                                 completionHandler(.success(()))
-//                             }
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
+                            case .success:
+                                developerDiskManager.setDeveloperDiskCompatible(true, with: device)
+                                completionHandler(.success(()))
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 private extension ALTDeviceManager
 {

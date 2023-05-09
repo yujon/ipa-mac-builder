@@ -83,7 +83,7 @@ char *bin2hex(const unsigned char *bin, size_t length)
                 
         /* Connect to debugserver */
         debugserver_client_t client = NULL;
-        debugserver_error_t error = debugserver_client_start_service(device, &client, "AltServer");
+        debugserver_error_t error = debugserver_client_start_service(device, &client, "MiniappBuilder");
         if (error != DEBUGSERVER_E_SUCCESS)
         {
             return finish(NO, [NSError errorWithDebugServerError:error device:self.device]);
@@ -149,8 +149,6 @@ char *bin2hex(const unsigned char *bin, size_t length)
         completionHandler(YES, nil);
     });
 }
-
-#pragma mark - Private -
 
 - (BOOL)sendCommand:(NSString *)command arguments:(nullable NSArray<NSString *> *)arguments error:(NSError **)error
 {
