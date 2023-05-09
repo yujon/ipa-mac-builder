@@ -32,23 +32,46 @@ class Application: NSObject {
 
         let arguments = Array(CommandLine.arguments.dropFirst())
         let parser = ArgumentParser(usage: "<options>", overview: "A description")
+        // action
+        let actionOption = parser.add(option: "--action", shortName: "-a", kind: String.self, usage: "sign|getDevices")
+
+        // sign
         let ipaOption = parser.add(option: "--ipa", shortName: "-ipa", kind: String.self, usage: "ipa path")
         let typeOption = parser.add(option: "--type", shortName: "-t", kind: String.self, usage: "apple sign type: appleId or certificate")
-
-        let usernameOption = parser.add(option: "--appleId", shortName: "-a", kind: String.self, usage: "apple ID")
+        let usernameOption = parser.add(option: "--appleId", shortName: "-ai", kind: String.self, usage: "apple ID")
         let passwordOption = parser.add(option: "--password", shortName: "-p", kind: String.self, usage: "apple password")
         let deviceIdOption = parser.add(option: "--deviceId", shortName: "-di", kind: String.self, usage: "device udid。 required when")
         let deviceNameOption = parser.add(option: "--deviceName", shortName: "-dn", kind: String.self, usage: "device name")
         let bundleIdOption = parser.add(option: "--bundleId", shortName: "-bi", kind: String.self, usage: "the bundleId, same|auto|xx.xx.xx(specified bundleId)")
-
         let certificatePathOption = parser.add(option: "--certificatePath", shortName: "-cpa", kind: String.self, usage: "certificate path")
         let certificatePasswordOption = parser.add(option: "--certificatePassword", shortName: "-cpw", kind: String.self, usage: "certificate password")
         let profilePathOption = parser.add(option: "--profilePath", shortName: "-pf", kind: String.self, usage: "profile path")
-
         let outputDirOption = parser.add(option: "--output", shortName: "-o", kind: String.self, usage: "output dir")
         let installOption = parser.add(option: "--install", shortName: "-i", kind: Bool.self, usage: "install instantly to device")
         let parsedArguments = try parser.parse(arguments)
 
+        let action = parsedArguments.get(actionOption) ?? "getDevices"
+
+        // 获取设备列表
+        if action == "getDevices" {
+            ALTDeviceManager.shared.start()
+            var devoceCount = ALTDeviceManager.shared.availableDevices.count
+            if devoceCount == 0 {
+                return
+            }
+            for device in ALTDeviceManager.shared.availableDevices {
+                if device.type != ALTDeviceType.iphone {
+                    continue
+                }
+                let osVersion = device.osVersion
+                let versionString = "\(osVersion.majorVersion).\(osVersion.minorVersion).\(osVersion.patchVersion)"
+                let arr = ["iphone", device.name, versionString, device.identifier]
+                print(arr.joined(separator: "|"))
+            }
+            return
+        }
+
+        // 签名
         let signType = parsedArguments.get(typeOption) ?? "appleId"
         var ipaPath = parsedArguments.get(ipaOption)
 
@@ -134,7 +157,7 @@ class Application: NSObject {
 
         UserDefaults.standard.registerDefaults()
 
-        try await self.doAction(
+        try await self.doSignAction(
             at: fileURL,
             signType: signType,
             username: username,
@@ -154,7 +177,7 @@ class Application: NSObject {
 private extension Application
 {
 
-    func doAction(
+    func doSignAction(
         at fileURL: URL,
         signType: String,
         username: String?,
@@ -202,7 +225,7 @@ private extension Application
                         print("Export the ipa successfullly")
                     }
                     if install {
-                        ALTDeviceManager.shared.installApplication(at: application.fileURL, to: device!, profiles: profiles,  completion: finish(_:))
+                        ALTDeviceManager.shared.installApplication(at: application.fileURL, for: application.bundleIdentifier, to: device!, profiles: profiles,  completion: finish(_:))
                     } else {
                         finish(.success(()))
                     }
