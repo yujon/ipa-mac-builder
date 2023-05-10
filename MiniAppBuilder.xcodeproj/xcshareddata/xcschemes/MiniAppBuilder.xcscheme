@@ -69,6 +69,14 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "--entitlements"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "com.apple.developer.associated-domains=https://help.wechat.com/weappdemo/"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "--output"
             isEnabled = "YES">
          </CommandLineArgument>

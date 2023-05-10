@@ -18,8 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithCertificate:(ALTCertificate *)certificate;
 
-- (NSProgress *)signAppAtURL:(NSURL *)appURL provisioningProfiles:(NSArray<ALTProvisioningProfile *> *)profiles completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler;
-
+- (NSProgress *)signAppAtURL:(NSURL *)appURL provisioningProfiles:(NSArray<ALTProvisioningProfile *> *)profiles entitlements: (NSDictionary *)customEntitlements completionHandler:(void (^)(BOOL success, NSError *error))completionHandler;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -198,70 +198,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "17C682AA-040C-4F89-9C39-0B20BA8EF85C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MiniAppBuilder/main.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "launch()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C26A3F80-EFFF-4009-8523-E5C706641D3A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MiniAppBuilder/main.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "launch()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "005953C2-88AB-41C1-8052-068DD98412D8"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "841"
-            endingLineNumber = "841"
-            landmarkName = "register(_:team:session:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6A90D190-F2AB-4482-A493-57D61A7FD278"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
-            landmarkName = "-signAppAtURL:provisioningProfiles:completionHandler:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "259E79D8-394E-40B8-9207-254494F41425"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -271,7 +207,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "229"
             endingLineNumber = "229"
-            landmarkName = "-signAppAtURL:provisioningProfiles:completionHandler:"
+            landmarkName = "-signAppAtURL:provisioningProfiles:entitlements:completionHandler:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -303,7 +239,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
             endingLineNumber = "136"
-            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:entitlements:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -311,15 +247,15 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "3785BA2B-900E-4B87-9D13-E60661C4DF44"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "signFinish(_:)"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "finish(_:)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -333,8 +269,10 @@
             filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296">
+            startingLineNumber = "303"
+            endingLineNumber = "303"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -347,8 +285,8 @@
             filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "finish(_:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -509,7 +447,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "212"
             endingLineNumber = "212"
-            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:entitlements:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -525,8 +463,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "326"
             endingLineNumber = "326"
-            landmarkName = "signWithCertificate(at:certificatePath:certificatePassword:profilePath:completion:)"
-            landmarkType = "7">
+            landmarkName = "ALTDeviceManager"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -541,8 +479,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "331"
             endingLineNumber = "331"
-            landmarkName = "signWithCertificate(at:certificatePath:certificatePassword:profilePath:completion:)"
-            landmarkType = "7">
+            landmarkName = "ALTDeviceManager"
+            landmarkType = "21">
             <Locations>
                <Location
                   uuid = "A540450C-E095-4425-92A1-82E521E80487 - 2137ee0ee8d5f40d"
@@ -589,7 +527,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "320"
             endingLineNumber = "320"
-            landmarkName = "signWithCertificate(at:certificatePath:certificatePassword:profilePath:completion:)"
+            landmarkName = "signWithCertificate(at:certificatePath:certificatePassword:profilePath:entitlements:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -637,7 +575,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "321"
             endingLineNumber = "321"
-            landmarkName = "signWithCertificate(at:certificatePath:certificatePassword:profilePath:completion:)"
+            landmarkName = "signWithCertificate(at:certificatePath:certificatePassword:profilePath:entitlements:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -700,7 +638,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "196"
             endingLineNumber = "196"
-            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:entitlements:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -716,7 +654,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
             endingLineNumber = "206"
-            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:completion:)"
+            landmarkName = "signWithAppleID(at:to:appleID:password:bundleId:entitlements:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -732,8 +670,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "327"
             endingLineNumber = "327"
-            landmarkName = "signWithCertificate(at:certificatePath:certificatePassword:profilePath:completion:)"
-            landmarkType = "7">
+            landmarkName = "ALTDeviceManager"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -750,114 +688,6 @@
             endingLineNumber = "1469"
             landmarkName = "-availableDevicesIncludingNetworkDevices:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "041AADA4-D61A-4ED7-AFD4-BBEE2B59AAB9"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MiniAppBuilder/main.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "launch()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "041AADA4-D61A-4ED7-AFD4-BBEE2B59AAB9 - 60cb2616266e3c06"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for MiniAppBuilder.Application.launch() async throws -&gt; ()"
-                  moduleName = "MiniAppBuilder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/main.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
-                  offsetFromSymbolStart = "52438">
-               </Location>
-               <Location
-                  uuid = "041AADA4-D61A-4ED7-AFD4-BBEE2B59AAB9 - fc63a0e884a6122b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for MiniAppBuilder.Application.launch() async throws -&gt; ()"
-                  moduleName = "MiniAppBuilder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/main.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
-                  offsetFromSymbolStart = "54">
-               </Location>
-               <Location
-                  uuid = "041AADA4-D61A-4ED7-AFD4-BBEE2B59AAB9 - b81bd9166ea55ba7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MiniAppBuilder.Application.launch() async throws -&gt; ()"
-                  moduleName = "MiniAppBuilder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/main.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "148"
-                  endingLineNumber = "148"
-                  offsetFromSymbolStart = "453">
-               </Location>
-               <Location
-                  uuid = "041AADA4-D61A-4ED7-AFD4-BBEE2B59AAB9 - b81bd9166ea54438"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for MiniAppBuilder.Application.launch() async throws -&gt; ()"
-                  moduleName = "MiniAppBuilder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/main.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
-                  offsetFromSymbolStart = "887">
-               </Location>
-               <Location
-                  uuid = "041AADA4-D61A-4ED7-AFD4-BBEE2B59AAB9 - a433ac978b1f3fa4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for MiniAppBuilder.Application.launch() async throws -&gt; ()"
-                  moduleName = "MiniAppBuilder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/main.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "148"
-                  endingLineNumber = "148"
-                  offsetFromSymbolStart = "480">
-               </Location>
-               <Location
-                  uuid = "041AADA4-D61A-4ED7-AFD4-BBEE2B59AAB9 - a433ac978b1f203b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for MiniAppBuilder.Application.launch() async throws -&gt; ()"
-                  moduleName = "MiniAppBuilder"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/main.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
-                  offsetFromSymbolStart = "879">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -991,15 +821,207 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9DEA2E55-EBE8-4150-B6A7-72E797B11B53"
+            uuid = "0269BE5B-92EA-402F-AD5A-139DDCB671C8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "671"
+            endingLineNumber = "671"
+            landmarkName = "updateFeatures(for:app:team:session:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0269BE5B-92EA-402F-AD5A-139DDCB671C8 - ba4584de53aabb26"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__C.ALTDeviceManager.updateFeatures(for: __C.ALTAppID, app: __C.ALTApplication, team: __C.ALTTeam, session: __C.ALTAppleAPISession, completionHandler: (Swift.Result&lt;__C.ALTAppID, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "671"
+                  endingLineNumber = "671"
+                  offsetFromSymbolStart = "768">
+               </Location>
+               <Location
+                  uuid = "0269BE5B-92EA-402F-AD5A-139DDCB671C8 - ba4584de53aabb26"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__C.ALTDeviceManager.updateFeatures(for: __C.ALTAppID, app: __C.ALTApplication, team: __C.ALTTeam, session: __C.ALTAppleAPISession, completionHandler: (Swift.Result&lt;__C.ALTAppID, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "671"
+                  endingLineNumber = "671"
+                  offsetFromSymbolStart = "1148">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B23067F6-E45A-45F7-8F92-D641A0D50C24"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
+            landmarkName = "-entitlementsToXMLKeyValue:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B54D888D-D0D2-4814-BEC4-60FEDE69FA0A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "-signAppAtURL:provisioningProfiles:entitlements:completionHandler:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B54D888D-D0D2-4814-BEC4-60FEDE69FA0A - c78ec44cc7fb92d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ALTSigner signAppAtURL:provisioningProfiles:completionHandler:]"
+                  moduleName = "AltSign-Dynamic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "241"
+                  endingLineNumber = "241"
+                  offsetFromSymbolStart = "2297">
+               </Location>
+               <Location
+                  uuid = "B54D888D-D0D2-4814-BEC4-60FEDE69FA0A - 4bfeef206dba99dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ALTSigner signAppAtURL:provisioningProfiles:entitlements:completionHandler:]"
+                  moduleName = "AltSign-Dynamic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "243"
+                  endingLineNumber = "243"
+                  offsetFromSymbolStart = "1585">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C178142B-B5B0-499E-98D6-A7D1AE7B4157"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "-signAppAtURL:provisioningProfiles:entitlements:completionHandler:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "428B57ED-C6E5-44EE-8D1A-E651AE18E1EF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "866"
+            endingLineNumber = "866"
+            landmarkName = "signCore(_:certificate:profiles:entitlements:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "428B57ED-C6E5-44EE-8D1A-E651AE18E1EF - b9c3bd2a48a19523"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in __C.ALTDeviceManager.signCore(_: __C.ALTApplication, certificate: __C.ALTCertificate, profiles: Swift.Dictionary&lt;Swift.String, __C.ALTProvisioningProfile&gt;, entitlements: Swift.Dictionary&lt;Swift.String, Swift.String&gt;, completionHandler: (Swift.Result&lt;Swift.Set&lt;Swift.String&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "866"
+                  endingLineNumber = "866"
+                  offsetFromSymbolStart = "2152">
+               </Location>
+               <Location
+                  uuid = "428B57ED-C6E5-44EE-8D1A-E651AE18E1EF - 3c5d3bea0bd45561"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Error) -&gt; () in closure #1 () -&gt; () in __C.ALTDeviceManager.signCore(_: __C.ALTApplication, certificate: __C.ALTCertificate, profiles: Swift.Dictionary&lt;Swift.String, __C.ALTProvisioningProfile&gt;, entitlements: Swift.Dictionary&lt;Swift.String, Swift.String&gt;, completionHandler: (Swift.Result&lt;Swift.Set&lt;Swift.String&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MiniAppBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "869"
+                  endingLineNumber = "869"
+                  offsetFromSymbolStart = "130">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "187209FF-B166-4F92-A7FF-C04150318861"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
+            landmarkName = "-signAppAtURL:provisioningProfiles:entitlements:completionHandler:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E0FC54A-7115-4EAA-AA2D-198DDEAA7522"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "launch()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1007,240 +1029,96 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A7E866E7-5C00-4365-BC0E-A912144E97EB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MiniAppBuilder/Devices/ALTDeviceManager+Installation.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "844"
-            endingLineNumber = "844"
-            landmarkName = "fetchProvisioningProfile(for:device:team:session:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "61BDB6C0-31C6-4F50-BDC2-11E4ECB52AAC"
+            uuid = "F01C6F4F-397F-4C1E-8F03-0CD13E38EE7F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
+            filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "-signAppAtURL:provisioningProfiles:completionHandler:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "61BDB6C0-31C6-4F50-BDC2-11E4ECB52AAC - c78ec44cc7fbc17"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ALTSigner signAppAtURL:provisioningProfiles:completionHandler:]"
-                  moduleName = "AltSign-Dynamic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "203"
-                  endingLineNumber = "203"
-                  offsetFromSymbolStart = "234">
-               </Location>
-               <Location
-                  uuid = "61BDB6C0-31C6-4F50-BDC2-11E4ECB52AAC - e900326dce606c11"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__65-[ALTSigner signAppAtURL:provisioningProfiles:completionHandler:]_block_invoke"
-                  moduleName = "AltSign-Dynamic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "204"
-                  endingLineNumber = "204"
-                  offsetFromSymbolStart = "65">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7AEA6288-94A1-4D22-B0B8-F418042E961F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "-signAppAtURL:provisioningProfiles:completionHandler:"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "launch()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A1247A2D-6E08-4338-A4FF-0B60F352D214"
-            shouldBeEnabled = "Yes"
+            uuid = "9E82450F-B889-4E80-8333-3DDB66825E5F"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
+            filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
-            landmarkName = "-signAppAtURL:provisioningProfiles:completionHandler:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A1247A2D-6E08-4338-A4FF-0B60F352D214 - c78ec44cc7fb343"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ALTSigner signAppAtURL:provisioningProfiles:completionHandler:]"
-                  moduleName = "AltSign-Dynamic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "287"
-                  endingLineNumber = "287"
-                  offsetFromSymbolStart = "4212">
-               </Location>
-               <Location
-                  uuid = "A1247A2D-6E08-4338-A4FF-0B60F352D214 - d641bdef60b10431"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__65-[ALTSigner signAppAtURL:provisioningProfiles:completionHandler:]_block_invoke_2"
-                  moduleName = "AltSign-Dynamic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "287"
-                  endingLineNumber = "287"
-                  offsetFromSymbolStart = "39">
-               </Location>
-            </Locations>
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "finish(_:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F4FB1D8C-74B9-4C3A-A513-A4A735E9479E"
-            shouldBeEnabled = "Yes"
+            uuid = "8689AF61-FB3E-441D-98B5-37E94A8E91BF"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
+            filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
-            landmarkName = "-signAppAtURL:provisioningProfiles:completionHandler:"
-            landmarkType = "7">
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "finish(_:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9D12D2E2-19F1-415A-B5F7-6DE59A6A8F59"
+            uuid = "1603BE35-083F-4D2F-A2DA-6E6E8CD759A3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
+            filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
-            landmarkName = "-signAppAtURL:provisioningProfiles:completionHandler:"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
+            landmarkName = "finish(_:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DC54FEB3-6166-4473-8EA1-1FA10CDB5EE2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MiniAppBuilder/main.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "launch()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EE55C9B7-C90F-491E-8511-BBFE3B9E3484"
-            shouldBeEnabled = "Yes"
+            uuid = "76C80072-F5D1-4660-AF10-22529455EB43"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
+            filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
-            landmarkName = "-signAppAtURL:provisioningProfiles:completionHandler:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "EE55C9B7-C90F-491E-8511-BBFE3B9E3484 - d641bdef60b10660"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__65-[ALTSigner signAppAtURL:provisioningProfiles:completionHandler:]_block_invoke_2"
-                  moduleName = "AltSign-Dynamic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "304"
-                  endingLineNumber = "304"
-                  offsetFromSymbolStart = "247">
-               </Location>
-               <Location
-                  uuid = "EE55C9B7-C90F-491E-8511-BBFE3B9E3484 - badb1a736e44eee5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__65-[ALTSigner signAppAtURL:provisioningProfiles:completionHandler:]_block_invoke.84"
-                  moduleName = "AltSign-Dynamic"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonnyyu/Desktop/work/miniapp-mac-builder/Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "305"
-                  endingLineNumber = "305"
-                  offsetFromSymbolStart = "57">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "ADF6CBF9-BCE6-427F-B27F-C7C10CBBFB0F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
-            landmarkName = "-signAppAtURL:provisioningProfiles:completionHandler:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B0A4C500-B5B3-4E96-8423-DE5E7A5695C0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dependencies/AltSign/AltSign/Signing/ALTSigner.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
-            landmarkName = "-signAppAtURL:provisioningProfiles:completionHandler:"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "launch()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

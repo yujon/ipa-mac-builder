@@ -131,7 +131,7 @@ extension ALTDeviceManager
         }
     }
     
-    func signWithAppleID(at ipaFileURL: URL, to altDevice: ALTDevice, appleID: String, password: String, bundleId: String?, completion: @escaping (Result<(ALTApplication, Set<String>), Error>) -> Void)
+    func signWithAppleID(at ipaFileURL: URL, to altDevice: ALTDevice, appleID: String, password: String, bundleId: String?, entitlements: [String: String] , completion: @escaping (Result<(ALTApplication, Set<String>), Error>) -> Void)
     {
 
         let destinationDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -203,7 +203,7 @@ extension ALTDeviceManager
                                                             do
                                                             {
                                                                 let profiles = try result.get()
-                                                                self.signCore(application, certificate: certificate, profiles: profiles) { (result) in
+                                                                self.signCore(application, certificate: certificate, profiles: profiles, entitlements: entitlements) { (result) in
                                                                     do
                                                                     {
                                                                         let activeProfiles = try result.get()
@@ -258,7 +258,7 @@ extension ALTDeviceManager
         }
     }
 
-    func signWithCertificate(at ipaFileURL: URL, certificatePath: String, certificatePassword: String?, profilePath: String, completion: @escaping (Result<(ALTApplication, Set<String>), Error>) -> Void)
+    func signWithCertificate(at ipaFileURL: URL, certificatePath: String, certificatePassword: String?, profilePath: String, entitlements: [String: String], completion: @escaping (Result<(ALTApplication, Set<String>), Error>) -> Void)
     {
 
         let destinationDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
@@ -302,7 +302,7 @@ extension ALTDeviceManager
                 let provisioningProfile: ALTProvisioningProfile = try ALTProvisioningProfile(url: profileFileURL)
                 let profiles = [application.bundleIdentifier:provisioningProfile]
 
-                self.signCore(application, certificate: certificate, profiles: profiles) { (result) in
+                self.signCore(application, certificate: certificate, profiles: profiles, entitlements: entitlements) { (result) in
                     do
                     {
                         let activeProfiles = try result.get()
@@ -825,7 +825,7 @@ private extension ALTDeviceManager
         }
     }
     
-    func signCore(_ application: ALTApplication, certificate: ALTCertificate, profiles: [String: ALTProvisioningProfile], completionHandler: @escaping (Result<Set<String>, Error>) -> Void)
+    func signCore(_ application: ALTApplication, certificate: ALTCertificate, profiles: [String: ALTProvisioningProfile], entitlements: [String: String], completionHandler: @escaping (Result<Set<String>, Error>) -> Void)
     {
 
         func prepare(_ bundle: Bundle, additionalInfoDictionaryValues: [String: Any] = [:]) throws
@@ -863,7 +863,7 @@ private extension ALTDeviceManager
                 }
                 
                 let resigner = ALTSigner(certificate: certificate)
-                resigner.signApp(at: application.fileURL, provisioningProfiles: Array(profiles.values)) { (success, error) in
+                resigner.signApp(at: application.fileURL, provisioningProfiles: Array(profiles.values), entitlements: entitlements) { (success, error) in
                     do
                     {
                         try Result(success, error).get()

@@ -193,7 +193,21 @@ std::string CertificatesContent(ALTCertificate *altCertificate)
     return self;
 }
 
-- (NSProgress *)signAppAtURL:(NSURL *)appURL provisioningProfiles:(NSArray<ALTProvisioningProfile *> *)profiles completionHandler:(void (^)(BOOL success, NSError *error))completionHandler
+- (NSString *)entitlementsToXMLKeyValue:(NSDictionary *)entitlements {
+    NSMutableString *xml = [NSMutableString string];
+    for (NSString *key in entitlements) {
+        id value = entitlements[key];
+        [xml appendFormat:@"<key>%@</key>\n", key];
+        if ([value isKindOfClass:[NSString class]]) {
+            [xml appendFormat:@"<string>%@</string>\n", value];
+        } else if ([value isKindOfClass:[NSNumber class]]) {
+            [xml appendFormat:@"<%@ />\n", [value boolValue] ? @"true" : @"false"];
+        }
+    }
+    return xml;
+}
+
+- (NSProgress *)signAppAtURL:(NSURL *)appURL provisioningProfiles:(NSArray<ALTProvisioningProfile *> *)profiles entitlements: (NSDictionary *)customEntitlements completionHandler:(void (^)(BOOL success, NSError *error))completionHandler
 {    
     NSProgress *progress = [NSProgress discreteProgressWithTotalUnitCount:1];
     
@@ -311,7 +325,7 @@ std::string CertificatesContent(ALTCertificate *altCertificate)
             NSURL *profileURL = [app.fileURL URLByAppendingPathComponent:@"embedded.mobileprovision"];
             [profile.data writeToURL:profileURL atomically:YES];
             
-            NSString *additionalEntitlements = nil;
+            NSString *privateEntitlements = nil;
             if (app.hasPrivateEntitlements)
             {
                 NSRange commentStartRange = [app.entitlementsString rangeOfString:@"<!---><!-->"];
@@ -324,10 +338,10 @@ std::string CertificatesContent(ALTCertificate *altCertificate)
                     NSRange commentRange = NSMakeRange(commentStartRange.location, (commentEndRange.location + commentEndRange.length) - commentStartRange.location);
                     NSString *commentedEntitlements = [app.entitlementsString substringWithRange:commentRange];
                     
-                    additionalEntitlements = commentedEntitlements;
+                    privateEntitlements = commentedEntitlements;
                 }
             }
-            
+
             NSData *entitlementsData = [NSPropertyListSerialization dataWithPropertyList:profile.entitlements format:NSPropertyListXMLFormat_v1_0 options:0 error:&error];
             if (entitlementsData == nil)
             {
@@ -335,12 +349,17 @@ std::string CertificatesContent(ALTCertificate *altCertificate)
             }
             
             NSMutableString *entitlements = [[NSMutableString alloc] initWithData:entitlementsData encoding:NSUTF8StringEncoding];
-            if (additionalEntitlements != nil)
+            if (privateEntitlements != nil)
             {
                 // Insert additional entitlements after first occurence of <dict>.
                 NSRange entitlementsStartRange = [entitlements rangeOfString:@"<dict>"];
-                [entitlements insertString:additionalEntitlements atIndex:entitlementsStartRange.location + entitlementsStartRange.length];
+                [entitlements insertString:privateEntitlements atIndex:entitlementsStartRange.location + entitlementsStartRange.length];
             }
+            
+            // NSString *additionalEntitlements = nil;
+            // if customEntitlements != nil {
+            //     additionalEntitlements = [self entitlementsToXMLKeyValue: customEntitlements];
+            // }
             
             NSURL *resolvedURL = [app.fileURL URLByResolvingSymlinksInPath];
             entitlementsByFileURL[resolvedURL] = entitlements;
