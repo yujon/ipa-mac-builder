@@ -1,5 +1,9 @@
 ## 描叙
-本工具用于在mac系统将 ipa 用个人免费证书重签名并安装到手机上。
+本工具用于在mac系统上，支持的功能有：
+- 获取连接的手机设备列表
+- 对ipa用Apple免费账号重签名
+- 对ipa用Apple自有证书重签名
+
 ## 使用步骤
 
 1. 需要安装一个 Mail 插件，步骤如下：
@@ -16,8 +20,9 @@
 
 ```sh
 cd MiniappMacBuilder-v1.0.0
-./MiniAppBuilder {your apple account} {your apple password} {ipaPath} 
-# ./MiniAppBuilder xxx xxx /a/b/demo.ipa 
+./MiniAppBuilder --action sign --type appleId --ipa {ipaPath} --install
+./MiniAppBuilder --action sign --type appleId --ipa {ipaPath} --appleId xxx --password xxx --install
+./MiniAppBuilder --action sign --type certificate --ipa {ipaPath} --certificatePath xxx --certificatePassword xxx --profilePath xxx --install
 
 ```
 
