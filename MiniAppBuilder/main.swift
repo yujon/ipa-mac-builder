@@ -72,7 +72,7 @@ class Application: NSObject {
                 ALTDeviceManager.shared.start()
                 var devoceCount = ALTDeviceManager.shared.availableDevices.count
                 if devoceCount == 0 {
-                    return
+                    exit(0)
                 }
                 for device in ALTDeviceManager.shared.availableDevices {
                     if device.type != ALTDeviceType.iphone {
@@ -83,12 +83,12 @@ class Application: NSObject {
                     let arr = ["iphone", device.name, versionString, device.identifier]
                     print(arr.joined(separator: "|"))
                 }
-                return
+                exit(0)
             }
 
             // 签名
             let signType = parsedArguments.get(typeOption) ?? "appleId"
-            var ipaPath = parsedArguments.get(ipaOption)
+            let ipaPath = parsedArguments.get(ipaOption)
 
             var username = parsedArguments.get(usernameOption)
             var password = parsedArguments.get(passwordOption)
@@ -104,7 +104,6 @@ class Application: NSObject {
             let bundleId = parsedArguments.get(bundleIdOption) ?? "same"
             let entitlementsStr = parsedArguments.get(entitlementsOption)
 
-
             if ipaPath == nil {
                printStdErr("the ipa path not found")
                throw ArgValidateError.IpaPathNotFound
@@ -116,6 +115,7 @@ class Application: NSObject {
                 throw ArgValidateError.IpaPathNotFound
             }
         
+            
             // output或install至少一种
             if outputDir == nil && !install {
                 printStdErr("not output Dir or install instantly")
