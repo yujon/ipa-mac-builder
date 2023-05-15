@@ -356,10 +356,14 @@ std::string CertificatesContent(ALTCertificate *altCertificate)
                 [entitlements insertString:privateEntitlements atIndex:entitlementsStartRange.location + entitlementsStartRange.length];
             }
             
-            // NSString *additionalEntitlements = nil;
-            // if customEntitlements != nil {
-            //     additionalEntitlements = [self entitlementsToXMLKeyValue: customEntitlements];
-            // }
+            NSString *additionalEntitlements = nil;
+            if (customEntitlements != nil) {
+                additionalEntitlements = [self entitlementsToXMLKeyValue: customEntitlements];
+                NSRange range = [entitlements rangeOfString:@"</dict>" options:NSBackwardsSearch];
+                if(range.location != NSNotFound) {
+                    [entitlements insertString:additionalEntitlements atIndex:range.location];
+                }
+            }
             
             NSURL *resolvedURL = [app.fileURL URLByResolvingSymlinksInPath];
             entitlementsByFileURL[resolvedURL] = entitlements;

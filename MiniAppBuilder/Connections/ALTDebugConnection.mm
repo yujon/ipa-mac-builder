@@ -37,7 +37,7 @@ char *bin2hex(const unsigned char *bin, size_t length)
     if (self)
     {
         _device = device;
-        _connectionQueue = dispatch_queue_create_with_target("io.altstore.AltServer.DebugConnection",
+        _connectionQueue = dispatch_queue_create_with_target("io.MiniAppBuilder.DebugConnection",
                                                              DISPATCH_QUEUE_SERIAL_WITH_AUTORELEASE_POOL,
                                                              dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0));
     }

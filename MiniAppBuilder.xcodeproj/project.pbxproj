@@ -114,7 +114,6 @@
 		CE649C4929CDC388009AD7E5 /* NSError+MiniAppBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6C336124197D700034FD24 /* NSError+MiniAppBuilder.swift */; };
 		CE649C4A29CDC388009AD7E5 /* OperatingSystemVersion+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5708416292448DA00D42D34 /* OperatingSystemVersion+Comparable.swift */; };
 		CE649C4B29CDC388009AD7E5 /* NSError+ALTServerError.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1E314922A060F400370A3C /* NSError+ALTServerError.m */; };
-		CE649C4C29CDC388009AD7E5 /* CFNotificationName+AltStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BF718BC823C919E300A89F2D /* CFNotificationName+AltStore.m */; };
 		CE649C6A29CDC3A5009AD7E5 /* NSError+libimobiledevice.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE649C4F29CDC3A4009AD7E5 /* NSError+libimobiledevice.mm */; };
 		CE649C6B29CDC3A5009AD7E5 /* ALTDeviceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE649C5129CDC3A4009AD7E5 /* ALTDeviceManager.mm */; };
 		CE649C6C29CDC3A5009AD7E5 /* ALTDeviceManager+Installation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C5229CDC3A4009AD7E5 /* ALTDeviceManager+Installation.swift */; };
@@ -1056,7 +1055,6 @@
 				CE649C4929CDC388009AD7E5 /* NSError+MiniAppBuilder.swift in Sources */,
 				CE649C4A29CDC388009AD7E5 /* OperatingSystemVersion+Comparable.swift in Sources */,
 				CE649C4B29CDC388009AD7E5 /* NSError+ALTServerError.m in Sources */,
-				CE649C4C29CDC388009AD7E5 /* CFNotificationName+AltStore.m in Sources */,
 				CE649C6B29CDC3A5009AD7E5 /* ALTDeviceManager.mm in Sources */,
 				CE649C6F29CDC3A5009AD7E5 /* AnisetteDataManager.swift in Sources */,
 				CE649C7129CDC3A5009AD7E5 /* PluginManager.swift in Sources */,
