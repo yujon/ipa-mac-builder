@@ -373,7 +373,7 @@ private extension ALTDeviceManager
         func handleVerificationCode(_ completionHandler: @escaping (String?) -> Void)
         {
             let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
-            let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("./appleVerificationCode.sh").path
+            let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("appleVerificationCode.sh").path
             let inputOutput = executeCommand("\"\(inputCommand)\"")
             if let input = inputOutput {
                 let inputLines = input.split(separator: "\n")

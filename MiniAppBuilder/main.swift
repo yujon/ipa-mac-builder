@@ -125,7 +125,7 @@ class Application: NSObject {
            if signType == "appleId" {
                if username == nil || password == nil {
                    let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
-                   let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("./appleAccount.sh").path
+                   let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("appleAccount.sh").path
                    let inputOutput = executeCommand("\"\(inputCommand)\"")
                    if let input = inputOutput {
                        let inputLines = input.split(separator: "\n")
