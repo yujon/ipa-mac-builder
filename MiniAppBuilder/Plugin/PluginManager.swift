@@ -12,7 +12,6 @@ import STPrivilegedTask
 
 private let pluginDirectoryURL = URL(fileURLWithPath: "/Library/Mail/Bundles", isDirectory: true)
 private let pluginURL = pluginDirectoryURL.appendingPathComponent("MiniAppPlugin.mailbundle")
-private let pluginLocalZip =  URL(fileURLWithPath:"MiniAppPlugin.zip")
 
 extension PluginError
 {
@@ -98,7 +97,9 @@ extension PluginManager
     func installMailPlugin(completionHandler: @escaping (Result<Void, Error>) -> Void)
     {
           do {
-            let fileURL = pluginLocalZip
+            let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
+            let localPluginPath = executableURL.deletingLastPathComponent().appendingPathComponent("MiniAppPlugin.zip").path
+            let fileURL = URL(fileURLWithPath: localPluginPath)
             // Ensure plug-in directory exists.
             let authorization = try self.runAndKeepAuthorization("mkdir", arguments: ["-p", pluginDirectoryURL.path])
             
