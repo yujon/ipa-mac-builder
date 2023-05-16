@@ -374,7 +374,7 @@ private extension ALTDeviceManager
         {
             let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
             let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("./appleVerificationCode.sh").path
-            let inputOutput = executeCommand(inputCommand)
+            let inputOutput = executeCommand("\"\(inputCommand)\"")
             if let input = inputOutput {
                 let inputLines = input.split(separator: "\n")
                 if inputLines.count < 1  {
