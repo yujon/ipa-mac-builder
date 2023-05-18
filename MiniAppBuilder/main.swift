@@ -265,7 +265,7 @@ private extension Application
                         print("Export the ipa successfullly")
                     }
                     if install {
-                        ALTDeviceManager.shared.installApplication(at: application.fileURL, for: application.bundleIdentifier, to: device!, profiles: profiles,  completion: finish(_:))
+                        ALTDeviceManager.shared.installApplication(at: application, to: device!, profiles: profiles,  completion: finish(_:))
                     } else {
                         finish(.success(()))
                     }
@@ -288,7 +288,7 @@ private extension Application
                                 printStdErr("Failed to Install Mail Plug-in", error.localizedDescription)
                                 finish(.failure(error))
                             case .success:
-                                finish(.failure(PluginError.taskError(output: "Mail Plug-in had Installed, Please restart Mail and enable MiniAppPlugin in Mail's Preferences. Mail must be running when signing and installing apps")))
+                                finish(.failure(PluginError.taskError(output: "Mail Plug-in had Installed, Please Operate according to https://github.com/yujon/ipa-mac-builder and restart Mail. Mail must be running when signing and installing apps")))
                             }
                         }
                     }

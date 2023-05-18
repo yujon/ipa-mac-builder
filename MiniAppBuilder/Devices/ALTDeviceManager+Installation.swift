@@ -100,8 +100,10 @@ private extension ALTDeviceManager
 
 extension ALTDeviceManager
 {
-    func installApplication(at ipaFileURL: URL, for bundleIdentifier: String, to device: ALTDevice,  profiles: Set<String>, completion: @escaping (Result<Void, Error>) -> Void)
+    func installApplication(at application: ALTApplication, to device: ALTDevice,  profiles: Set<String>, completion: @escaping (Result<Void, Error>) -> Void)
     {
+        let ipaFileURL = application.fileURL;
+        let bundleIdentifier = application.bundleIdentifier;
         var appName = ipaFileURL.deletingPathExtension().lastPathComponent
         self.prepareDevice(device) { (result) in
             switch result
@@ -187,7 +189,7 @@ extension ALTDeviceManager
                                                 
                                                 try FileManager.default.createDirectory(at: destinationDirectoryURL, withIntermediateDirectories: true, attributes: nil)
                                                 // 解压ipa
-                                                let appBundleURL = try FileManager.default.unzipAppBundle(at: fileURL, toDirectory: destinationDirectoryURL)
+                                                var appBundleURL = try FileManager.default.unzipAppBundle(at: fileURL, toDirectory: destinationDirectoryURL)
                                                 guard let application = ALTApplication(fileURL: appBundleURL) else { throw ALTError(.invalidApp) }
                                                 
                                                 appName = application.name
@@ -199,7 +201,7 @@ extension ALTDeviceManager
                                                         let anisetteData = try result.get()
                                                         session.anisetteData = anisetteData
                                                         
-                                                        self.prepareAllProvisioningProfiles(for: application, device: device, team: team, bundleId: bundleId, session: session) { (result) in
+                                                        self.prepareAllProvisioningProfiles(for: application, device: device, team: team, bundleId: bundleId, entitlements: entitlements, session: session) { (result) in
                                                             do
                                                             {
                                                                 let profiles = try result.get()
@@ -207,7 +209,8 @@ extension ALTDeviceManager
                                                                     do
                                                                     {
                                                                         let activeProfiles = try result.get()
-                                                                        finish(.success((application, activeProfiles)))
+                                                                        guard let newApplication = ALTApplication(fileURL: application.fileURL) else { throw ALTError(.invalidApp) }
+                                                                        finish(.success((newApplication, activeProfiles)))
                                                                     }
                                                                     catch
                                                                     {
@@ -527,10 +530,10 @@ private extension ALTDeviceManager
         }
     }
     
-    func prepareAllProvisioningProfiles(for application: ALTApplication, device: ALTDevice, team: ALTTeam, bundleId: String?, session: ALTAppleAPISession,
+    func prepareAllProvisioningProfiles(for application: ALTApplication, device: ALTDevice, team: ALTTeam, bundleId: String?, entitlements: [String: String], session: ALTAppleAPISession,
                                         completion: @escaping (Result<[String: ALTProvisioningProfile], Error>) -> Void)
     {
-        self.prepareProvisioningProfile(for: application, parentApp: nil, device: device, team: team, bundleId: bundleId, session: session) { (result) in
+        self.prepareProvisioningProfile(for: application, parentApp: nil, device: device, team: team, bundleId: bundleId, entitlements: entitlements, session: session) { (result) in
             do
             {
                 let profile = try result.get()
@@ -544,7 +547,7 @@ private extension ALTDeviceManager
                 {
                     dispatchGroup.enter()
                     
-                    self.prepareProvisioningProfile(for: appExtension, parentApp: application, device: device, team: team,  bundleId: bundleId, session: session) { (result) in
+                    self.prepareProvisioningProfile(for: appExtension, parentApp: application, device: device, team: team,  bundleId: bundleId, entitlements: entitlements, session: session) { (result) in
                         switch result
                         {
                         case .failure(let e): error = e
@@ -572,7 +575,7 @@ private extension ALTDeviceManager
         }
     }
     
-    func prepareProvisioningProfile(for application: ALTApplication, parentApp: ALTApplication?, device: ALTDevice, team: ALTTeam, bundleId: String?, session: ALTAppleAPISession, completionHandler: @escaping (Result<ALTProvisioningProfile, Error>) -> Void)
+    func prepareProvisioningProfile(for application: ALTApplication, parentApp: ALTApplication?, device: ALTDevice, team: ALTTeam, bundleId: String?, entitlements: [String: String], session: ALTAppleAPISession, completionHandler: @escaping (Result<ALTProvisioningProfile, Error>) -> Void)
     {
         let parentBundleID = parentApp?.bundleIdentifier ?? application.bundleIdentifier
         var bundleID = bundleId ?? "same"
@@ -601,7 +604,7 @@ private extension ALTDeviceManager
             {
                 let appID = try result.get()
                 
-                self.updateFeatures(for: appID, app: application, team: team, session: session) { (result) in
+                self.updateFeatures(for: appID, app: application, team: team, entitlements: entitlements, session: session) { (result) in
                     do
                     {
                         let appID = try result.get()
@@ -659,7 +662,7 @@ private extension ALTDeviceManager
         }
     }
     
-    func updateFeatures(for appID: ALTAppID, app: ALTApplication, team: ALTTeam, session: ALTAppleAPISession, completionHandler: @escaping (Result<ALTAppID, Error>) -> Void)
+    func updateFeatures(for appID: ALTAppID, app: ALTApplication, team: ALTTeam, entitlements: [String: String], session: ALTAppleAPISession, completionHandler: @escaping (Result<ALTAppID, Error>) -> Void)
     {
         let requiredFeatures = app.entitlements.compactMap { (entitlement, value) -> (ALTFeature, Any)? in
             guard let feature = ALTFeature(entitlement: entitlement) else { return nil }

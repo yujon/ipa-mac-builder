@@ -358,7 +358,16 @@ std::string CertificatesContent(ALTCertificate *altCertificate)
             
             NSString *additionalEntitlements = nil;
             if (customEntitlements != nil) {
-                additionalEntitlements = [self entitlementsToXMLKeyValue: customEntitlements];
+                NSMutableDictionary *finalEntitlements = [NSMutableDictionary dictionary];
+                [customEntitlements enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+                    NSRange range = [entitlements rangeOfString:key];
+                    if (range.location != NSNotFound) {
+                        [finalEntitlements setObject:obj forKey:key];
+                    } else {
+                        NSLog(@"【warning】invalid entitlements key %@ for the bundleIdentifier %@", key, application.bundleIdentifier);
+                    }
+                }];
+                additionalEntitlements = [self entitlementsToXMLKeyValue: finalEntitlements];
                 NSRange range = [entitlements rangeOfString:@"</dict>" options:NSBackwardsSearch];
                 if(range.location != NSNotFound) {
                     [entitlements insertString:additionalEntitlements atIndex:range.location];
