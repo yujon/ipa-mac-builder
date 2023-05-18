@@ -28,7 +28,7 @@ cd MiniappMacBuilder-xxx
 ./MiniAppBuilder --action sign --type appleId --ipa {ipaPath} com.apple.developer.associated-domains=htpps://www.test.com/a/ --install
 ```
 
-> 首次采用免费证书签名时，需要安装一个mail插件，遇到以下提示时，请打开mail登录、启用MiniappBuilder插件并重启mail，然后保持mail打开。(#mail-plugin)
+> [mail插件](#mail-plugin) 首次采用免费证书签名时，需要安装一个mail插件，遇到以下提示时，请打开mail登录、启用MiniappBuilder插件并重启mail，然后保持mail打开。
 <img width="600" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/028a6e65-cd58-4fe2-b375-8812ea8a40ae">
 
 <img width="600" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/be291325-3429-415e-af12-cdb1a73cf08f">
