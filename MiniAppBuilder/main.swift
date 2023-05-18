@@ -288,7 +288,7 @@ private extension Application
                                 printStdErr("Failed to Install Mail Plug-in", error.localizedDescription)
                                 finish(.failure(error))
                             case .success:
-                                finish(.failure(PluginError.taskError(output: "Mail Plug-in had Installed, Please Operate according to https://github.com/yujon/ipa-mac-builder and restart Mail. Mail must be running when signing and installing apps")))
+                                finish(.failure(PluginError.taskError(output: "Mail Plug-in had Installed, Please Operate according to [url:https://github.com/yujon/ipa-mac-builder#mail-plugin] and restart Mail. Mail must be running when signing and installing apps")))
                             }
                         }
                     }

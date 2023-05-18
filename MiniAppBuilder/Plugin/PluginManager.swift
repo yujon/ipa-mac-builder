@@ -160,7 +160,7 @@ private extension PluginManager
             launchPath = "/bin/" + program
         }
         
-        print("Running program:", launchPath)
+        // print("Running program:", launchPath)
         
         let task = STPrivilegedTask()
         task.launchPath = launchPath
@@ -182,7 +182,7 @@ private extension PluginManager
         
         task.waitUntilExit()
         
-        print("Exit code:", task.terminationStatus)
+        // print("Exit code:", task.terminationStatus)
         
         guard task.terminationStatus == 0 else {
             let outputData = task.outputFileHandle.readDataToEndOfFile()
