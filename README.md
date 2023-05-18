@@ -14,7 +14,7 @@
 ```sh
 cd MiniappMacBuilder-xxx
 # 获取连接的设备列表信息
-./MiniAppBuilder --action getDevices 
+# ./MiniAppBuilder --action getDevices 
 # 免费证书签名
 ./MiniAppBuilder --action sign --type appleId --ipa {ipaPath} --install
 ./MiniAppBuilder --action sign --type appleId --ipa {ipaPath} --appleId xxx --password xxx --install
