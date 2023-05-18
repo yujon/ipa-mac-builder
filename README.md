@@ -6,8 +6,6 @@
 
 ## 使用步骤
 
-<!-- 1. 需要安装一个 Mail 插件，步骤如下： -->
-<!-- 
 - 下载 [MiniAppPlugin](https://dldir1.qq.com/WechatWebDev/donut/download/MiniAppPlugin.zip) 插件, 解压后将`MiniAppPlugin.mailbundle`放到`/Library/Mail/Bundles`目录下
 
 - 打开`Mail`，到 菜单 邮件 -> 设置 -> 管理插件, 启动`MiniAppPlugin.mailbundle`插件，然后重启`Mail` -->
@@ -36,13 +34,13 @@ cd MiniappMacBuilder-xxx
 ```
 
 > 首次采用免费证书签名时，需要安装一个mail插件，遇到以下提示时，请打开mail登录、启用MiniappBuilder插件并重启mail，然后保持mail打开。
-<img width="1000" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/028a6e65-cd58-4fe2-b375-8812ea8a40ae">
+<img width="600" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/028a6e65-cd58-4fe2-b375-8812ea8a40ae">
 
-<img width="1000" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/be291325-3429-415e-af12-cdb1a73cf08f">
+<img width="600" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/be291325-3429-415e-af12-cdb1a73cf08f">
 
-<img width="1000" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/c7202eee-cef1-469a-824e-24a4d4f0df1c">
+<img width="600" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/c7202eee-cef1-469a-824e-24a4d4f0df1c">
 
-<img width="1000" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/25820f14-6c1e-44e2-ba64-56f327c69254">
+<img width="600" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/25820f14-6c1e-44e2-ba64-56f327c69254">
 
 
 4. 免费证书签名是，如果用的apple账号与手机登录的不同，需要到手机端打开：设置 -> 通用 -> VPN与设备管理，然后选择信任对应的签名apple账号
