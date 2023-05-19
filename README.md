@@ -43,5 +43,7 @@ cd MiniappMacBuilder-xxx
 ## 常见问题
 
 #### 问题1. mac上报framework已损坏
+
 <img width="285" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/41eff07f-54e8-491e-a0ce-028adc652423">
+
 解决方式： 执行解压出来的目录下的xattr.sh脚本
