@@ -77,6 +77,8 @@ class Application: NSObject {
 
             let action = parsedArguments.get(actionOption) ?? "getDevices"
 
+            UserDefaults.standard.registerDefaults()
+
             // 获取设备列表
             if action == "getDevices" {
                 self.doGetDeviceAction()
@@ -197,7 +199,6 @@ class Application: NSObject {
                 }
             }
 
-            UserDefaults.standard.registerDefaults()
 
             self.doSignAction(
                 at: fileURL,
@@ -214,13 +215,17 @@ class Application: NSObject {
                 entitlements: entitlements
             )  { (result) in
                 switch result{
-                case .success(let application):
-                    CFRunLoopStop(runLoop.getCFRunLoop())
-                    exit(0)
-                case .failure(let error):
-                    printStdErr(error.localizedDescription);
-                    CFRunLoopStop(runLoop.getCFRunLoop())
-                    exit(1)
+                    case .success(let application):
+                        CFRunLoopStop(runLoop.getCFRunLoop())
+                        exit(0)
+                    case .failure(let error):
+                        printStdErr(error.localizedDescription);
+                        CFRunLoopStop(runLoop.getCFRunLoop())
+                        // clear
+                        if signType == "certificate" {
+                            UserDefaults.standard.set("no", forKey: "rememberCertificate")
+                        }
+                        exit(1)
                 }
             }
         }
