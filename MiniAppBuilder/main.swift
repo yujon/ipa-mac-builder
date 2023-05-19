@@ -40,16 +40,7 @@ func queryStringToDictionary(_ queryString: String) -> [String: String] {
 class Application: NSObject {
 
     private let pluginManager = PluginManager()
-    private var appleIdContentView: NSView? = nil
-    private var appleIdUsernameField: NSTextField? = nil
-    private var appleIdPasswordField: NSTextField? = nil
-    private var rememberAppleIdCheckbox: NSButton? = nil
 
-    private var certificateContentView: NSView? = nil
-    private var certificateField: NSTextField? = nil
-    private var certificatePasswordField: NSTextField? = nil
-    private var profileField: NSTextField? = nil
-    private var rememberCertificateCheckbox: NSButton? = nil
 
     func launch() throws
     {
@@ -114,7 +105,6 @@ class Application: NSObject {
                 throw ArgValidateError.IpaPathNotFound
             }
         
-            
             // output或install至少一种
             if outputDir == nil && !install {
                 printStdErr("not output Dir or install instantly")
@@ -128,13 +118,22 @@ class Application: NSObject {
                    password = UserDefaults.standard.string(forKey: "password")
                }
                if username == nil || password == nil {
-                 guard let appleIdInfo = self.showAppleIdAlert() else {
+                    let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
+                    let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("AppleAccount.sh").path
+                    let inputOutput = executeCommand("\"\(inputCommand)\"")
+                    if let input = inputOutput {
+                        let inputLines = input.split(separator: "\n")
+                        if inputLines.count < 3  {
+                            printStdErr("appleID or password is undefined")
+                            throw ArgValidateError.appleIDOrPassswordUndefined
+                        }
+                        username = String(inputLines[0])
+                        password = String(inputLines[1])
+                        rememberAppleId = String(inputLines[2])
+                    } else {
                         printStdErr("appleID or password is undefined")
                         throw ArgValidateError.appleIDOrPassswordUndefined
-                }
-                username = appleIdInfo.username
-                password = appleIdInfo.password
-                rememberAppleId = appleIdInfo.remember ? "yes" : "no"
+                    }
                }
                if rememberAppleId == "yes" {
                    UserDefaults.standard.set("yes", forKey: "rememberAppleId")
@@ -151,14 +150,23 @@ class Application: NSObject {
                    profilePath = UserDefaults.standard.string(forKey: "profilePath")
                 }
                 if certificatePath == nil || profilePath == nil {
-                    guard let certificateInfo = self.showCertificateAlert() else {
+                    let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
+                    let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("AppleCertificate.sh").path
+                    let inputOutput = executeCommand("\"\(inputCommand)\"")
+                    if let input = inputOutput {
+                        let inputLines = input.split(separator: "\n")
+                        if inputLines.count < 4  {
+                            printStdErr("certificate or profile is undefined")
+                            throw ArgValidateError.certificateOrProfileUndefined
+                        }
+                        certificatePath = String(inputLines[0])
+                        certificatePassword = String(inputLines[1])
+                        profilePath = String(inputLines[2])
+                        rememberCertificate = String(inputLines[3])
+                    } else {
                         printStdErr("certificate or profile is undefined")
                         throw ArgValidateError.certificateOrProfileUndefined
                     }
-                    certificatePath = certificateInfo.certificate
-                    certificatePassword = certificateInfo.password
-                    profilePath = certificateInfo.profile
-                    rememberCertificate = certificateInfo.remember ? "yes" : "no"
                 }
                 guard FileManager.default.fileExists(atPath: certificatePath!) else {
                      printStdErr("certificate not found")
@@ -236,209 +244,6 @@ class Application: NSObject {
         }
     }
 
-}
-
-private extension Application
-{
-
-    func showAppleIdAlert() -> (username: String, password: String, remember: Bool)? {
-        var username = ""
-        var password = ""
-        var remember = false
-        
-        let alert = NSAlert()
-        alert.addButton(withTitle: "确认")
-        alert.addButton(withTitle: "取消")
-        alert.alertStyle = .informational
-        alert.messageText = ""
-        alert.informativeText = ""
-        
-        self.appleIdContentView = NSView(frame: NSRect(x: 0, y: 0, width: 400, height: 150))
-         
-        let usernameLabel = NSTextField(labelWithString: "Apple 账号")
-        usernameLabel.frame = NSRect(x: 20, y: 110, width: 80, height: 20)
-        self.appleIdContentView!.addSubview(usernameLabel)
-
-        self.appleIdUsernameField = NSTextField(frame: NSRect(x: 100, y: 110, width: 200, height: 20))
-        self.appleIdUsernameField!.placeholderString = "Apple 账号"
-        self.appleIdUsernameField!.isEnabled = false
-        self.appleIdContentView!.addSubview(self.appleIdUsernameField!)
-        
-        let usernameButton = NSButton(title: "输入", target: self, action: #selector(getAppleIdUsername))
-        usernameButton.frame = NSRect(x: 310, y: 110, width: 60, height: 20)
-        self.appleIdContentView!.addSubview(usernameButton)
-  
-        let passwordLabel = NSTextField(labelWithString: "Apple 密码：")
-        passwordLabel.frame = NSRect(x: 20, y: 80, width: 80, height: 20)
-        self.appleIdContentView!.addSubview(passwordLabel)
-
-        self.appleIdPasswordField = NSSecureTextField(frame: NSRect(x: 100, y: 80, width: 200, height: 20))
-        self.appleIdPasswordField!.placeholderString = "Apple 密码"
-        self.appleIdPasswordField!.isEnabled = false
-        self.appleIdContentView!.addSubview(self.appleIdPasswordField!)
-        
-        let passwordButton = NSButton(title: "输入", target: self, action: #selector(getAppleIdPassword))
-        passwordButton.frame = NSRect(x: 310, y: 80, width: 60, height: 20)
-        self.appleIdContentView!.addSubview(passwordButton)
-  
-        self.rememberAppleIdCheckbox = NSButton(checkboxWithTitle: "记住我的选择", target: self, action: #selector(rememberSelection))
-        self.rememberAppleIdCheckbox!.frame = NSRect(x: 20, y: 50, width: 200, height: 20)
-        self.appleIdContentView!.addSubview(self.rememberAppleIdCheckbox!)
-        
-        alert.accessoryView = self.appleIdContentView!
-        
-        let response = alert.runModal()
-        
-        if response == .alertFirstButtonReturn {
-            username = self.appleIdUsernameField!.stringValue
-            password = self.appleIdPasswordField!.stringValue
-            remember = self.rememberAppleIdCheckbox!.state == .on
-        }
-        
-        if username.isEmpty && password.isEmpty {
-            return nil
-        }
-        
-        return (username, password, remember)
-    }
-
-    func showCertificateAlert() -> (certificate: String, password: String, profile: String, remember: Bool)? {
-        var certificate = ""
-        var password = ""
-        var profile = ""
-        var remember = false
-        
-        let alert = NSAlert()
-        alert.addButton(withTitle: "确认")
-        alert.addButton(withTitle: "取消")
-        alert.alertStyle = .informational
-        alert.messageText = ""
-        alert.informativeText = ""
-        
-        self.certificateContentView = NSView(frame: NSRect(x: 0, y: 0, width: 400, height: 180))
-        
-        let certificateLabel = NSTextField(labelWithString: "证书文件：")
-        certificateLabel.frame = NSRect(x: 20, y: 140, width: 80, height: 20)
-        self.certificateContentView!.addSubview(certificateLabel)
-
-        self.certificateField = NSTextField(frame: NSRect(x: 100, y: 140, width: 200, height: 20))
-        self.certificateField!.placeholderString = "证书文件路径"
-        self.certificateField!.isEnabled = false
-        self.certificateContentView!.addSubview(self.certificateField!)
-            
-        let certificateButton = NSButton(title: "选择", target: self, action: #selector(selectCertificateFile))
-        certificateButton.frame = NSRect(x: 310, y: 140, width: 60, height: 20)
-        self.certificateContentView!.addSubview(certificateButton)
-        
-        let passwordLabel = NSTextField(labelWithString: "密码：")
-        passwordLabel.frame = NSRect(x: 20, y: 110, width: 80, height: 20)
-        self.certificateContentView!.addSubview(passwordLabel)
-
-        self.certificatePasswordField = NSSecureTextField(frame: NSRect(x: 100, y: 110, width: 200, height: 20))
-        self.certificatePasswordField!.placeholderString = "密码"
-        self.certificatePasswordField!.isEnabled = false
-        self.certificateContentView!.addSubview(self.certificatePasswordField!)
-        
-        let passwordButton = NSButton(title: "输入", target: self, action: #selector(getCertificatePassword))
-        passwordButton.frame = NSRect(x: 310, y: 110, width: 60, height: 20)
-        self.certificateContentView!.addSubview(passwordButton)
-        
-        let profileLabel = NSTextField(labelWithString: "profile 文件：")
-        profileLabel.frame = NSRect(x: 20, y: 80, width: 80, height: 20)
-        self.certificateContentView!.addSubview(profileLabel)
-
-        self.profileField = NSTextField(frame: NSRect(x: 100, y: 80, width: 200, height: 20))
-        self.profileField!.placeholderString = "profile 文件路径"
-        self.profileField!.isEnabled = false
-        self.certificateContentView!.addSubview(self.profileField!)    
-
-        let profileButton = NSButton(title: "选择", target: self, action: #selector(selectProfileFile))
-        profileButton.frame = NSRect(x: 310, y: 80, width: 60, height: 20)
-        self.certificateContentView!.addSubview(profileButton)
-        
-        self.rememberCertificateCheckbox = NSButton(checkboxWithTitle: "记住我的选择", target: self, action: #selector(rememberSelection))
-        self.rememberCertificateCheckbox!.frame = NSRect(x: 20, y: 50, width: 200, height: 20)
-        self.certificateContentView!.addSubview(self.rememberCertificateCheckbox!)
-        
-        alert.accessoryView = self.certificateContentView!
-        
-        let response = alert.runModal()
-        
-        if response == .alertFirstButtonReturn {
-            certificate = self.certificateField!.stringValue
-            password = self.certificatePasswordField!.stringValue
-            profile = self.profileField!.stringValue
-            remember = self.rememberCertificateCheckbox!.state == .on
-        }
-        
-        if certificate.isEmpty && password.isEmpty && profile.isEmpty {
-            return nil
-        }
-        
-        return (certificate, password, profile, remember)
-    }
-
-
-    func chooseFile(type: String, title: String) throws -> String {
-        let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
-        let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("choosefile.sh").path
-        let inputOutput = executeCommand("\"\(inputCommand)\" \(type) \(title)")
-        if let input = inputOutput {
-            let inputLines = input.split(separator: "\n")
-            if inputLines.count < 1  {
-                return ""
-            }
-            return String(inputLines[0])
-        }
-        return ""
-    }
-
-    func getInputValue(label: String, hideText: String = "") throws -> String {
-        let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
-        let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("input.sh").path
-        let inputOutput = executeCommand("\"\(inputCommand)\" \(label) \(hideText)")
-        if let input = inputOutput {
-            let inputLines = input.split(separator: "\n")
-            if inputLines.count < 1  {
-                return ""
-            }
-            return String(inputLines[0])
-        }
-        return ""
-    }
-
-    @objc func getAppleIdUsername() throws {
-        let username = try self.getInputValue(label: "请输入Apple账号\\(如是手机号前面+86\\):")
-        self.appleIdUsernameField!.stringValue = username;
-    }
-
-    @objc func getAppleIdPassword() throws {
-        let password = try self.getInputValue(label: "请输入Apple密码:", hideText: "hide")
-        self.appleIdPasswordField!.stringValue = password;
-    }
-
-    @objc func selectCertificateFile() throws {
-        let certificateFile = try self.chooseFile(type: "p12", title: "请选择p12文件")
-        if(certificateFile != "") {
-            self.certificateField!.stringValue = certificateFile;
-        }
-    }
-
-    @objc func getCertificatePassword() throws {
-        let password = try self.getInputValue(label: "请选择输入证书对应的密码", hideText: "hide")
-        self.certificatePasswordField!.stringValue = password;
-    }
-
-    @objc func selectProfileFile() throws {
-        let profileFile = try self.chooseFile(type: "mobileprovision", title: "请选择mobileprovision文件")
-        if(profileFile != "") {
-            self.profileField!.stringValue = profileFile;
-        }
-    }
-    
-    @objc func rememberSelection() throws {
-        
-    }
 }
 
 private extension Application

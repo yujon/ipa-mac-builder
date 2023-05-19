@@ -101,8 +101,9 @@
 		BFD52C2122A1A9EC000B7ED1 /* node_list.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52C1E22A1A9EC000B7ED1 /* node_list.c */; };
 		BFD52C2222A1A9EC000B7ED1 /* cnary.c in Sources */ = {isa = PBXBuildFile; fileRef = BFD52C1F22A1A9EC000B7ED1 /* cnary.c */; };
 		CE4B74B129E94FEC00987862 /* MiniAppPlugin.zip in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE4B74B029E94FB600987862 /* MiniAppPlugin.zip */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		CE5105D82A17592E00F34F59 /* choosefile.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE5105D72A17592100F34F59 /* choosefile.sh */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CE5105DC2A17869D00F34F59 /* input.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE5105DB2A1785E200F34F59 /* input.sh */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CE5105E02A17AC3C00F34F59 /* AppleAccount.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE5105DF2A17AC2C00F34F59 /* AppleAccount.sh */; };
+		CE5105E12A17AC3C00F34F59 /* AppleCertificate.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE5105DD2A17AC2C00F34F59 /* AppleCertificate.sh */; };
 		CE649C3729CDC33E009AD7E5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE649C3629CDC33E009AD7E5 /* main.swift */; };
 		CE649C3B29CDC388009AD7E5 /* ALTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BF718BD723C93DB700A89F2D /* ALTConstants.m */; };
 		CE649C3C29CDC388009AD7E5 /* ServerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1E3128229F474900370A3C /* ServerProtocol.swift */; };
@@ -161,8 +162,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				CE5105E02A17AC3C00F34F59 /* AppleAccount.sh in CopyFiles */,
+				CE5105E12A17AC3C00F34F59 /* AppleCertificate.sh in CopyFiles */,
 				CE5105DC2A17869D00F34F59 /* input.sh in CopyFiles */,
-				CE5105D82A17592E00F34F59 /* choosefile.sh in CopyFiles */,
 				CE4B74B129E94FEC00987862 /* MiniAppPlugin.zip in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,8 +306,10 @@
 		BFF7C904257844C900E55F36 /* MiniAppXPC.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = MiniAppXPC.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF7C906257844C900E55F36 /* AltXPCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AltXPCProtocol.h; sourceTree = "<group>"; };
 		CE4B74B029E94FB600987862 /* MiniAppPlugin.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = MiniAppPlugin.zip; sourceTree = "<group>"; };
-		CE5105D72A17592100F34F59 /* choosefile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = choosefile.sh; sourceTree = "<group>"; };
 		CE5105DB2A1785E200F34F59 /* input.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = input.sh; sourceTree = "<group>"; };
+		CE5105DD2A17AC2C00F34F59 /* AppleCertificate.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppleCertificate.sh; sourceTree = "<group>"; };
+		CE5105DE2A17AC2C00F34F59 /* input.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = input.sh; sourceTree = "<group>"; };
+		CE5105DF2A17AC2C00F34F59 /* AppleAccount.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppleAccount.sh; sourceTree = "<group>"; };
 		CE649C3429CDC33C009AD7E5 /* MiniAppBuilder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MiniAppBuilder; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE649C3629CDC33E009AD7E5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CE649C4E29CDC3A4009AD7E5 /* NSError+libimobiledevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+libimobiledevice.h"; sourceTree = "<group>"; };
@@ -658,7 +662,9 @@
 				CE769FDF2A07A39E00A2F9E7 /* Connections */,
 				CE649C6829CDC3A5009AD7E5 /* MiniAppBuilder-Bridging-Header.h */,
 				CE5105DB2A1785E200F34F59 /* input.sh */,
-				CE5105D72A17592100F34F59 /* choosefile.sh */,
+				CE5105DF2A17AC2C00F34F59 /* AppleAccount.sh */,
+				CE5105DD2A17AC2C00F34F59 /* AppleCertificate.sh */,
+				CE5105DE2A17AC2C00F34F59 /* input.sh */,
 				CE649C5729CDC3A4009AD7E5 /* AnisetteDataManager.swift */,
 				CE649C4D29CDC3A4009AD7E5 /* Categories */,
 				CE649C6929CDC3A5009AD7E5 /* DeveloperDiskManager.swift */,
