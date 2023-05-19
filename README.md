@@ -46,4 +46,4 @@ cd MiniappMacBuilder-xxx
 
 <img width="285" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/41eff07f-54e8-491e-a0ce-028adc652423">
 
-解决方式： 执行解压出来的目录下的xattr.sh脚本
+解决方式： cd到解压出来的目录下，执行xattr.sh脚本
