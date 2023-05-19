@@ -61,6 +61,14 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "--type"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "certificate"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "--ipa"
             isEnabled = "YES">
          </CommandLineArgument>
@@ -74,10 +82,6 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/jonnyyu/Desktop/test"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "--install"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

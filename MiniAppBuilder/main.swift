@@ -36,10 +36,20 @@ func queryStringToDictionary(_ queryString: String) -> [String: String] {
     return dict
 }
 
+
 class Application: NSObject {
 
     private let pluginManager = PluginManager()
-    
+    private var appleIdContentView: NSView? = nil
+    private var appleIdUsernameField: NSTextField? = nil
+    private var appleIdPasswordField: NSTextField? = nil
+    private var rememberAppleIdCheckbox: NSButton? = nil
+
+    private var certificateContentView: NSView? = nil
+    private var certificateField: NSTextField? = nil
+    private var certificatePasswordField: NSTextField? = nil
+    private var profileField: NSTextField? = nil
+    private var rememberCertificateCheckbox: NSButton? = nil
 
     func launch() throws
     {
@@ -69,20 +79,7 @@ class Application: NSObject {
 
             // 获取设备列表
             if action == "getDevices" {
-                ALTDeviceManager.shared.start()
-                var devoceCount = ALTDeviceManager.shared.availableDevices.count
-                if devoceCount == 0 {
-                    exit(0)
-                }
-                for device in ALTDeviceManager.shared.availableDevices {
-                    if device.type != ALTDeviceType.iphone {
-                        continue
-                    }
-                    let osVersion = device.osVersion
-                    let versionString = "\(osVersion.majorVersion).\(osVersion.minorVersion).\(osVersion.patchVersion)"
-                    let arr = ["iphone", device.name, versionString, device.identifier]
-                    print(arr.joined(separator: "|"))
-                }
+                self.doGetDeviceAction()
                 exit(0)
             }
 
@@ -95,15 +92,15 @@ class Application: NSObject {
             let deviceId = parsedArguments.get(deviceIdOption)
             var deviceName = parsedArguments.get(deviceNameOption)
 
-            let certificatePath = parsedArguments.get(certificatePathOption)
-            let certificatePassword = parsedArguments.get(certificatePasswordOption)
-            let profilePath = parsedArguments.get(profilePathOption)
+            var certificatePath = parsedArguments.get(certificatePathOption)
+            var certificatePassword = parsedArguments.get(certificatePasswordOption)
+            var profilePath = parsedArguments.get(profilePathOption)
 
             let install = parsedArguments.get(installOption) ?? false
             let outputDir = parsedArguments.get(outputDirOption)
             let bundleId = parsedArguments.get(bundleIdOption) ?? "same"
             let entitlementsStr = parsedArguments.get(entitlementsOption)
-
+            
             if ipaPath == nil {
                printStdErr("the ipa path not found")
                throw ArgValidateError.IpaPathNotFound
@@ -123,36 +120,60 @@ class Application: NSObject {
             }
 
            if signType == "appleId" {
+               var rememberAppleId = UserDefaults.standard.string(forKey: "rememberAppleId") ?? "no"
+               if (username == nil || password == nil) && rememberAppleId == "yes" {
+                   username = UserDefaults.standard.string(forKey: "username")
+                   password = UserDefaults.standard.string(forKey: "password")
+               }
                if username == nil || password == nil {
-                   let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
-                   let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("appleAccount.sh").path
-                   let inputOutput = executeCommand("\"\(inputCommand)\"")
-                   if let input = inputOutput {
-                       let inputLines = input.split(separator: "\n")
-                       if inputLines.count < 2  {
-                           printStdErr("appleID or password is undefined")
-                           throw ArgValidateError.appleIDOrPassswordUndefined
-                       }
-                       username = String(inputLines[0])
-                       password = String(inputLines[1])
-                   } else {
-                       printStdErr("appleID or password is undefined")
-                       throw ArgValidateError.appleIDOrPassswordUndefined
-                   }
+                 guard let appleIdInfo = self.showAppleIdAlert() else {
+                        printStdErr("appleID or password is undefined")
+                        throw ArgValidateError.appleIDOrPassswordUndefined
+                }
+                username = appleIdInfo.username
+                password = appleIdInfo.password
+                rememberAppleId = appleIdInfo.remember ? "yes" : "no"
+               }
+               if rememberAppleId == "yes" {
+                   UserDefaults.standard.set("yes", forKey: "rememberAppleId")
+                   UserDefaults.standard.set(username, forKey: "username")
+                   UserDefaults.standard.set(password, forKey: "password")
+               } else {
+                   UserDefaults.standard.set("no", forKey: "rememberAppleId")
                }
            } else {
-                if certificatePath == nil || profilePath == nil {
-                    printStdErr("certificate or profile is undefined")
-                    throw ArgValidateError.certificateOrProfileUndefined
+                var rememberCertificate = UserDefaults.standard.string(forKey: "rememberCertificate") ?? "no"
+                if (certificatePath == nil || profilePath == nil) && rememberCertificate == "yes" {
+                   certificatePath = UserDefaults.standard.string(forKey: "certificatePath")
+                   certificatePassword = UserDefaults.standard.string(forKey: "certificatePassword")
+                   profilePath = UserDefaults.standard.string(forKey: "profilePath")
                 }
-               guard FileManager.default.fileExists(atPath: certificatePath!) else {
+                if certificatePath == nil || profilePath == nil {
+                    guard let certificateInfo = self.showCertificateAlert() else {
+                        printStdErr("certificate or profile is undefined")
+                        throw ArgValidateError.certificateOrProfileUndefined
+                    }
+                    certificatePath = certificateInfo.certificate
+                    certificatePassword = certificateInfo.password
+                    profilePath = certificateInfo.profile
+                    rememberCertificate = certificateInfo.remember ? "yes" : "no"
+                }
+                guard FileManager.default.fileExists(atPath: certificatePath!) else {
                      printStdErr("certificate not found")
                     throw ArgValidateError.certificateNotFound
                 }
-               guard FileManager.default.fileExists(atPath: profilePath!) else {
+                guard FileManager.default.fileExists(atPath: profilePath!) else {
                      printStdErr("profile not found")
                     throw ArgValidateError.profileNotFound
                 }
+               if rememberCertificate == "yes" {
+                    UserDefaults.standard.set("yes", forKey: "rememberCertificate")
+                    UserDefaults.standard.set(certificatePath, forKey: "certificatePath")
+                    UserDefaults.standard.set(certificatePassword, forKey: "certificatePassword")
+                    UserDefaults.standard.set(profilePath, forKey: "profilePath")
+               } else {
+                    UserDefaults.standard.set("no", forKey: "rememberCertificate")
+               }
            }
         
             var entitlements: [String : String] = [:]
@@ -209,11 +230,232 @@ class Application: NSObject {
             exit(1)
         }
     }
+
 }
 
 private extension Application
 {
 
+    func showAppleIdAlert() -> (username: String, password: String, remember: Bool)? {
+        var username = ""
+        var password = ""
+        var remember = false
+        
+        let alert = NSAlert()
+        alert.addButton(withTitle: "确认")
+        alert.addButton(withTitle: "取消")
+        alert.alertStyle = .informational
+        alert.messageText = ""
+        alert.informativeText = ""
+        
+        self.appleIdContentView = NSView(frame: NSRect(x: 0, y: 0, width: 400, height: 150))
+         
+        let usernameLabel = NSTextField(labelWithString: "Apple 账号")
+        usernameLabel.frame = NSRect(x: 20, y: 110, width: 80, height: 20)
+        self.appleIdContentView!.addSubview(usernameLabel)
+
+        self.appleIdUsernameField = NSTextField(frame: NSRect(x: 100, y: 110, width: 200, height: 20))
+        self.appleIdUsernameField!.placeholderString = "Apple 账号"
+        self.appleIdUsernameField!.isEnabled = false
+        self.appleIdContentView!.addSubview(self.appleIdUsernameField!)
+        
+        let usernameButton = NSButton(title: "输入", target: self, action: #selector(getAppleIdUsername))
+        usernameButton.frame = NSRect(x: 310, y: 110, width: 60, height: 20)
+        self.appleIdContentView!.addSubview(usernameButton)
+  
+        let passwordLabel = NSTextField(labelWithString: "Apple 密码：")
+        passwordLabel.frame = NSRect(x: 20, y: 80, width: 80, height: 20)
+        self.appleIdContentView!.addSubview(passwordLabel)
+
+        self.appleIdPasswordField = NSSecureTextField(frame: NSRect(x: 100, y: 80, width: 200, height: 20))
+        self.appleIdPasswordField!.placeholderString = "Apple 密码"
+        self.appleIdPasswordField!.isEnabled = false
+        self.appleIdContentView!.addSubview(self.appleIdPasswordField!)
+        
+        let passwordButton = NSButton(title: "输入", target: self, action: #selector(getAppleIdPassword))
+        passwordButton.frame = NSRect(x: 310, y: 80, width: 60, height: 20)
+        self.appleIdContentView!.addSubview(passwordButton)
+  
+        self.rememberAppleIdCheckbox = NSButton(checkboxWithTitle: "记住我的选择", target: self, action: #selector(rememberSelection))
+        self.rememberAppleIdCheckbox!.frame = NSRect(x: 20, y: 50, width: 200, height: 20)
+        self.appleIdContentView!.addSubview(self.rememberAppleIdCheckbox!)
+        
+        alert.accessoryView = self.appleIdContentView!
+        
+        let response = alert.runModal()
+        
+        if response == .alertFirstButtonReturn {
+            username = self.appleIdUsernameField!.stringValue
+            password = self.appleIdPasswordField!.stringValue
+            remember = self.rememberAppleIdCheckbox!.state == .on
+        }
+        
+        if username.isEmpty && password.isEmpty {
+            return nil
+        }
+        
+        return (username, password, remember)
+    }
+
+    func showCertificateAlert() -> (certificate: String, password: String, profile: String, remember: Bool)? {
+        var certificate = ""
+        var password = ""
+        var profile = ""
+        var remember = false
+        
+        let alert = NSAlert()
+        alert.addButton(withTitle: "确认")
+        alert.addButton(withTitle: "取消")
+        alert.alertStyle = .informational
+        alert.messageText = ""
+        alert.informativeText = ""
+        
+        self.certificateContentView = NSView(frame: NSRect(x: 0, y: 0, width: 400, height: 180))
+        
+        let certificateLabel = NSTextField(labelWithString: "证书文件：")
+        certificateLabel.frame = NSRect(x: 20, y: 140, width: 80, height: 20)
+        self.certificateContentView!.addSubview(certificateLabel)
+
+        self.certificateField = NSTextField(frame: NSRect(x: 100, y: 140, width: 200, height: 20))
+        self.certificateField!.placeholderString = "证书文件路径"
+        self.certificateField!.isEnabled = false
+        self.certificateContentView!.addSubview(self.certificateField!)
+            
+        let certificateButton = NSButton(title: "选择", target: self, action: #selector(selectCertificateFile))
+        certificateButton.frame = NSRect(x: 310, y: 140, width: 60, height: 20)
+        self.certificateContentView!.addSubview(certificateButton)
+        
+        let passwordLabel = NSTextField(labelWithString: "密码：")
+        passwordLabel.frame = NSRect(x: 20, y: 110, width: 80, height: 20)
+        self.certificateContentView!.addSubview(passwordLabel)
+
+        self.certificatePasswordField = NSSecureTextField(frame: NSRect(x: 100, y: 110, width: 200, height: 20))
+        self.certificatePasswordField!.placeholderString = "密码"
+        self.certificatePasswordField!.isEnabled = false
+        self.certificateContentView!.addSubview(self.certificatePasswordField!)
+        
+        let passwordButton = NSButton(title: "输入", target: self, action: #selector(getCertificatePassword))
+        passwordButton.frame = NSRect(x: 310, y: 110, width: 60, height: 20)
+        self.certificateContentView!.addSubview(passwordButton)
+        
+        let profileLabel = NSTextField(labelWithString: "profile 文件：")
+        profileLabel.frame = NSRect(x: 20, y: 80, width: 80, height: 20)
+        self.certificateContentView!.addSubview(profileLabel)
+
+        self.profileField = NSTextField(frame: NSRect(x: 100, y: 80, width: 200, height: 20))
+        self.profileField!.placeholderString = "profile 文件路径"
+        self.profileField!.isEnabled = false
+        self.certificateContentView!.addSubview(self.profileField!)    
+
+        let profileButton = NSButton(title: "选择", target: self, action: #selector(selectProfileFile))
+        profileButton.frame = NSRect(x: 310, y: 80, width: 60, height: 20)
+        self.certificateContentView!.addSubview(profileButton)
+        
+        self.rememberCertificateCheckbox = NSButton(checkboxWithTitle: "记住我的选择", target: self, action: #selector(rememberSelection))
+        self.rememberCertificateCheckbox!.frame = NSRect(x: 20, y: 50, width: 200, height: 20)
+        self.certificateContentView!.addSubview(self.rememberCertificateCheckbox!)
+        
+        alert.accessoryView = self.certificateContentView!
+        
+        let response = alert.runModal()
+        
+        if response == .alertFirstButtonReturn {
+            certificate = self.certificateField!.stringValue
+            password = self.certificatePasswordField!.stringValue
+            profile = self.profileField!.stringValue
+            remember = self.rememberCertificateCheckbox!.state == .on
+        }
+        
+        if certificate.isEmpty && password.isEmpty && profile.isEmpty {
+            return nil
+        }
+        
+        return (certificate, password, profile, remember)
+    }
+
+
+    func chooseFile(type: String, title: String) throws -> String {
+        let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
+        let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("choosefile.sh").path
+        let inputOutput = executeCommand("\"\(inputCommand)\" \(type) \(title)")
+        if let input = inputOutput {
+            let inputLines = input.split(separator: "\n")
+            if inputLines.count < 1  {
+                return ""
+            }
+            return String(inputLines[0])
+        }
+        return ""
+    }
+
+    func getInputValue(label: String, hideText: String = "") throws -> String {
+        let executableURL = URL(fileURLWithPath: CommandLine.arguments[0])
+        let inputCommand = executableURL.deletingLastPathComponent().appendingPathComponent("input.sh").path
+        let inputOutput = executeCommand("\"\(inputCommand)\" \(label) \(hideText)")
+        if let input = inputOutput {
+            let inputLines = input.split(separator: "\n")
+            if inputLines.count < 1  {
+                return ""
+            }
+            return String(inputLines[0])
+        }
+        return ""
+    }
+
+    @objc func getAppleIdUsername() throws {
+        let username = try self.getInputValue(label: "请输入Apple账号\\(如是手机号前面+86\\):")
+        self.appleIdUsernameField!.stringValue = username;
+    }
+
+    @objc func getAppleIdPassword() throws {
+        let password = try self.getInputValue(label: "请输入Apple密码:", hideText: "hide")
+        self.appleIdPasswordField!.stringValue = password;
+    }
+
+    @objc func selectCertificateFile() throws {
+        let certificateFile = try self.chooseFile(type: "p12", title: "请选择p12文件")
+        if(certificateFile != "") {
+            self.certificateField!.stringValue = certificateFile;
+        }
+    }
+
+    @objc func getCertificatePassword() throws {
+        let password = try self.getInputValue(label: "请选择输入证书对应的密码", hideText: "hide")
+        self.certificatePasswordField!.stringValue = password;
+    }
+
+    @objc func selectProfileFile() throws {
+        let profileFile = try self.chooseFile(type: "mobileprovision", title: "请选择mobileprovision文件")
+        if(profileFile != "") {
+            self.profileField!.stringValue = profileFile;
+        }
+    }
+    
+    @objc func rememberSelection() throws {
+        
+    }
+}
+
+private extension Application
+{
+
+    func doGetDeviceAction() {
+         ALTDeviceManager.shared.start()
+        var devoceCount = ALTDeviceManager.shared.availableDevices.count
+        if devoceCount == 0 {
+            exit(0)
+        }
+        for device in ALTDeviceManager.shared.availableDevices {
+            if device.type != ALTDeviceType.iphone {
+                continue
+            }
+            let osVersion = device.osVersion
+            let versionString = "\(osVersion.majorVersion).\(osVersion.minorVersion).\(osVersion.patchVersion)"
+            let arr = ["iphone", device.name, versionString, device.identifier]
+            print(arr.joined(separator: "|"))
+        }
+    }
+    
     func doSignAction(
         at fileURL: URL,
         signType: String,
@@ -230,74 +472,74 @@ private extension Application
         completion: @escaping ((Result<Void, Error>) -> Void)
     )
     {
-            func finish(_ result: Result<Void, Error>)
+        func finish(_ result: Result<Void, Error>)
+        {
+            
+            switch result
             {
+            case .success(let application):
+                // continuation.resume(returning: ())
+                completion(.success(()))
+            case .failure(OperationError.cancelled), .failure(ALTAppleAPIError.requiresTwoFactorAuthentication):
+                // Ignore
+                // continuation.resume(returning: ())
+                completion(.success(()))
+                break
                 
-                switch result
-                {
-                case .success(let application):
-                    // continuation.resume(returning: ())
-                    completion(.success(()))
-                case .failure(OperationError.cancelled), .failure(ALTAppleAPIError.requiresTwoFactorAuthentication):
-                    // Ignore
-                    // continuation.resume(returning: ())
-                    completion(.success(()))
-                    break
-                    
-                case .failure(let error):
-                    // continuation.resume(throwing: error)
-                    completion(.failure(error))
-                }
+            case .failure(let error):
+                // continuation.resume(throwing: error)
+                completion(.failure(error))
             }
+        }
 
-            func signFinish(_ result: Result<(ALTApplication, Set<String>), Error>)
-            {
-                 do{
-                    let (application, profiles) = try result.get()
-                    if outputDir != nil {
-                        let resignedIPAURL = try FileManager.default.zipAppBundle(at: application.fileURL);
-                        let ipaName = application.fileURL.lastPathComponent.replacingOccurrences(of: ".app", with: ".ipa")
-                        let distIPAURL = URL(fileURLWithPath: outputDir!).appendingPathComponent(ipaName)
-                        if FileManager.default.fileExists(atPath: distIPAURL.path) {
-                            try FileManager.default.removeItem(at: distIPAURL)
-                        }
-                        try FileManager.default.moveItem(at: resignedIPAURL, to: distIPAURL)
-                        print("Export the ipa successfullly")
+        func signFinish(_ result: Result<(ALTApplication, Set<String>), Error>)
+        {
+                do{
+                let (application, profiles) = try result.get()
+                if outputDir != nil {
+                    let resignedIPAURL = try FileManager.default.zipAppBundle(at: application.fileURL);
+                    let ipaName = application.fileURL.lastPathComponent.replacingOccurrences(of: ".app", with: ".ipa")
+                    let distIPAURL = URL(fileURLWithPath: outputDir!).appendingPathComponent(ipaName)
+                    if FileManager.default.fileExists(atPath: distIPAURL.path) {
+                        try FileManager.default.removeItem(at: distIPAURL)
                     }
-                    if install {
-                        ALTDeviceManager.shared.installApplication(at: application, to: device!, profiles: profiles,  completion: finish(_:))
-                    } else {
-                        finish(.success(()))
-                    }
+                    try FileManager.default.moveItem(at: resignedIPAURL, to: distIPAURL)
+                    print("Export the ipa successfullly")
                 }
-                catch
-                {
-                    finish(.failure(error))
+                if install {
+                    ALTDeviceManager.shared.installApplication(at: application, to: device!, profiles: profiles,  completion: finish(_:))
+                } else {
+                    finish(.success(()))
                 }
             }
-        
-            if signType == "appleId"
+            catch
             {
-                if !self.pluginManager.isMailPluginInstalled
-                {
-                    self.pluginManager.installMailPlugin { (result) in
-                        DispatchQueue.main.async {
-                            switch result
-                            {
-                            case .failure(let error):
-                                printStdErr("Failed to Install Mail Plug-in", error.localizedDescription)
-                                finish(.failure(error))
-                            case .success:
-                                finish(.failure(PluginError.taskError(output: "Mail Plug-in had Installed, Please Operate according to [url:https://github.com/yujon/ipa-mac-builder#mail-plugin] and restart Mail. Mail must be running when signing and installing apps")))
-                            }
+                finish(.failure(error))
+            }
+        }
+    
+        if signType == "appleId"
+        {
+            if !self.pluginManager.isMailPluginInstalled
+            {
+                self.pluginManager.installMailPlugin { (result) in
+                    DispatchQueue.main.async {
+                        switch result
+                        {
+                        case .failure(let error):
+                            printStdErr("Failed to Install Mail Plug-in", error.localizedDescription)
+                            finish(.failure(error))
+                        case .success:
+                            finish(.failure(PluginError.taskError(output: "Mail Plug-in had Installed, Please Operate according to [url:https://github.com/yujon/ipa-mac-builder#mail-plugin] and restart Mail. Mail must be running when signing and installing apps")))
                         }
                     }
-                    return
                 }
-                ALTDeviceManager.shared.signWithAppleID(at: fileURL, to: device!, appleID: username!, password: password!, bundleId: bundleId, entitlements: entitlements!, completion: signFinish)
-            } else {
-                ALTDeviceManager.shared.signWithCertificate(at: fileURL, certificatePath: certificatePath!, certificatePassword: certificatePassword, profilePath: profilePath!, entitlements: entitlements!, completion: signFinish)
+                return
             }
+            ALTDeviceManager.shared.signWithAppleID(at: fileURL, to: device!, appleID: username!, password: password!, bundleId: bundleId, entitlements: entitlements!, completion: signFinish)
+        } else {
+            ALTDeviceManager.shared.signWithCertificate(at: fileURL, certificatePath: certificatePath!, certificatePassword: certificatePassword, profilePath: profilePath!, entitlements: entitlements!, completion: signFinish)
+        }
    }
 }
 
