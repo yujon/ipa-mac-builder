@@ -65,7 +65,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "certificate"
+            argument = "appleId"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
