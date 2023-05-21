@@ -127,7 +127,7 @@ extension PluginManager
             // Enable Mail plug-in preferences.
             try self.run("defaults", arguments: ["write", "/Library/Preferences/com.apple.mail", "EnableBundles", "-bool", "YES"], authorization: authorization)
             
-            print("Finished installing Mail plug-in!")
+            print("Install Mail plug-in Finish!")
             
             completionHandler(.success(()))
         }

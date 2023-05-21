@@ -223,7 +223,7 @@ NSErrorUserInfoKey const ALTOperatingSystemVersionErrorKey = @"ALTOperatingSyste
             return NSLocalizedString(@"The provided anisette data is invalid.", @"");
             
         case ALTServerErrorPluginNotFound:
-            return NSLocalizedString(@"MiniAppBuilder could not connect to Mail plug-in.", @"");
+            return NSLocalizedString(@"MiniAppBuilder could not connect to Mail plug-in. Please enable the mail plugin and keep mail running", @"");
             
         case ALTServerErrorProfileNotFound:
             return [self profileErrorLocalizedDescriptionWithBaseDescription:NSLocalizedString(@"Could not find profile", "")];
