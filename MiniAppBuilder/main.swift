@@ -48,7 +48,7 @@ class Application: NSObject {
             let arguments = Array(CommandLine.arguments.dropFirst())
             let parser = ArgumentParser(usage: "<options>", overview: "A description")
             // action
-            let actionOption = parser.add(option: "--action", shortName: "-a", kind: String.self, usage: "sign|getDevices")
+            let actionOption = parser.add(option: "--action", shortName: "-a", kind: String.self, usage: "sign|getDevices|clear")
 
             // sign
             let ipaOption = parser.add(option: "--ipa", shortName: "-ipa", kind: String.self, usage: "ipa path")
@@ -76,6 +76,7 @@ class Application: NSObject {
                 exit(0)
             }
 
+
             // 签名
             let signType = parsedArguments.get(typeOption) ?? "appleId"
             let ipaPath = parsedArguments.get(ipaOption)
@@ -93,6 +94,18 @@ class Application: NSObject {
             let outputDir = parsedArguments.get(outputDirOption)
             let bundleId = parsedArguments.get(bundleIdOption) ?? "same"
             let entitlementsStr = parsedArguments.get(entitlementsOption)
+            
+            // 清除clear
+            if action == "clear" {
+                if signType == "appleId" {
+                    UserDefaults.standard.set("no", forKey: "rememberAppleId")
+                }
+                if signType == "certificate" {
+                    UserDefaults.standard.set("no", forKey: "rememberCertificate")
+                }
+                print("Clear successfully")
+                exit(0)
+            }
             
             if ipaPath == nil {
                printStdErr("the ipa path not found")
@@ -230,9 +243,12 @@ class Application: NSObject {
                         printStdErr(error.localizedDescription);
                         CFRunLoopStop(runLoop.getCFRunLoop())
                         // clear
-                        if signType == "certificate" {
-                            UserDefaults.standard.set("no", forKey: "rememberCertificate")
-                        }
+                        // if signType == "appleId" {
+                        //     UserDefaults.standard.set("no", forKey: "rememberAppleId")
+                        // }
+                        // if signType == "certificate" {
+                        //     UserDefaults.standard.set("no", forKey: "rememberCertificate")
+                        // }
                         exit(1)
                 }
             }
