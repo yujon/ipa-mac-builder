@@ -97,12 +97,8 @@ class Application: NSObject {
             
             // 清除clear
             if action == "clear" {
-                if signType == "appleId" {
-                    UserDefaults.standard.set("no", forKey: "rememberAppleId")
-                }
-                if signType == "certificate" {
-                    UserDefaults.standard.set("no", forKey: "rememberCertificate")
-                }
+                UserDefaults.standard.set("no", forKey: "rememberAppleId")
+                UserDefaults.standard.set("no", forKey: "rememberCertificate")
                 print("Clear successfully")
                 exit(0)
             }
