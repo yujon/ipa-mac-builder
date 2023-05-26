@@ -46,7 +46,13 @@ typedef NS_ERROR_ENUM(AltServerErrorDomain, ALTServerError)
     ALTServerErrorAppDeletionFailed = 16,
     
     ALTServerErrorRequestedAppNotRunning = 100,
-    ALTServerErrorIncompatibleDeveloperDisk = 101
+    ALTServerErrorIncompatibleDeveloperDisk = 101,
+    
+    ALTServerErrorInstallProxyConnectFailed = 200,
+    ALTServerErrorInstallProxyStartFailed = 201,
+    
+    ALTServerErrorDebugServerStartFailed = 205,
+
 };
 
 typedef NS_ERROR_ENUM(AltServerConnectionErrorDomain, ALTServerConnectionError)

@@ -22,6 +22,7 @@ NS_SWIFT_NAME(DebugConnection)
 
 - (void)disconnect;
 
+
 @end
 
 NS_ASSUME_NONNULL_END

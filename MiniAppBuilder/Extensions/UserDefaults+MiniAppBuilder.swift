@@ -8,14 +8,6 @@ import Foundation
 
 extension UserDefaults
 {
-    var serverID: String? {
-        get {
-            return self.string(forKey: "serverID")
-        }
-        set {
-            self.set(newValue, forKey: "serverID")
-        }
-    }
     
     var didPresentInitialNotification: Bool {
         get {
@@ -26,11 +18,4 @@ extension UserDefaults
         }
     }
     
-    func registerDefaults()
-    {
-        if self.serverID == nil
-        {
-            self.serverID = UUID().uuidString
-        }
-    }
 }

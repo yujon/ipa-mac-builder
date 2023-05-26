@@ -73,7 +73,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/jonnyyu/Desktop/Payload.ipa"
+            argument = "/Users/jonnyyu/Desktop/demo-no-applelogin/demo.ipa"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -82,6 +82,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/Users/jonnyyu/Desktop/test"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--install"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

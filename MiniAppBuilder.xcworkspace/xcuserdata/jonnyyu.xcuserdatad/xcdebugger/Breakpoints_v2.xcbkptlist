@@ -476,9 +476,9 @@
             filePath = "MiniAppBuilder/Devices/ALTDeviceManager.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1469"
-            endingLineNumber = "1469"
-            landmarkName = "-availableDevicesIncludingNetworkDevices:"
+            startingLineNumber = "1415"
+            endingLineNumber = "1415"
+            landmarkName = "-installDeveloperDiskImageAtURL:signatureURL:toDevice:completionHandler:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -591,38 +591,6 @@
             startingLineNumber = "314"
             endingLineNumber = "314"
             landmarkName = "-signAppAtURL:provisioningProfiles:entitlements:completionHandler:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2F2525E9-1050-45E2-97FB-30F96DE16F90"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MiniAppBuilder/Devices/ALTDeviceManager.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "727"
-            endingLineNumber = "727"
-            landmarkName = "-launchAppForBundleIdentifier:toDevice:completionHandler:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "95DF490C-5428-455B-8030-B1DC4278C54B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MiniAppBuilder/Devices/ALTDeviceManager.mm"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "724"
-            endingLineNumber = "724"
-            landmarkName = "-launchAppForBundleIdentifier:toDevice:completionHandler:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1340,8 +1308,8 @@
             filePath = "MiniAppBuilder/main.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "launch()"
             landmarkType = "7">
          </BreakpointContent>

@@ -629,21 +629,76 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
     instproxy_uninstall(ipc, bundleIdentifier.UTF8String, NULL, ALTDeviceManagerUpdateAppDeletionStatus, uuidString);
 }
 
+static instproxy_error_t instproxy_client_get_object_by_key_from_info_directionary_for_bundle_identifier(instproxy_client_t client, const char* appid, const char* key, plist_t* node)
+{
+	if (!client || !appid || !key)
+		return INSTPROXY_E_INVALID_ARG;
+
+	plist_t apps = NULL;
+
+	// create client options for any application types
+	plist_t client_opts = instproxy_client_options_new();
+	instproxy_client_options_add(client_opts, "ApplicationType", "Any", NULL);
+
+	// only return attributes we need
+	instproxy_client_options_set_return_attributes(client_opts, "CFBundleIdentifier", "CFBundleExecutable", key, NULL);
+
+	// only query for specific appid
+	const char* appids[] = {appid, NULL};
+
+	// query device for list of apps
+	instproxy_error_t ierr = instproxy_lookup(client, appids, client_opts, &apps);
+
+	instproxy_client_options_free(client_opts);
+
+	if (ierr != INSTPROXY_E_SUCCESS) {
+		return ierr;
+	}
+
+	plist_t app_found = plist_access_path(apps, 1, appid);
+	if (!app_found) {
+		if (apps)
+			plist_free(apps);
+		*node = NULL;
+		return INSTPROXY_E_OP_FAILED;
+	}
+
+	plist_t object = plist_dict_get_item(app_found, key);
+	if (object) {
+		*node = plist_copy(object);
+	} else {
+		return INSTPROXY_E_OP_FAILED;
+	}
+
+	plist_free(apps);
+
+	return INSTPROXY_E_SUCCESS;
+}
+
 - (void)launchAppForBundleIdentifier:(NSString *)bundleIdentifier toDevice:(ALTDevice *)altDevice completionHandler:(void (^)(BOOL success, NSError *_Nullable error))completionHandler
 {
     __block NSString *udid = altDevice.identifier;
     __block idevice_t device = NULL;
     __block lockdownd_client_t client = NULL;
-    __block instproxy_client_t ipc = NULL;
+    __block instproxy_client_t instproxy_client = NULL;
     __block lockdownd_service_descriptor_t service = NULL;
+    __block debugserver_client_t debugserver_client = NULL;
+    idevice_error_t ret = IDEVICE_E_UNKNOWN_ERROR;
+    const char* bundle_identifier = bundleIdentifier.UTF8String;
+    char* path = NULL;
+    char* working_directory = NULL;
+    char* response = NULL;
+    debugserver_command_t command = NULL;
+    debugserver_error_t dres = DEBUGSERVER_E_UNKNOWN_ERROR;
     
     void (^finish)(NSError *error) = ^(NSError *e) {
         __block NSError *error = e;
         
         lockdownd_service_descriptor_free(service);
-        instproxy_client_free(ipc);
+        instproxy_client_free(instproxy_client);
         lockdownd_client_free(client);
         idevice_free(device);
+        debugserver_client_free(debugserver_client);
         
         if (error != nil)
         {
@@ -670,66 +725,70 @@ NSNotificationName const ALTDeviceManagerDeviceDidDisconnectNotification = @"ALT
     /* Connect to Installation Proxy */
     if ((lockdownd_start_service(client, "com.apple.mobile.installation_proxy", &service) != LOCKDOWN_E_SUCCESS) || service == NULL)
     {
-        return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
+        return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorInstallProxyConnectFailed userInfo:nil]);
     }
     
-    if (instproxy_client_new(device, service, &ipc) != INSTPROXY_E_SUCCESS)
-    {
-        return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
+    if (instproxy_client_start_service(device, &instproxy_client, "miniapp-builder") != INSTPROXY_E_SUCCESS) {
+        fprintf(stderr, "Could not start installation proxy service.\n");
+        return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorInstallProxyStartFailed userInfo:nil]);
+    }
+    plist_t container = NULL;
+    instproxy_client_get_object_by_key_from_info_directionary_for_bundle_identifier(instproxy_client, bundle_identifier, "Container", &container);
+    instproxy_client_get_path_for_bundle_identifier(instproxy_client, bundle_identifier, &path);
+
+    if (container && (plist_get_node_type(container) == PLIST_STRING)) {
+        plist_get_string_val(container, &working_directory);
+//        fprintf("working_directory: %s\n", working_directory);
+        plist_free(container);
+    } else {
+        plist_free(container);
+        fprintf(stderr, "Could not determine container path for bundle identifier %s.\n", bundle_identifier);
     }
     
-    if (service)
-    {
-        lockdownd_service_descriptor_free(service);
-        service = NULL;
+    if (debugserver_client_start_service(device, &debugserver_client, "miniapp-builder") != DEBUGSERVER_E_SUCCESS) {
+        fprintf(stderr,
+            "Could not start com.apple.debugserver!\n"
+            "Please make sure to mount the developer disk image first:\n"
+            "  1) Get the iOS version from `ideviceinfo -k ProductVersion`.\n"
+            "  2) Find the matching iPhoneOS DeveloperDiskImage.dmg files.\n"
+            "  3) Run `ideviceimagemounter` with the above path.\n");
+        return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorDebugServerStartFailed userInfo:nil]);
     }
 
-    plist_t result = NULL;
-    if (instproxy_browse(ipc, NULL, &result) != INSTPROXY_E_SUCCESS) {
-        fprintf(stderr, "Failed to get application path for bundle ID %s\n", bundleIdentifier);
-        
-    }
-
-    plist_t app_dict = NULL;
-    uint32_t i;
-    for (i = 0; i < plist_array_get_size(result); i++) {
-        plist_t dict = plist_array_get_item(result, i);
-        plist_t bundle_id_value = plist_dict_get_item(dict, "CFBundleIdentifier");
-        char *bundle_id_str = NULL;
-        plist_get_string_val(bundle_id_value, &bundle_id_str);
-        if (strcmp(bundle_id_str, bundleIdentifier.UTF8String) == 0) {
-            app_dict = dict;
-            break;
-        }
-    }
-    if (!app_dict) {
-        fprintf(stderr, "Application with bundle ID %s not found\n", bundleIdentifier);
-        return finish([NSError errorWithDomain:AltServerErrorDomain code:ALTServerErrorConnectionFailed userInfo:nil]);
-    }
-    plist_t path_value = plist_dict_get_item(app_dict, "Path");
-    char *app_path = NULL;
-    plist_get_string_val(path_value, &app_path);
-    NSString *appPath = [NSString stringWithUTF8String:app_path];
     
-    plist_t executable_value = plist_dict_get_item(app_dict, "CFBundleExecutable");
-    char *executable_name = NULL;
-    plist_get_string_val(executable_value, &executable_name);
-    NSString *executableName = [NSString stringWithUTF8String:executable_name];
+    /* set working directory */
+    char* working_dir[2] = {working_directory, NULL};
+    debugserver_command_new("QSetWorkingDir:", 1, working_dir, &command);
+    dres = debugserver_client_send_command(debugserver_client, command, &response, NULL);
+    debugserver_command_free(command);
+    command = NULL;
+    if (response) {
+        free(response);
+        response = NULL;
+    }
     
-    NSString *executable_path = [NSString stringWithFormat:@"%@/%@", appPath, executableName];
+     char *app_args[] = { path };
+     debugserver_client_set_argv(debugserver_client, 1, app_args, NULL);
 
-    NSString *debugserver_cmd = [@"debugserver *:1234 --attach=" stringByAppendingString: appPath];
-    ALTDebugConnection *debugConnection = [[ALTDebugConnection alloc] initWithDevice:altDevice];
-    [debugConnection connectWithCompletionHandler:^(BOOL success, NSError * _Nullable error) {
-        if (![debugConnection sendCommand:debugserver_cmd arguments:nil error:&error]) {
-            NSLog(@"Launch the app failed\n");
-        } else {
-            NSLog(@"Launch the app successfully");
-        }
-        [debugConnection disconnect];
-        finish(error);
-    }];
+     debugserver_command_new("qLaunchSuccess", 0, NULL, &command);
+     dres = debugserver_client_send_command(debugserver_client, command, &response, NULL);
+     debugserver_command_free(command);
+     command = NULL;
+     if (response) {
+         free(response);
+         response = NULL;
+     }
 
+    // dettach
+    debugserver_command_new("D", 0, NULL, &command);
+    dres = debugserver_client_send_command(debugserver_client, command, &response, NULL);
+    debugserver_command_free(command);
+    command = NULL;
+
+    int res = (dres == DEBUGSERVER_E_SUCCESS) ? 0: -1;
+    
+    NSLog(@"Launch the app successfully");
+    finish(nil);
 }
 
 #pragma mark - Provisioning Profiles -

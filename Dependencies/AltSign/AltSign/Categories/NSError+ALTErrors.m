@@ -58,10 +58,6 @@ NSErrorUserInfoKey const ALTAppNameErrorKey = @"appName";
         }
         else if ([userInfoKey isEqualToString:NSLocalizedFailureReasonErrorKey])
         {
-            // clear
-            if (error.code == ALTAppleAPIErrorIncorrectCredentials) {
-                [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"rememberAppleId"];
-            }
             // Return failureReason for both keys to prevent prepending "Operation Failed" message to localizedDescription.
             return [error alt_appleapi_localizedFailureReason];
         }

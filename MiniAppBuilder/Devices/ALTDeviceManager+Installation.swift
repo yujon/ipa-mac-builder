@@ -159,7 +159,7 @@ extension ALTDeviceManager
             // try? FileManager.default.removeItem(at: destinationDirectoryURL)
         }
 
-        print("Init the sign environment...");
+        print("Init the sign environment for " + appleID + "...");
         AnisetteDataManager.shared.requestAnisetteData { (result) in
             do
             {

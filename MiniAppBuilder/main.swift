@@ -68,17 +68,26 @@ class Application: NSObject {
 
             let action = parsedArguments.get(actionOption) ?? "getDevices"
 
-            UserDefaults.standard.registerDefaults()
-
             // 获取设备列表
             if action == "getDevices" {
                 self.doGetDeviceAction()
                 exit(0)
             }
 
-
             // 签名
             let signType = parsedArguments.get(typeOption) ?? "appleId"
+            
+            if action == "clear" {
+                if signType == "appleId" {
+                    UserDefaults.standard.set("no", forKey: "rememberAppleId")
+                }
+                if signType == "certificate" {
+                    UserDefaults.standard.set("no", forKey: "rememberCertificate")
+                }
+                print("Clear remember successfully")
+                exit(0)
+            }
+
             let ipaPath = parsedArguments.get(ipaOption)
 
             var username = parsedArguments.get(usernameOption)
