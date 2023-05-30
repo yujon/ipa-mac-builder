@@ -31,20 +31,25 @@ cd MiniappMacBuilder-xxx
 4. 免费证书签名是，如果用的apple账号与手机登录的不同，需要到手机端打开：设置 -> 通用 -> VPN与设备管理，然后选择信任对应的签名apple账号
 
 ## 常见问题
-
 #### 问题1. mac上报framework已损坏
+
+ <img width="400" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/2e62379f-edcb-4c0a-a69b-dd0fc9f3aabf">
+
+解决方式： mac 系统上，系统设置-》隐私与安全性，选择信任 MiniappBuilder 程序
+
+#### 问题2. mac上报framework已损坏
 
 <img width="400" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/41eff07f-54e8-491e-a0ce-028adc652423">
 
 解决方式： cd到解压出来的目录下，执行xattr.sh脚本
 
-#### 问题2. ios上打开app提示开发者模式未开启
+#### 问题3. ios上打开app提示开发者模式未开启
 
 <img width="400" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/b7a478ff-91ec-4f3f-a7e8-d2965f6e9168">
 
 解决方式： 需要到手机端打开：设置 ->  隐私与安全性 -> 开发者模式，开关打开即可
 
-#### 问题3. ios上打开app提示不受信任的开发者
+#### 问题4. ios上打开app提示不受信任的开发者
 
 <img width="400" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/06d04145-483a-450d-80e8-be19fc4c6b0a">
 
