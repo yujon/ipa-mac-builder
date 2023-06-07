@@ -26,6 +26,8 @@ cd MiniappMacBuilder-xxx
 ./MiniAppBuilder --action sign --type appleId --ipa {ipaPath} --bundleId same|auto|xxxx --install
 # 指定entitlements(格式为A=xx&B=xxx，设置的每一项应该是bundleId已经具备的权限，否则会被过滤)
 ./MiniAppBuilder --action sign --type appleId --ipa {ipaPath} com.apple.developer.associated-domains=htpps://www.test.com/a/ --install
+# 记住了我的选择（账密/证书）后，可以clear
+# ./MiniAppBuilder --action clear
 ```
 
 4. 免费证书签名是，如果用的apple账号与手机登录的不同，需要到手机端打开：设置 -> 通用 -> VPN与设备管理，然后选择信任对应的签名apple账号
