@@ -1,10 +1,10 @@
-## 功能
+## Features 功能
 本工具用于在mac系统上，支持的功能有：
 - 获取连接的手机设备列表
 - 对ipa用Apple免费账号重签名
 - 对ipa用Apple自有证书重签名
 
-## 使用步骤
+## Usage 使用步骤 
 1. 下载[MiniAppBuilder](https://github.com/yujon/ipa-mac-builder/releases/)并解压
 
 2. 将`iphone`手机用数据线连接到电脑上
@@ -32,7 +32,7 @@ cd MiniappMacBuilder-xxx
 
 4. 免费证书签名是，如果用的apple账号与手机登录的不同，需要到手机端打开：设置 -> 通用 -> VPN与设备管理，然后选择信任对应的签名apple账号
 
-## 常见问题
+## QA 常见问题
 #### 问题1. mac上报framework已损坏
 
  <img width="400" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/2e62379f-edcb-4c0a-a69b-dd0fc9f3aabf">
