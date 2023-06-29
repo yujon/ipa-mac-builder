@@ -1,4 +1,4 @@
-# 项目迁移通知
+# 项目迁移说明
 本项目迁移至新的地址，当前项目不再维护，请移至[这里](https://github.com/TIT-Frontend/ipa-mac-builder)
 
 
