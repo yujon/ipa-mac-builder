@@ -1,3 +1,7 @@
+# 项目迁移通知
+本项目迁移至新的地址，当前项目不再维护，请移至[这里](https://github.com/TIT-Frontend/ipa-mac-builder)
+
+
 ## Features 功能
 本工具用于在mac系统上，支持的功能有：
 - 获取连接的手机设备列表
