@@ -1,3 +1,5 @@
+
+
 # IPA Mac Builder
 
 ## 项目迁移说明
@@ -31,7 +33,7 @@ cd MiniappMacBuilder-xxx
 # 指定bundleId(默认为same，auto代表自动分配，xxxx是自定义的值)
 ./MiniAppBuilder --action sign --type appleId --ipa {ipaPath} --bundleId same|auto|xxxx --install
 # 指定entitlements(格式为A=xx&B=xxx，设置的每一项应该是bundleId已经具备的权限，否则会被过滤)
-./MiniAppBuilder --action sign --type appleId --ipa {ipaPath} com.apple.developer.associated-domains=htpps://www.test.com/a/ --install
+./MiniAppBuilder --action sign --type appleId --ipa {ipaPath} com.apple.developer.associated-domains=https://www.test.com/a/ --install
 # 记住了我的选择（账密/证书）后，可以clear
 # ./MiniAppBuilder --action clear
 ```
@@ -62,5 +64,3 @@ cd MiniappMacBuilder-xxx
 <img width="400" alt="image" src="https://github.com/yujon/ipa-mac-builder/assets/16963584/06d04145-483a-450d-80e8-be19fc4c6b0a">
 
 解决方式： 需要到手机端打开：设置 -> 通用 -> VPN与设备管理，然后选择信任对应的签名apple账号
-
-
